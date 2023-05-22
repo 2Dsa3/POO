@@ -11,10 +11,10 @@ package ec.edu.espol.ejerecicio1;
 import java.util.ArrayList;
 
 public class Jurado {
-    ArrayList <String> nombres;
-    ArrayList <string> apellidos;
+    String nombres;
+    String apellidos;
     String telefono;
     String email;
     String descripcion;
-    
+    int id;
 }
