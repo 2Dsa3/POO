@@ -12,4 +12,5 @@ public class Premio {
     Concurso concurso;
     String[] posicionesganadores;
     String[] premiosganadores;
+    int id;
 }
