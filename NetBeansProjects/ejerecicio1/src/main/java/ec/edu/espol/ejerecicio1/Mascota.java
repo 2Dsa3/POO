@@ -8,11 +8,15 @@ package ec.edu.espol.ejerecicio1;
  *
  * @author abisu
  */
+import java.util.ArrayList;
 public class Mascota {
+    int id;
     String nombre;
     String raza;
     String cumpleaños;
-    char perrogato;
-    String dueño;
+    char tipo;
+    int id_dueño;
+    Dueño dueño;
+    ArrayList<Inscripcion> inscripciones;
     
 }
