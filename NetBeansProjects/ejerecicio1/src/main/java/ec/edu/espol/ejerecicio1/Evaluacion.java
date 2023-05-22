@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Evaluacion {
     Inscripcion inscripcion;
-    MiembroJurado jurado;
+    Jurado jurado;
     Criterio criterio;
+    int id_jurado;
 }
