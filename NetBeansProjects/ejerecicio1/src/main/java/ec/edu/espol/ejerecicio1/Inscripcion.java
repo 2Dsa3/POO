@@ -10,8 +10,12 @@ package ec.edu.espol.ejerecicio1;
  */
 import java.util.ArrayList;
 public class Inscripcion {
+    String fechaInscripcion;
+    double costo;
+    int id_mascota;
+    int id_concurso;
     Mascota mascota;
     Concurso concurso;
-    ArrayList <Evaluacion> evaluacion
+    ArrayList <Evaluacion> evaluacion;
     
 }
