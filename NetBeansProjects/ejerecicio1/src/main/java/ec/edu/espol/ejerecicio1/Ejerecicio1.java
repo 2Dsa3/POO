@@ -10,7 +10,11 @@ package ec.edu.espol.ejerecicio1;
  */
 public class Ejerecicio1 {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main( String args[]){
+        System.out.println("Howdy");
+        int age;
+        age= 18;
+        System.out.println("I am "+age+"years old");
+        
     }
 }
