@@ -11,5 +11,26 @@ public class Vendedor extends Usuario{
         this.vehiculo = vehiculo;
         this.placaVehiculo = placaVehiculo;
     }
+    
+    public void aceptarOferta()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Correo: ");
+        String correo = sc.nextLine();
+        
+        if(verificarCorreo(correo))
+        {
+            System.out.println("Contraseña: ");
+            String clave = sc.nextLine();
+            String hash = Usuario.generarHash(clave);
+            
+            if(verificarClave(correo, clave)
+            {
+                
+
+            }
+            
+        }
+    }
 
 }
