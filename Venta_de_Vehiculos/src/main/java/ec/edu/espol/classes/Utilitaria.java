@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import java.io.File;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-//import java.util.Scanner;
 
 public class Utilitaria{
     public static ArrayList<Comprador> compradorRegistrados  = new ArrayList<>() ;
@@ -14,18 +13,62 @@ public class Utilitaria{
     public static ArrayList<Vehiculo> vehiculosRegistrados = new ArrayList<>();
     public static ArrayList<Oferta> ofertasExistentes = new ArrayList<>();
 
+    
 
-    public static boolean verificarCorreo(String correo) 
+    public static void LoadData() {
+        String[] files= {"RegistrosVendedores.txt","RegistrosCompradores.txt","RegistroVehiculos.txt","RegistroOfertas.txt"};
+        
+   
+        for (String f: files){
+            try{ 
+                File F=new File(f);
+                Scanner reader= new Scanner(F);
+
+                while(reader.hasNextLine()){
+                    String line= reader.nextLine();
+                    String[] tokens= line.split(";");
+                   
+                }
+                reader.close();
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+
+            }
+        }
+    
+
+    public static boolean existenciaDeCorreoVendedor(String correo) 
     {
-        for (Vendedor vendedor : vendedorRegistrados) {
+        for (Vendedor vendedor : Utilitaria.vendedorRegistrados) {
             if (vendedor.getCorreo().equals(correo)) {
                 return true;
             }
         }
         return false;
     }
-    
-    public static boolean verificarClave(String correo, String clave) 
+    public static boolean existenciaDeCorreoComprador(String correo) 
+    {
+        for (Comprador comprador : Utilitaria.compradorRegistrados) {
+            if (comprador.getCorreo().equals(correo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean existenciaDePlacaVehiculo(String placa){
+        for (Vehiculo vehiculo:vehiculosRegistrados){
+            String placa_ = vehiculo.getPlaca();
+            if (placa.equals(placa_)) 
+                return true;
+        return false;                   
+        }
+        
+            
+        
+    }
+    public static boolean verificarClaveVendedor(String correo, String clave) 
     {
     for (Vendedor vendedor : vendedorRegistrados) {
         if (vendedor.getCorreo().equals(correo)) {
@@ -34,41 +77,310 @@ public class Utilitaria{
     }
     return false;
     }
-    
-    public void registroVendedor()
+    public static boolean verificarClaveComprador(String correo, String clave) 
     {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Registrar un nuevo vendedor");
-    System.out.println("Nombre: ");
-    String nombre = sc.nextLine();
-    System.out.println("Apellido: ");
-    String apellido = sc.nextLine();
-    System.out.println("Organización: ");
-    String organizacion = sc.nextLine();
-    System.out.println("Correo Electrónico: ");
-    String correo = sc.nextLine();
+    for (Comprador comprador : compradorRegistrados) {
+        if (comprador.getCorreo().equals(correo)) {
+            return comprador.getClave().equals(clave);
+        }
+    }
+    return false;
+    }
+    
+    
+    public static void menuOpciones(){
+        System.out.println(" Menú de Opciones:\n" +
+            "1. Vendedor\n" +
+            "2. Comprador\n" +
+            "3. Salir\n ");
+        
+        System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
+        Scanner sc=  new Scanner(System.in);
+        String opcion_v1= sc.next();
+        while(!(opcion_v1!="1" || opcion_v1!="2" || opcion_v1!="3") ){
+            
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v1= sc.next();
+        } 
+        
+        switch(opcion_v1){
+            case "1":
+                Utilitaria.opcionesVendedor();
+                break;
+            case "2":
+                Utilitaria.opcionesComprador();
+                break;
+            case "3":
+                System.out.println("Fin del programa");
+                break;
+        }
+                               
+            
+    }
 
-
-
-    if(verificarCorreo(correo))
-        System.out.println("El correo ya está registrado.");
-    else
+    public static void opcionesVendedor(){
+        System.out.println("Opciones del vendedor: ");
+        System.out.println("1. Registrar un nuevo vendedor");
+        System.out.println("2. Registrar un nuevo vehículo");
+        System.out.println("3. Aceptar oferta");
+        System.out.println("4. Regresar");
+        System.out.println("Escoja un número (1-2-3-4) de acuerdo a las opciones presentadas");
+        Scanner sc=  new Scanner(System.in);
+        String opcion_v2a= sc.next();
+        while(!(opcion_v2a!="1" || opcion_v2a!="2" || opcion_v2a!="3" || opcion_v2a!="4") ){ 
+        System.out.println("Número inválido, intente de nuevo");
+        opcion_v2a= sc.next();
+        }
+        switch(opcion_v2a)
         {
-        System.out.println("Contraseña");
-        String clave = sc.nextLine();
+            case "1":
+                registrarVendedor();
+                break;
+            case "2":
+                registrarVehiculo();
+                break;
+            case "3":
+                aceptarOferta(sc);    
+                break;
+            case "4":
+                Utilitaria.menuOpciones();
+                break;
+        }
+    }
+    
+    public static void opcionesComprador(){
+        System.out.println("Opciones del comprador: ");
+        System.out.println("1. Registrar un nuevo comprador");
+        System.out.println("2. Ofertar por un vehículo");
+        System.out.println("3. Regresar");
+        System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
+        Scanner sc=  new Scanner(System.in);
+        String opcion_v2b= sc.next();
+        while(! (opcion_v2b!="1" || opcion_v2b!="2" || opcion_v2b!="3")){ 
+        System.out.println("Número inválido, intente de nuevo");
+        opcion_v2b= sc.next();
+        }
+        switch(opcion_v2b)
+        {
+            case "1":
+                registrarComprador();
+                break;
+            case "2":
+                ofertarPorVehiculo();
+                break;
+            case "3":
+                Utilitaria.menuOpciones();    
+                break;
+        }   
+    }
+   
+
+    public static void registrarVendedor(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Registrar un nuevo vendedor");
+
+        System.out.println("Nombres: ");
+        String nombre = sc.next();
+        System.out.println("Apellidos: ");
+        String apellido = sc.next();
+        System.out.println("Organización: ");
+        String organizacion = sc.next();
+        System.out.println("Correo Electrónico: ");
+        String correo = sc.next();
+
+        while(existenciaDeCorreoVendedor(correo)){
+            System.out.println("El correo ya está registrado.");
+            String s_n=" ";
+            do {
+                System.out.println("Desea regresar al menu de opciones del vendedor? (S/N)");
+                s_n= sc.next();
+                s_n=s_n.toUpperCase();
+            } while(!(s_n.equals("S") || s_n.equals("N")));     
+
+            switch(s_n){
+                case "S" -> menuOpciones();
+                case "N" -> registrarVendedor();       
+            }
+        }
+        System.out.println("Clave: ");
+        String clave = sc.next();
+        System.out.println("Confirmar clave: ");
+        String clave_ = sc.next();
+        while(!(clave.equals(clave_))){
+            System.out.println("ERROR AL INGRESAR LA CLAVE");
+            System.out.println("Clave:");
+            clave = sc.next();
+            System.out.println("Confirmar clave:");
+            clave_ = sc.next();
+        }
         String hash = Usuario.generarHash(clave);
 
-        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File("vendedores.txt"), true)))
+        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistrosVendedores.txt"), true)))
             {
-            pw.println(nombre+"|"+apellido+"|"+organizacion+"|"+correo+"|"+hash);
+            pw.println(nombre+";"+apellido+";"+organizacion+";"+correo+";"+hash);
             }
         catch(Exception e)
             {
             System.out.println(e.getMessage());
             }
-        System.out.println(nombre+"|"+apellido+"|"+organizacion+"|"+correo+"|"+hash);
-        }
+        Vendedor v= new Vendedor(nombre,apellido,organizacion,correo,hash);//No sé si agregar a la lista el hash o la clave escrita (cual es legal?)
+
+        vendedorRegistrados.add(v);
     }
+ 
+    public static void registrarComprador(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Registrar un nuevo comprador");
+
+        System.out.println("Nombres: ");
+        String nombre = sc.next();
+        System.out.println("Apellidos: ");
+        String apellido = sc.next();
+        System.out.println("Organización: ");
+        String organizacion = sc.next();
+        System.out.println("Correo Electrónico: ");
+        String correo = sc.next();
+
+        while(existenciaDeCorreoComprador(correo)){
+            System.out.println("El correo ya está registrado.");
+            String s_n=" ";
+            do {
+                System.out.println("Desea regresar al menu de opciones del comprador? (S/N)");
+                s_n= sc.next();
+                s_n=s_n.toUpperCase();
+            } while(!(s_n.equals("S") || s_n.equals("N")));     
+
+            switch(s_n){
+                case "S" -> menuOpciones();
+                case "N" -> registrarComprador();       
+            }
+        }
+        System.out.println("Clave: ");
+        String clave = sc.next();
+        System.out.println("Confirmar clave: ");
+        String clave_ = sc.next();
+        while(!(clave.equals(clave_))){
+            System.out.println("ERROR AL INGRESAR LA CLAVE");
+            System.out.println("Clave:");
+            clave = sc.next();
+            System.out.println("Confirmar clave:");
+            clave_ = sc.next();
+        }
+        String hash = Usuario.generarHash(clave);
+
+        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistrosCompradores.txt"), true)))
+            {
+            pw.println(nombre+";"+apellido+";"+organizacion+";"+correo+";"+hash);
+            }
+        catch(Exception e)
+            {
+            System.out.println(e.getMessage());
+            }
+        Comprador c= new Comprador(nombre,apellido,organizacion,correo,hash);//No sé si agregar a la lista el hash o la clave escrita (cual es legal?)
+
+        compradorRegistrados.add(c);
+    }
+ 
+    public static void registrarVehiculo(){
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Registrar un nuevo vehículo");
+        System.out.print("Ingrese correo electrónico:");
+        String correo = sc.next();
+        System.out.println("\n");
+        System.out.print("ingrese su clave");
+        String clave = sc.next();
+        System.out.println("\n");
+        while (! verificarClaveVendedor(correo, clave)){
+            System.out.println("CREDENCIALES INCORRECTAS");
+            System.out.print("Ingrese correo electrónico:");
+            correo = sc.next();
+            System.out.println("\n");
+            System.out.print("ingrese su clave");
+            clave = sc.next();
+            System.out.println("\n");
+        }
+        
+        System.out.println("Ingrese el tipo de vehículo (auto-camioneta-motocicleta)");
+        String tipo= sc.next();
+        tipo= tipo.toLowerCase();
+        while (!(tipo.equals("auto") || tipo.equals("camioneta")||tipo.equals("motocicleta"))){
+            System.out.println("Tipo de vehículo no válido!");
+            System.out.println("Vuelva a ingresar (auto-camioneta-motocicleta) ");
+            tipo= sc.next();
+            tipo= tipo.toLowerCase();
+        }
+        System.out.println("Placa:");
+        String placa = sc.next();
+        while(existenciaDePlacaVehiculo(placa)){
+            System.out.println("Ya ha registrado este vehiculo");
+            System.out.println("Ingrese uno nuevo");
+            placa=sc.next();
+        }
+        System.out.println("Marca");
+        String marca= sc.next();
+        System.out.println("Modelo");
+        String modelo= sc.next();
+        System.out.println("Tipo de motor");
+        String tipomotor= sc.next();
+        System.out.println("Año");
+        int año= sc.nextInt();
+        System.out.println("Recorrido");
+        double recorrido= sc.nextDouble();
+        System.out.println("Color");
+        String color = sc.next();
+        System.out.println("Tipo combustible");
+        String tipocombustible= sc.next();
+        if (tipo.equals("auto") || tipo.equals("camioneta") ){
+            System.out.println("Vidrios");
+            System.out.println("Transmisión");
+        }
+        if (tipo.equals("camioneta")){
+            System.out.println("Tracción");
+        }
+        System.out.println("Precio");
+        double precio= sc.nextDouble();
+     
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistroVehiculos.txt"),true))){
+            pw.println(tipo+";"+placa+";"+recorrido+";"+año+";"+precio+";"+correo);    
+        } 
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+ }
+    
+    
+    
+
+
+    /* public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
+        ArrayList<Vehiculo> vehiculosXtipo= new ArrayList<>() ;
+        for (Vehiculo v: vehiculosRegistrados){
+            if (v instanceof tipoauto){
+                vehiculosXtipo.add(v);
+            }
+        }
+
+        return vehiculosXtipo;
+
+    } 
+ 
+    public ArrayList<Vehiculo> filtrarVehículoAño(int añoinicio, int añoFinal){
+        
+        ArrayList<Vehiculo> vehiculosXaño= new ArrayList<>();
+        for (Vehiculo v: vehiculosXtipo){
+            if (v instanceof tipoauto){
+                vehiculosXtipo.add(v);
+            }
+        }
+
+        return ;
+
+    }  */
+
+
+
 
 
     /* public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
