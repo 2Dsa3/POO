@@ -101,7 +101,7 @@ public static boolean verificarPlacaExistente(String placa)
 
 public static Vehiculo nextVehiculo(Scanner sc)
 {
-    String placa;
+String placa;
 do{
 System.out.println("Ingrese placa del vehículo:");
 placa = sc.nextLine();
