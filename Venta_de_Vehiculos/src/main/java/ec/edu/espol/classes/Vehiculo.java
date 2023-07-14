@@ -99,36 +99,36 @@ public static boolean verificarPlacaExistente(String placa)
    }
 
 
-public static Vehiculo nextVehiculo(Scanner sc)
+public static Vehiculo nextVehiculo(Scanner sc) //Los vehículos son motocicletas. Las clases hija son autos y camionetas.
 {
 String placa;
 do{
-System.out.println("Ingrese placa del vehículo:");
+System.out.println("Ingrese placa de la motocicleta:");
 placa = sc.nextLine();
 } while(Vehiculo.verificarPlacaExistente(placa));
 
-System.out.println("Ingrese marca del vehículo: ");
+System.out.println("Ingrese marca de la motocicleta: ");
 String marca = sc.nextLine();
 
-System.out.println("Ingrese modelo del vehículo: ");
+System.out.println("Ingrese modelo de la motocicleta: ");
 String modelo = sc.nextLine();
 
-System.out.println("Ingrese año del vehículo:");
+System.out.println("Ingrese año de la motocicleta:");
 int año = sc.nextInt();
 
-System.out.println("Ingrese recorrido del vehículo:");
+System.out.println("Ingrese recorrido de la motocicleta:");
 double recorrido = sc.nextDouble();
 
-System.out.println("Ingrese color del vehículo: ");
+System.out.println("Ingrese color de la motocicleta: ");
 String color = sc.nextLine();
 
-System.out.println("Ingrese tipo de combustible del vehículo: ");
+System.out.println("Ingrese tipo de combustible de la motocicleta: ");
 String tipoCombustible = sc.nextLine();
 
-System.out.println("Ingrese precio del vehículo:");
+System.out.println("Ingrese precio de la motocicleta:");
 double precio = sc.nextDouble();
 
-System.out.println("Vehículo de placa" + placa + "exitosamente ingresado.");
+System.out.println("Motocicleta de placa" + placa + "exitosamente ingresado.");
     return new Vehiculo(placa,marca,modelo,año,recorrido,color,tipoCombustible,precio);
 }
 
