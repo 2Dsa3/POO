@@ -1,8 +1,11 @@
 package ec.edu.espol.classes;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public abstract class Usuario {
+
     protected String nombres;
     protected String apellidos;
     protected String organizacion;
@@ -58,6 +61,25 @@ public abstract class Usuario {
         this.clave = clave;
     }
 
+    
+
+    public static String generarHash(String contrasena) {
+    try {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash = md.digest(contrasena.getBytes());
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xFF & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    } catch (NoSuchAlgorithmException e) {
+        return null;
+    }
+}
 
     public static String[] nextUsuario(Scanner sc, String s){
     String[] atributos = new String[5];
