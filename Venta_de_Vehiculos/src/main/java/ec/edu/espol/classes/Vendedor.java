@@ -13,6 +13,7 @@ public class Vendedor extends Usuario{
     public Vendedor(String nombres, String apellidos, String organizacion, String correo, String clave){
         super(nombres,apellidos,organizacion,correo,clave);
     }
+
     public void aceptarOferta()
     {
         Scanner sc = new Scanner(System.in);
