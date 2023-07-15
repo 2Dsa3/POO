@@ -5,6 +5,7 @@ public class Vehiculo {
     protected String placa;
     protected String marca;
     protected String modelo;
+    protected String tipomotor;
     protected int año;
     protected double recorrido;
     protected String color;
@@ -12,10 +13,11 @@ public class Vehiculo {
     protected double precio;
 
 
-    public Vehiculo(String placa, String marca, String modelo, int año, double recorrido, String color, String tipoCombustible, double precio) {
+    public Vehiculo(String placa, String marca, String modelo, String tipomotor, int año, double recorrido, String color, String tipoCombustible, double precio) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
+        this.tipomotor= tipomotor;
         this.año = año;
         this.recorrido = recorrido;
         this.color = color;
@@ -48,6 +50,13 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
+    public String getTipomotor() {
+        return tipomotor;
+    }
+
+    public void setTipomotor(String tipomotor) {
+        this.tipomotor = tipomotor;
+    }
     public int getAño() {
         return this.año;
     }

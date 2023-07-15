@@ -1,3 +1,11 @@
+package ec.edu.espol.classes;
+
+import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
+import java.io.File;
+import java.util.Scanner;
+
 public class Oferta{
     private Vendedor vendedor;
     private Comprador comprador;
