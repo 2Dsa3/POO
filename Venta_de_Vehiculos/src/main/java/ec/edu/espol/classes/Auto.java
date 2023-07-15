@@ -7,9 +7,10 @@ public class Auto extends Vehiculo{
     private String vidrio;
     private String transmision;
 
-    public Auto(String placa, String marca, String modelo, int año, double recorrido, String color, String tipoCombustible, double precio, String vidrio, String transmision)
+    public Auto(String placa, String marca, String modelo, String tipoMotor,int año, double recorrido, String color, String tipoCombustible, double precio, String vidrio, String transmision)
+
     {
-        super(placa, modelo, marca, año, recorrido, color, tipoCombustible, precio);
+        super(placa, modelo, marca, tipoMotor,año, recorrido, color, tipoCombustible, precio);
         this.vidrio = vidrio;
         this.transmision = transmision;
 
@@ -28,6 +29,9 @@ String marca = sc.nextLine();
 
 System.out.println("Ingrese modelo del auto: ");
 String modelo = sc.nextLine();
+
+System.out.println("Ingrese tipo de motor del auto: ");
+String tipoMotor = sc.nextLine();
 
 System.out.println("Ingrese año del auto:");
 int año = sc.nextInt();
@@ -51,6 +55,6 @@ System.out.println("Ingrese transmision del auto:");
 String transmision = sc.nextLine();
 
 System.out.println("Auto de placa" + placa + "exitosamente ingresado.");
-    return new Auto(placa,marca,modelo,año,recorrido,color,tipoCombustible,precio,vidrio,transmision);
+    return new Auto(placa,marca,modelo,tipoMotor,año,recorrido,color,tipoCombustible,precio,vidrio,transmision);
 }
 }

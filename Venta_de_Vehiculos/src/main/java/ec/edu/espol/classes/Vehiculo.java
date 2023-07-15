@@ -17,7 +17,7 @@ public class Vehiculo {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.tipomotor= tipomotor;
+        this.tipomotor = tipomotor;
         this.año = año;
         this.recorrido = recorrido;
         this.color = color;
@@ -122,6 +122,9 @@ String marca = sc.nextLine();
 System.out.println("Ingrese modelo de la motocicleta: ");
 String modelo = sc.nextLine();
 
+System.out.println("Ingrese tipo de motor de la motocicleta: ");
+String tipoMotor = sc.nextLine();
+
 System.out.println("Ingrese año de la motocicleta:");
 int año = sc.nextInt();
 
@@ -138,7 +141,7 @@ System.out.println("Ingrese precio de la motocicleta:");
 double precio = sc.nextDouble();
 
 System.out.println("Motocicleta de placa" + placa + "exitosamente ingresado.");
-    return new Vehiculo(placa,marca,modelo,año,recorrido,color,tipoCombustible,precio);
+    return new Vehiculo(placa,marca,tipoMotor,modelo,año,recorrido,color,tipoCombustible,precio);
 }
 
     

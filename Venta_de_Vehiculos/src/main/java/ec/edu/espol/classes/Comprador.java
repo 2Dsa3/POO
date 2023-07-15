@@ -1,6 +1,7 @@
 package ec.edu.espol.classes;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
+
 
 public class Comprador extends Usuario {
 
