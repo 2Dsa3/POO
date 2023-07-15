@@ -11,6 +11,7 @@ public class Vehiculo {
     protected String color;
     protected String tipoCombustible;
     protected double precio;
+    protected Vendedor dueño;
 
 
     public Vehiculo(String placa, String marca, String modelo, String tipomotor, int año, double recorrido, String color, String tipoCombustible, double precio) {
@@ -23,6 +24,11 @@ public class Vehiculo {
         this.color = color;
         this.tipoCombustible = tipoCombustible;
         this.precio = precio;
+    }
+    
+    public Vehiculo(String placa, String marca, String modelo, String tipomotor, int año, double recorrido, String color, String tipoCombustible, double precio, Vendedor dueño){
+        this( placa, marca,modelo,tipomotor,año,recorrido,color,tipoCombustible,precio);
+        this.dueño=dueño;
     }
 
 

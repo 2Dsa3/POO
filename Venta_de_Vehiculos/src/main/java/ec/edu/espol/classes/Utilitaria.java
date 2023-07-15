@@ -27,6 +27,35 @@ public class Utilitaria{
                 while(reader.hasNextLine()){
                     String line= reader.nextLine();
                     String[] tokens= line.split(";");
+                    switch (f){
+                        case "RegistrosVendedores.txt":
+                            vendedorRegistrados.add(new Vendedor(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]));
+                            break;
+                        case "RegistrosCompradores.txt":
+                            compradorRegistrados.add(new Comprador(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]));
+                        case "RegistroVehiculos.txt":
+                            Vendedor dueño= new Vendedor(null,null,null,tokens[13],null);
+                            int año= Integer.parseInt(tokens[5]);
+                            double recorrido= Double.parseDouble(tokens[6]);
+                            double precio= Double.parseDouble(tokens[9]);
+                            switch(tokens[0]){
+                                case "auto" -> {
+                                    Vehiculo a= new Auto( tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,tokens[10],tokens[11],dueño);
+                                    vehiculosRegistrados.add(a);
+                            }
+                                            
+                                case "camioneta" -> {  
+                                    Vehiculo c= new Camioneta(tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,tokens[10],tokens[11],tokens[12],dueño);
+                                    vehiculosRegistrados.add(c);
+                            }
+                                case "motocicleta" -> {
+                                    Vehiculo m= new Vehiculo(tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,dueño);
+                                    vehiculosRegistrados.add(m);
+                            }
+                                    
+                            }
+
+                    }
                    
                 }
                 reader.close();
@@ -62,11 +91,9 @@ public class Utilitaria{
             String placa_ = vehiculo.getPlaca();
             if (placa.equals(placa_)) 
                 return true;
-        return false;                   
+                        
         }
-        
-            
-        
+    return false;    
     }
     public static boolean verificarClaveVendedor(String correo, String clave) 
     {
@@ -97,7 +124,7 @@ public class Utilitaria{
         System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
         String opcion_v1= sc.next();
-        while(!(opcion_v1!="1" || opcion_v1!="2" || opcion_v1!="3") ){
+        while(!(opcion_v1.equals("1") || opcion_v1.equals("2") || opcion_v1.equals("3")) ){
             
             System.out.println("Número inválido, intente de nuevo");
             opcion_v1= sc.next();
@@ -127,7 +154,7 @@ public class Utilitaria{
         System.out.println("Escoja un número (1-2-3-4) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
         String opcion_v2a= sc.next();
-        while(!(opcion_v2a!="1" || opcion_v2a!="2" || opcion_v2a!="3" || opcion_v2a!="4") ){ 
+        while(!(opcion_v2a.equals("1") || opcion_v2a.equals("2") || opcion_v2a.equals("3") || opcion_v2a.equals("4")) ){ 
         System.out.println("Número inválido, intente de nuevo");
         opcion_v2a= sc.next();
         }
@@ -156,7 +183,7 @@ public class Utilitaria{
         System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
         String opcion_v2b= sc.next();
-        while(! (opcion_v2b!="1" || opcion_v2b!="2" || opcion_v2b!="3")){ 
+        while(! (opcion_v2b.equals("1") || opcion_v2b.equals("2") || opcion_v2b.equals("3"))){ 
         System.out.println("Número inválido, intente de nuevo");
         opcion_v2b= sc.next();
         }
@@ -166,6 +193,7 @@ public class Utilitaria{
                 registrarComprador();
                 break;
             case "2":
+
                 ofertarPorVehiculo();
                 break;
             case "3":
@@ -198,7 +226,7 @@ public class Utilitaria{
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
-                case "S" -> menuOpciones();
+                case "S" -> Utilitaria.menuOpciones();
                 case "N" -> registrarVendedor();       
             }
         }
@@ -251,7 +279,7 @@ public class Utilitaria{
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
-                case "S" -> menuOpciones();
+                case "S" -> Utilitaria.menuOpciones();
                 case "N" -> registrarComprador();       
             }
         }
@@ -331,24 +359,35 @@ public class Utilitaria{
         String color = sc.next();
         System.out.println("Tipo combustible");
         String tipocombustible= sc.next();
+        
+        String traccion= "N/A";
+        String transmision= "N/A";
+        String vidrios= "N/A";
         if (tipo.equals("auto") || tipo.equals("camioneta") ){
             System.out.println("Vidrios");
+            vidrios= sc.next();
             System.out.println("Transmisión");
+            transmision= sc.next();
+            
         }
         if (tipo.equals("camioneta")){
             System.out.println("Tracción");
+            traccion = sc.next();
+            
         }
         System.out.println("Precio");
         double precio= sc.nextDouble();
      
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistroVehiculos.txt"),true))){
-            pw.println(tipo+";"+placa+";"+recorrido+";"+año+";"+precio+";"+correo);    
+            pw.println(tipo+";"+placa+";"+marca+";"+modelo+";"+tipomotor+";"+año+";"+recorrido+";"+color+";"+tipocombustible+";"+precio+";"+vidrios+";"+transmision+";"+traccion+";"+correo);    
         } 
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
- }
+        Vendedor dueño= new Vendedor(null,null,null,correo,null);
+        Vehiculo vh= new Vehiculo( placa, marca, modelo, tipomotor, año, recorrido, color, tipocombustible, precio,dueño);
+        vehiculosRegistrados.add(vh);
+    }
     
     
     
