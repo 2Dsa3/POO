@@ -167,7 +167,7 @@ public class Utilitaria{
                 registrarVehiculo();
                 break;
             case "3":
-                aceptarOferta(sc);    
+                //aceptarOferta(sc);    
                 break;
             case "4":
                 Utilitaria.menuOpciones();
@@ -194,7 +194,7 @@ public class Utilitaria{
                 break;
             case "2":
 
-                ofertarPorVehiculo();
+                //ofertarPorVehiculo();
                 break;
             case "3":
                 Utilitaria.menuOpciones();    
