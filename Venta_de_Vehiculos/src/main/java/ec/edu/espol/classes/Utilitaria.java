@@ -1,9 +1,14 @@
 package ec.edu.espol.classes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,6 +17,7 @@ public class Utilitaria{
     public static ArrayList<Vendedor> vendedorRegistrados  = new ArrayList<>(); 
     public static ArrayList<Vehiculo> vehiculosRegistrados = new ArrayList<>();
     public static ArrayList<Oferta> ofertasExistentes = new ArrayList<>();
+    private ArrayList<Oferta> ofertasVehiculos = new ArrayList<>();
 
     
 
@@ -115,7 +121,7 @@ public class Utilitaria{
     }
     
     
-    public static void menuOpciones(){
+    public void menuOpciones(){
         System.out.println(" Menú de Opciones:\n" +
             "1. Vendedor\n" +
             "2. Comprador\n" +
@@ -132,10 +138,10 @@ public class Utilitaria{
         
         switch(opcion_v1){
             case "1":
-                Utilitaria.opcionesVendedor();
+                opcionesVendedor();
                 break;
             case "2":
-                Utilitaria.opcionesComprador();
+                opcionesComprador();
                 break;
             case "3":
                 System.out.println("Fin del programa");
@@ -145,7 +151,7 @@ public class Utilitaria{
             
     }
 
-    public static void opcionesVendedor(){
+    public void opcionesVendedor(){
         System.out.println("Opciones del vendedor: ");
         System.out.println("1. Registrar un nuevo vendedor");
         System.out.println("2. Registrar un nuevo vehículo");
@@ -167,15 +173,15 @@ public class Utilitaria{
                 registrarVehiculo();
                 break;
             case "3":
-                //aceptarOferta(sc);    
+                aceptarOferta();    
                 break;
             case "4":
-                Utilitaria.menuOpciones();
+                menuOpciones();
                 break;
         }
     }
     
-    public static void opcionesComprador(){
+    public void opcionesComprador(){
         System.out.println("Opciones del comprador: ");
         System.out.println("1. Registrar un nuevo comprador");
         System.out.println("2. Ofertar por un vehículo");
@@ -197,13 +203,13 @@ public class Utilitaria{
                 //ofertarPorVehiculo();
                 break;
             case "3":
-                Utilitaria.menuOpciones();    
+                menuOpciones();    
                 break;
         }   
     }
    
 
-    public static void registrarVendedor(){
+    public void registrarVendedor(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Registrar un nuevo vendedor");
 
@@ -226,7 +232,7 @@ public class Utilitaria{
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
-                case "S" -> Utilitaria.menuOpciones();
+                case "S" -> menuOpciones();
                 case "N" -> registrarVendedor();       
             }
         }
@@ -256,7 +262,7 @@ public class Utilitaria{
         vendedorRegistrados.add(v);
     }
  
-    public static void registrarComprador(){
+    public void registrarComprador(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Registrar un nuevo comprador");
 
@@ -279,7 +285,7 @@ public class Utilitaria{
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
-                case "S" -> Utilitaria.menuOpciones();
+                case "S" -> menuOpciones();
                 case "N" -> registrarComprador();       
             }
         }
@@ -389,7 +395,28 @@ public class Utilitaria{
         vehiculosRegistrados.add(vh);
     }
     
-    
+    public static void eliminar(String archivo, String eliminado)
+    {
+        File arch = new File(archivo);
+        File borrador = new File("borrador.txt");
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(arch));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(borrador))) {
+
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (!linea.contains(eliminado)) {
+                    bw.write(linea);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        arch.delete();
+        borrador.renameTo(arch);
+    }
     
 
 
@@ -458,14 +485,14 @@ public class Utilitaria{
             String clave = sc.nextLine();
             String hash = Usuario.generarHash(clave);
             
-            if(verificarClaveVendedor(correo, hash)
+            if(verificarClaveVendedor(correo, hash))
             {
                 System.out.println("Placa del vehículo: ");
                 String pl = sc.nextLine();
                 
                 for (Oferta of: ofertasExistentes)
                 {
-                    if(of.placa.equals(pl))
+                    if(of.getPlaca().equals(pl))
                         ofertasVehiculos.add(of);
                 }
                 
@@ -487,7 +514,7 @@ public class Utilitaria{
                     
                     System.out.println("Oferta "+num);
                     System.out.println("\nCorreo: "+correo);
-                    System.out.println("Precio ofertado: "+of.precioOfertado);
+                    System.out.println("Precio ofertado: "+of.getMonto());
                     
                     System.out.println("1.- Siguiente Oferta");
                     System.out.println("2.- Anterior Oferta");
@@ -516,7 +543,8 @@ public class Utilitaria{
                         }
                         case 3:
                         {
-                            //eliminar las lineas
+                            eliminar("ofertas.txt",of.getPlaca());
+                            eliminar("vehiculo.txt",of.getPlaca());
                             validar = false;
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
                         }

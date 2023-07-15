@@ -11,13 +11,15 @@ public class Oferta{
     private Comprador comprador;
     private Vehiculo vehiculo;
     private double monto; 
+    private String placa;
 
 
-    public Oferta(Vendedor vendedor, Comprador comprador, Vehiculo vehiculo, double monto) {
+    public Oferta(Vendedor vendedor, Comprador comprador, Vehiculo vehiculo, double monto, String placa) {
         this.vendedor = vendedor;
         this.comprador = comprador;
         this.vehiculo = vehiculo;
         this.monto = monto;
+        this.placa = placa;
     }
 
 
@@ -51,6 +53,10 @@ public class Oferta{
 
     public void setMonto(double monto) {
         this.monto = monto;
+    }
+
+    public String getPlaca() {
+        return placa;
     }
 
     
