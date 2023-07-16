@@ -119,4 +119,9 @@ public abstract class Usuario {
 
     return atributos;
     }
+    
+    public void enviarCorreo(String destinatario, String asunto, String cuerpo){
+        System.out.println("enviarcorreo");
+    }
+    
 }

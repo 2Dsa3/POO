@@ -1,5 +1,12 @@
 package ec.edu.espol.classes;
+import java.util.Properties;
 import java.util.Scanner;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 //import java.util.ArrayList;
 
 
@@ -19,5 +26,5 @@ public class Comprador extends Usuario {
 
     return new Comprador(nombres,apellidos,organizacion,correo,clave);
 
-    }
+    } 
 }

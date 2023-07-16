@@ -10,21 +10,25 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.mail.Session;
+import javax.mail.Transport;
+
 
 public class Utilitaria{
     public static ArrayList<Comprador> compradorRegistrados  = new ArrayList<>() ;
     public static ArrayList<Vendedor> vendedorRegistrados  = new ArrayList<>(); 
     public static ArrayList<Vehiculo> vehiculosRegistrados = new ArrayList<>();
-    public static ArrayList<Oferta> ofertasExistentes = new ArrayList<>();
+    public static ArrayList<Oferta> ofertasRegistradas = new ArrayList<>();
     private ArrayList<Oferta> ofertasVehiculos = new ArrayList<>();
 
     
 
     public static void LoadData() {
         String[] files= {"RegistrosVendedores.txt","RegistrosCompradores.txt","RegistroVehiculos.txt","RegistroOfertas.txt"};
-        
-   
         for (String f: files){
             try{ 
                 File F=new File(f);
@@ -39,6 +43,7 @@ public class Utilitaria{
                             break;
                         case "RegistrosCompradores.txt":
                             compradorRegistrados.add(new Comprador(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]));
+                            break;
                         case "RegistroVehiculos.txt":
                             Vendedor dueño= new Vendedor(null,null,null,tokens[13],null);
                             int año= Integer.parseInt(tokens[5]);
@@ -48,19 +53,27 @@ public class Utilitaria{
                                 case "auto" -> {
                                     Vehiculo a= new Auto( tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,tokens[10],tokens[11],dueño);
                                     vehiculosRegistrados.add(a);
-                            }
+                                    break;
+                                }
                                             
                                 case "camioneta" -> {  
                                     Vehiculo c= new Camioneta(tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,tokens[10],tokens[11],tokens[12],dueño);
                                     vehiculosRegistrados.add(c);
-                            }
+                                    break;
+                                }
                                 case "motocicleta" -> {
                                     Vehiculo m= new Vehiculo(tokens[1], tokens[2], tokens[3], tokens[4],año, recorrido,tokens[7], tokens[8], precio,dueño);
                                     vehiculosRegistrados.add(m);
+                                    break;
+                                }
                             }
-                                    
-                            }
-
+                            break;
+                        case "RegistroOfertas.txt":
+                            Vehiculo vh= new Vehiculo(tokens[0],tokens[1],tokens[2],null,0,0.0,null,null,0.0);
+                            double monto=Double.parseDouble(tokens[4]);
+                            Oferta of= new Oferta(tokens[3],vh,monto);
+                            ofertasRegistradas.add(of);
+                            break;
                     }
                    
                 }
@@ -121,7 +134,7 @@ public class Utilitaria{
     }
     
     
-    public void menuOpciones(){
+    public static void menuOpciones(){
         System.out.println(" Menú de Opciones:\n" +
             "1. Vendedor\n" +
             "2. Comprador\n" +
@@ -151,7 +164,7 @@ public class Utilitaria{
             
     }
 
-    public void opcionesVendedor(){
+    public static void opcionesVendedor(){
         System.out.println("Opciones del vendedor: ");
         System.out.println("1. Registrar un nuevo vendedor");
         System.out.println("2. Registrar un nuevo vehículo");
@@ -173,7 +186,8 @@ public class Utilitaria{
                 registrarVehiculo();
                 break;
             case "3":
-                aceptarOferta();    
+                System.out.println("xd");
+                //aceptarOferta();    
                 break;
             case "4":
                 menuOpciones();
@@ -181,7 +195,7 @@ public class Utilitaria{
         }
     }
     
-    public void opcionesComprador(){
+    public static void opcionesComprador(){
         System.out.println("Opciones del comprador: ");
         System.out.println("1. Registrar un nuevo comprador");
         System.out.println("2. Ofertar por un vehículo");
@@ -209,7 +223,7 @@ public class Utilitaria{
     }
    
 
-    public void registrarVendedor(){
+    public static void registrarVendedor(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Registrar un nuevo vendedor");
 
@@ -262,7 +276,7 @@ public class Utilitaria{
         vendedorRegistrados.add(v);
     }
  
-    public void registrarComprador(){
+    public static void registrarComprador(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Registrar un nuevo comprador");
 
@@ -395,7 +409,7 @@ public class Utilitaria{
         vehiculosRegistrados.add(vh);
     }
     
-    public static void eliminar(String archivo, String eliminado)
+    public static void eliminarVehiculo(String archivo, String eliminado)
     {
         File arch = new File(archivo);
         File borrador = new File("borrador.txt");
@@ -473,90 +487,186 @@ public class Utilitaria{
         return ;
 
     }  */
-    public void aceptarOferta()
+    public static void OfertarporVehiculo(){
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+        String s_n=null;
+        do {
+            System.out.println("Filtrar? (S-N)");
+            s_n= sc.next().toLowerCase().trim();
+        } while (!(s_n.equals("s")||s_n.equals("n")));
+
+        switch (s_n){
+            case "s":
+                ArrayList<Vehiculo> vehiculosfiltrados= new ArrayList<>();
+                // AQUI SE VA ACTUALIZANDO DEPENDIENDO EL FILTRADO
+
+                mostrarVehiculo(0,vehiculosfiltrados);
+                break;
+            case "n":
+                mostrarVehiculo(0,vehiculosRegistrados);
+                break;
+        }
+        
+    }
+    
+    public static void mostrarVehiculo(int index, ArrayList<Vehiculo> vehiculosfiltrados)//en el principal comienza en 0
     {
-        Scanner sc = new Scanner(System.in);
+       
+        System.out.println(vehiculosfiltrados.get(index).toString());
+        Scanner sc= new Scanner(System.in).useLocale(Locale.US);
+        if (index==0){
+            System.out.println("1. Siguiente Vehiculo");
+            System.out.println("2. Realizar Oferta");
+            String opcion_v3b= sc.next();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.next();
+            }
+            switch(opcion_v3b){
+                case "1" -> mostrarVehiculo(index++,vehiculosfiltrados);
+                case "2" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
+            }
+        }
+        else{
+            System.out.println("1. Anterior Vehiculo");
+            System.out.println("2. Siguiente Vehiculo");
+            System.out.println("3. Realizar Oferta");
+            String opcion_v3b= sc.next();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("1")  ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.next();
+            }
+            switch(opcion_v3b){
+                case "1" -> mostrarVehiculo(index--,vehiculosfiltrados);
+                case "2" -> mostrarVehiculo(index++,vehiculosfiltrados);
+                case "3" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
+                    
+            }
+        } 
+            
+            
+        }
+       
+    
+    public static void generarOferta(Vehiculo vh){
+        System.out.println("Incie sesión...");
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Correo: ");
         String correo = sc.nextLine();
         
-        if(existenciaDeCorreoVendedor(correo))
+        if(existenciaDeCorreoComprador(correo))
         {
             System.out.println("Contraseña: ");
             String clave = sc.nextLine();
             String hash = Usuario.generarHash(clave);
             
-            if(verificarClaveVendedor(correo, hash))
+            if(verificarClaveComprador(correo, hash))
             {
-                System.out.println("Placa del vehículo: ");
-                String pl = sc.nextLine();
+                System.out.println("Precio a ofertar:");
+                double precio_comp= Math.abs(sc.nextDouble());
                 
-                for (Oferta of: ofertasExistentes)
-                {
-                    if(of.getPlaca().equals(pl))
-                        ofertasVehiculos.add(of);
+                try (PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistroOfertas.txt"),true))){
+                    pw.println(vh.getPlaca()+";"+vh.getMarca()+";"+vh.getModelo()+";"+correo+";"+precio_comp);    
+                } 
+                catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
-                
-                if(ofertasVehiculos.isEmpty())
-                {
-                    System.out.println("No hay vehículos ofertados con la placa ingresada.");
-                    return;
-                }
-                
-                int index = 0;
-                boolean validar = true;
-                int num = 1;
-                
-                System.out.println("\nSe han realizado "+ofertasVehiculos.size()+" oferta(s)");
-                
-                while(validar)
-                {
-                    Oferta of = ofertasVehiculos.get(0);
-                    
-                    System.out.println("Oferta "+num);
-                    System.out.println("\nCorreo: "+correo);
-                    System.out.println("Precio ofertado: "+of.getMonto());
-                    
-                    System.out.println("1.- Siguiente Oferta");
-                    System.out.println("2.- Anterior Oferta");
-                    System.out.println("3.- Aceptar Oferta");
-                    int opcion = sc.nextInt();
-                    
-                    switch(opcion)
-                    {
-                        case 1:
-                        {
-                            if(index<ofertasVehiculos.size()-1)
-                            {
-                                index++;
-                                num++;
-                            }else
-                                System.out.println("Este es el último vehículo.");
-                        }
-                        case 2:
-                        {
-                            if(index>0)
-                            {
-                                index--;
-                                num--;
-                            }else
-                                System.out.println("Este es el primero vehículo");
-                        }
-                        case 3:
-                        {
-                            eliminar("ofertas.txt",of.getPlaca());
-                            eliminar("vehiculo.txt",of.getPlaca());
-                            validar = false;
-                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                        }
-                        default:
-                            System.out.println("Opción inválida");
-                    }     
-                }
-            }else
-                System.out.println("Contraseña incorrecta :S "); 
-        }else
-            System.out.println("Correo no registrado :0");
-            
-    }
+                Oferta of= new Oferta(correo,vh,precio_comp);
+                ofertasRegistradas.add(of);
+            }
+        } else  System.out.println("Correo no existente");
+                Utilitaria.opcionesComprador();
+        
 
+    }        
+        
+    
+//    public static void aceptarOferta()
+//    {
+//        System.out.println("Inicie sesión...");
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Correo: ");
+//        String correo = sc.nextLine();
+//        
+//        if(existenciaDeCorreoVendedor(correo))
+//        {
+//            System.out.println("Contraseña: ");
+//            String clave = sc.nextLine();
+//            String hash = Usuario.generarHash(clave);
+//            
+//            if(verificarClaveVendedor(correo, hash))
+//            {
+//                System.out.println("Placa del vehículo: ");
+//                String pl = sc.nextLine();
+//                
+//                
+//                if(ofertasVehiculos.isEmpty())
+//                {
+//                    System.out.println("No hay vehículos ofertados con la placa ingresada.");
+//                    return;
+//                }
+//                else 
+//                    for (Oferta of: ofertasRegistradas)
+//                    {
+//                        if(of.getPlaca().equals(pl))
+//                            ofertasVehiculos.add(of);
+//                    }
+//                   
+//                
+//                int index = 0;
+//                boolean validar = true;
+//                int num = 1;
+//                
+//                System.out.println("\nSe han realizado "+ofertasVehiculos.size()+" oferta(s)");
+//                
+//                while(validar)
+//                {
+//                    Oferta of = ofertasVehiculos.get(0);
+//                    
+//                    System.out.println("Oferta "+num);
+//                    System.out.println("\nCorreo: "+correo);
+//                    System.out.println("Precio ofertado: "+of.getMonto());
+//                    
+//                    System.out.println("1.- Siguiente Oferta");
+//                    System.out.println("2.- Anterior Oferta");
+//                    System.out.println("3.- Aceptar Oferta");
+//                    int opcion = sc.nextInt();
+//                    
+//                    switch(opcion)
+//                    {
+//                        case 1:
+//                        {
+//                            if(index<ofertasVehiculos.size()-1)
+//                            {
+//                                index++;
+//                                num++;
+//                            }else
+//                                System.out.println("Este es el último vehículo.");
+//                        }
+//                        case 2:
+//                        {
+//                            if(index>0)
+//                            {
+//                                index--;
+//                                num--;
+//                            }else
+//                                System.out.println("Este es el primero vehículo");
+//                        }
+//                        case 3:
+//                        {
+//                            eliminar("ofertas.txt",of.getPlaca());
+//                            eliminar("vehiculo.txt",of.getPlaca());
+//                            validar = false;
+//                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
+//                        }
+//                        default:
+//                            System.out.println("Opción inválida");
+//                    }     
+//                }
+//            }else
+//                System.out.println("Contraseña incorrecta :S "); 
+//        }else
+//            System.out.println("Correo no registrado :0");
+//            
+//    }
 }
