@@ -19,7 +19,7 @@ import javax.mail.Transport;
 
 
 public class Utilitaria{
-    public static ArrayList<Comprador> compradorRegistrados  = new ArrayList<>() ;
+    public static ArrayList<Comprador> compradorRegistrados  = new ArrayList<>();
     public static ArrayList<Vendedor> vendedorRegistrados  = new ArrayList<>(); 
     public static ArrayList<Vehiculo> vehiculosRegistrados = new ArrayList<>();
     public static ArrayList<Oferta> ofertasRegistradas = new ArrayList<>();
@@ -118,7 +118,7 @@ public class Utilitaria{
     {
     for (Vendedor vendedor : vendedorRegistrados) {
         if (vendedor.getCorreo().equals(correo)) {
-            return vendedor.getClave().equals(clave);
+            return vendedor.getClave().equals(Usuario.generarHash(clave));
         }
     }
     return false;
@@ -127,7 +127,7 @@ public class Utilitaria{
     {
     for (Comprador comprador : compradorRegistrados) {
         if (comprador.getCorreo().equals(correo)) {
-            return comprador.getClave().equals(clave);
+            return comprador.getClave().equals(Usuario.generarHash(clave));
         }
     }
     return false;
@@ -213,8 +213,7 @@ public class Utilitaria{
                 registrarComprador();
                 break;
             case "2":
-
-                //ofertarPorVehiculo();
+                OfertarporVehiculo();
                 break;
             case "3":
                 menuOpciones();    
@@ -255,7 +254,7 @@ public class Utilitaria{
         System.out.println("Confirmar clave: ");
         String clave_ = sc.nextLine();
         while(!(clave.equals(clave_))){
-            System.out.println("ERROR AL INGRESAR LA CLAVE");
+            System.out.println("ERROR AL INGRESAR LA CLAVE\n");
             System.out.println("Clave:");
             clave = sc.nextLine();
             System.out.println("Confirmar clave:");
@@ -291,7 +290,7 @@ public class Utilitaria{
 
         while(existenciaDeCorreoComprador(correo)){
             System.out.println("El correo ya está registrado.");
-            String s_n=" ";
+            String s_n="";
             do {
                 System.out.println("Desea regresar al menu de opciones del comprador? (S/N)");
                 s_n= sc.nextLine();
@@ -339,74 +338,79 @@ public class Utilitaria{
         System.out.print("ingrese su clave");
         String clave = sc.nextLine();
         System.out.println("\n");
-        while (! verificarClaveVendedor(correo, clave)){
-            System.out.println("CREDENCIALES INCORRECTAS");
-            System.out.print("Ingrese correo electrónico:");
-            correo = sc.nextLine();
-            System.out.println("\n");
-            System.out.print("ingrese su clave");
-            clave = sc.nextLine();
-            System.out.println("\n");
-        }
-        
-        System.out.println("Ingrese el tipo de vehículo (auto-camioneta-motocicleta)");
-        String tipo= sc.nextLine();
-        tipo= tipo.toLowerCase();
-        while (!(tipo.equals("auto") || tipo.equals("camioneta")||tipo.equals("motocicleta"))){
-            System.out.println("Tipo de vehículo no válido!");
-            System.out.println("Vuelva a ingresar (auto-camioneta-motocicleta) ");
-            tipo= sc.nextLine();
+        if (existenciaDeCorreoVendedor(correo)){
+            while (! verificarClaveVendedor(correo, clave)){
+                System.out.println("CREDENCIALES INCORRECTAS");
+                System.out.print("Ingrese correo electrónico:");
+                correo = sc.nextLine();
+                System.out.println("\n");
+                System.out.print("ingrese su clave");
+                clave = sc.nextLine();
+                System.out.println("\n");
+            }
+
+            System.out.println("Ingrese el tipo de vehículo (auto-camioneta-motocicleta)");
+            String tipo= sc.nextLine();
             tipo= tipo.toLowerCase();
+            while (!(tipo.equals("auto") || tipo.equals("camioneta")||tipo.equals("motocicleta"))){
+                System.out.println("Tipo de vehículo no válido!");
+                System.out.println("Vuelva a ingresar (auto-camioneta-motocicleta) ");
+                tipo= sc.nextLine();
+                tipo= tipo.toLowerCase();
+            }
+            System.out.println("Placa:");
+            String placa = sc.nextLine();
+            while(existenciaDePlacaVehiculo(placa)){
+                System.out.println("Ya ha registrado este vehiculo");
+                System.out.println("Ingrese uno nuevo");
+                placa=sc.nextLine();
+            }
+            System.out.println("Marca");
+            String marca= sc.nextLine();
+            System.out.println("Modelo");
+            String modelo= sc.nextLine();
+            System.out.println("Tipo de motor");
+            String tipomotor= sc.nextLine();
+            System.out.println("Año");
+            int año= sc.nextInt();
+            System.out.println("Recorrido");
+            double recorrido= sc.nextDouble();
+            sc.nextLine();
+            System.out.println("Color");
+            String color = sc.nextLine();
+            System.out.println("Tipo combustible");
+            String tipocombustible= sc.nextLine();
+            String traccion= "N/A";
+            String transmision= "N/A";
+            String vidrios= "N/A";
+            if (tipo.equals("auto") || tipo.equals("camioneta") ){
+                System.out.println("Vidrios");
+                vidrios= sc.nextLine();
+                System.out.println("Transmisión");
+                transmision= sc.nextLine();
+
+            }
+            if (tipo.equals("camioneta")){
+                System.out.println("Tracción");
+                traccion = sc.nextLine();
+
+            }
+            System.out.println("Precio");
+            double precio= sc.nextDouble();
+
+            try (PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistroVehiculos.txt"),true))){
+                pw.println(tipo+";"+placa+";"+marca+";"+modelo+";"+tipomotor+";"+año+";"+recorrido+";"+color+";"+tipocombustible+";"+precio+";"+vidrios+";"+transmision+";"+traccion+";"+correo);    
+            } 
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            Vendedor dueño= new Vendedor(null,null,null,correo,null);
+            Vehiculo vh= new Vehiculo( placa, marca, modelo, tipomotor, año, recorrido, color, tipocombustible, precio,dueño);
+            vehiculosRegistrados.add(vh);
+            System.out.println("Fin del programa");
         }
-        System.out.println("Placa:");
-        String placa = sc.nextLine();
-        while(existenciaDePlacaVehiculo(placa)){
-            System.out.println("Ya ha registrado este vehiculo");
-            System.out.println("Ingrese uno nuevo");
-            placa=sc.nextLine();
-        }
-        System.out.println("Marca");
-        String marca= sc.nextLine();
-        System.out.println("Modelo");
-        String modelo= sc.nextLine();
-        System.out.println("Tipo de motor");
-        String tipomotor= sc.nextLine();
-        System.out.println("Año");
-        int año= sc.nextInt();
-        System.out.println("Recorrido");
-        double recorrido= sc.nextDouble();
-        System.out.println("Color");
-        String color = sc.nextLine();
-        System.out.println("Tipo combustible");
-        String tipocombustible= sc.nextLine();
-        
-        String traccion= "N/A";
-        String transmision= "N/A";
-        String vidrios= "N/A";
-        if (tipo.equals("auto") || tipo.equals("camioneta") ){
-            System.out.println("Vidrios");
-            vidrios= sc.nextLine();
-            System.out.println("Transmisión");
-            transmision= sc.nextLine();
-            
-        }
-        if (tipo.equals("camioneta")){
-            System.out.println("Tracción");
-            traccion = sc.nextLine();
-            
-        }
-        System.out.println("Precio");
-        double precio= sc.nextDouble();
-     
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(new File("RegistroVehiculos.txt"),true))){
-            pw.println(tipo+";"+placa+";"+marca+";"+modelo+";"+tipomotor+";"+año+";"+recorrido+";"+color+";"+tipocombustible+";"+precio+";"+vidrios+";"+transmision+";"+traccion+";"+correo);    
-        } 
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        Vendedor dueño= new Vendedor(null,null,null,correo,null);
-        Vehiculo vh= new Vehiculo( placa, marca, modelo, tipomotor, año, recorrido, color, tipocombustible, precio,dueño);
-        vehiculosRegistrados.add(vh);
+        else {System.out.println("Correo no registrado");
+            Utilitaria.opcionesComprador();}
     }
     
     public static void eliminarVehiculo(String archivo, String eliminado)
@@ -490,9 +494,10 @@ public class Utilitaria{
     public static void OfertarporVehiculo(){
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         String s_n=null;
+        System.out.println("Ofertar por un vehículo");
         do {
             System.out.println("Filtrar? (S-N)");
-            s_n= sc.next().toLowerCase().trim();
+            s_n= sc.nextLine().toLowerCase().trim();
         } while (!(s_n.equals("s")||s_n.equals("n")));
 
         switch (s_n){
@@ -514,7 +519,7 @@ public class Utilitaria{
        
         System.out.println(vehiculosfiltrados.get(index).toString());
         Scanner sc= new Scanner(System.in).useLocale(Locale.US);
-        if (index==0){
+        if (index==0 && vehiculosfiltrados.size()>1 ){
             System.out.println("1. Siguiente Vehiculo");
             System.out.println("2. Realizar Oferta");
             String opcion_v3b= sc.nextLine();
@@ -523,7 +528,35 @@ public class Utilitaria{
             opcion_v3b= sc.nextLine();
             }
             switch(opcion_v3b){
-                case "1" -> mostrarVehiculo(index++,vehiculosfiltrados);
+                
+                case "1" ->{index=index+1; mostrarVehiculo(index,vehiculosfiltrados);}
+                case "2" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
+            }
+        }
+        else if(index==0 && vehiculosfiltrados.size()==1){
+            System.out.println("Por el momento solo existe este vehiculo en el mercado");
+            String s_n=null;
+            do {
+                System.out.println("Realizar oferta? (S-N)");;
+                s_n= sc.nextLine().toLowerCase().trim();
+            } while (!(s_n.equals("s")||s_n.equals("n")));
+            switch(s_n){
+                
+                case "n" -> Utilitaria.menuOpciones();
+                case "s" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
+            }
+        }
+        else if(index==vehiculosfiltrados.size()-1){
+            System.out.println("1. Anterior Vehiculo");
+            System.out.println("2. Realizar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                
+                case "1" ->{index=index-1; mostrarVehiculo(index,vehiculosfiltrados);}
                 case "2" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
             }
         }
@@ -532,13 +565,13 @@ public class Utilitaria{
             System.out.println("2. Siguiente Vehiculo");
             System.out.println("3. Realizar Oferta");
             String opcion_v3b= sc.nextLine();
-            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("1")  ) ){ 
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("3")  ) ){ 
             System.out.println("Número inválido, intente de nuevo");
             opcion_v3b= sc.nextLine();
             }
             switch(opcion_v3b){
-                case "1" -> mostrarVehiculo(index--,vehiculosfiltrados);
-                case "2" -> mostrarVehiculo(index++,vehiculosfiltrados);
+                case "1" -> {index=index-1;mostrarVehiculo(index,vehiculosfiltrados);}
+                case "2" -> {index=index+1;mostrarVehiculo(index,vehiculosfiltrados);}
                 case "3" -> Utilitaria.generarOferta(vehiculosfiltrados.get(index));
                     
             }
@@ -551,16 +584,23 @@ public class Utilitaria{
     public static void generarOferta(Vehiculo vh){
         System.out.println("Incie sesión...");
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
-        System.out.println("Correo: ");
+        System.out.print("Ingrese correo electrónico:");
         String correo = sc.nextLine();
-        
         if(existenciaDeCorreoComprador(correo))
         {
-            System.out.println("Contraseña: ");
+            System.out.println("\n");
+            System.out.print("ingrese su clave");
             String clave = sc.nextLine();
-            String hash = Usuario.generarHash(clave);
-            
-            if(verificarClaveComprador(correo, hash))
+            System.out.println("\n");
+            while (! verificarClaveComprador(correo, clave)){
+                System.out.println("CREDENCIALES INCORRECTAS");
+                System.out.print("Ingrese correo electrónico:");
+                correo = sc.nextLine();
+                System.out.println("\n");
+                System.out.print("ingrese su clave");
+                clave = sc.nextLine();
+                System.out.println("\n");
+            }
             {
                 System.out.println("Precio a ofertar:");
                 double precio_comp= Math.abs(sc.nextDouble());
@@ -573,9 +613,10 @@ public class Utilitaria{
                 }
                 Oferta of= new Oferta(correo,vh,precio_comp);
                 ofertasRegistradas.add(of);
+                System.out.println("Fin del programa");
             }
-        } else  System.out.println("Correo no existente");
-                Utilitaria.opcionesComprador();
+        } else  {System.out.println("Correo no registrado");
+                Utilitaria.opcionesComprador();}
         
 
     }        

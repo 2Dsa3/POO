@@ -27,4 +27,6 @@ public class Comprador extends Usuario {
     return new Comprador(nombres,apellidos,organizacion,correo,clave);
 
     } 
+    
+    
 }

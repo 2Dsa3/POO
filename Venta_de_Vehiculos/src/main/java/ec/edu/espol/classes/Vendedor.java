@@ -27,8 +27,8 @@ public class Vendedor extends Usuario{
         
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
-        props.put("mail.smtp.user", correo);
-        props.put("mail.smtp.clave", clave);    //La clave de la cuenta
+        props.put("mail.smtp.user", this.getCorreo());
+        props.put("mail.smtp.clave", this.getClave());    //La clave de la cuenta
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
         props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
@@ -37,12 +37,12 @@ public class Vendedor extends Usuario{
         MimeMessage message = new MimeMessage(session);
         
         try {
-        message.setFrom(new InternetAddress(correo));
+        message.setFrom(new InternetAddress(this.getCorreo()));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
         message.setSubject(asunto);
         message.setText(cuerpo);
         Transport transport = session.getTransport("smtp");
-        transport.connect("smtp.gmail.com", correo, clave);
+        transport.connect("smtp.gmail.com", this.getCorreo(), this.getClave());
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
         }
