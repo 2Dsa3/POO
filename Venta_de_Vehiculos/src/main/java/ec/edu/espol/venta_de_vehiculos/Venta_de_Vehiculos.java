@@ -15,6 +15,7 @@ public class Venta_de_Vehiculos {
 
     public static void main(String[] args) 
     {
+        Utilitaria.LoadData();
         Utilitaria.menuOpciones(); 
     }
 

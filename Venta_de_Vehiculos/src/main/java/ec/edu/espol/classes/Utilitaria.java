@@ -142,11 +142,11 @@ public class Utilitaria{
         
         System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
-        String opcion_v1= sc.next();
+        String opcion_v1= sc.nextLine();
         while(!(opcion_v1.equals("1") || opcion_v1.equals("2") || opcion_v1.equals("3")) ){
             
             System.out.println("Número inválido, intente de nuevo");
-            opcion_v1= sc.next();
+            opcion_v1= sc.nextLine();
         } 
         
         switch(opcion_v1){
@@ -172,10 +172,10 @@ public class Utilitaria{
         System.out.println("4. Regresar");
         System.out.println("Escoja un número (1-2-3-4) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
-        String opcion_v2a= sc.next();
+        String opcion_v2a= sc.nextLine();
         while(!(opcion_v2a.equals("1") || opcion_v2a.equals("2") || opcion_v2a.equals("3") || opcion_v2a.equals("4")) ){ 
         System.out.println("Número inválido, intente de nuevo");
-        opcion_v2a= sc.next();
+        opcion_v2a= sc.nextLine();
         }
         switch(opcion_v2a)
         {
@@ -202,10 +202,10 @@ public class Utilitaria{
         System.out.println("3. Regresar");
         System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
-        String opcion_v2b= sc.next();
+        String opcion_v2b= sc.nextLine();
         while(! (opcion_v2b.equals("1") || opcion_v2b.equals("2") || opcion_v2b.equals("3"))){ 
         System.out.println("Número inválido, intente de nuevo");
-        opcion_v2b= sc.next();
+        opcion_v2b= sc.nextLine();
         }
         switch(opcion_v2b)
         {
@@ -224,24 +224,24 @@ public class Utilitaria{
    
 
     public static void registrarVendedor(){
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Registrar un nuevo vendedor");
 
         System.out.println("Nombres: ");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         System.out.println("Apellidos: ");
-        String apellido = sc.next();
+        String apellido = sc.nextLine();
         System.out.println("Organización: ");
-        String organizacion = sc.next();
+        String organizacion = sc.nextLine();
         System.out.println("Correo Electrónico: ");
-        String correo = sc.next();
+        String correo = sc.nextLine();
 
         while(existenciaDeCorreoVendedor(correo)){
             System.out.println("El correo ya está registrado.");
             String s_n=" ";
             do {
                 System.out.println("Desea regresar al menu de opciones del vendedor? (S/N)");
-                s_n= sc.next();
+                s_n= sc.nextLine();
                 s_n=s_n.toUpperCase();
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
@@ -251,15 +251,15 @@ public class Utilitaria{
             }
         }
         System.out.println("Clave: ");
-        String clave = sc.next();
+        String clave = sc.nextLine();
         System.out.println("Confirmar clave: ");
-        String clave_ = sc.next();
+        String clave_ = sc.nextLine();
         while(!(clave.equals(clave_))){
             System.out.println("ERROR AL INGRESAR LA CLAVE");
             System.out.println("Clave:");
-            clave = sc.next();
+            clave = sc.nextLine();
             System.out.println("Confirmar clave:");
-            clave_ = sc.next();
+            clave_ = sc.nextLine();
         }
         String hash = Usuario.generarHash(clave);
 
@@ -277,24 +277,24 @@ public class Utilitaria{
     }
  
     public static void registrarComprador(){
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Registrar un nuevo comprador");
 
         System.out.println("Nombres: ");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         System.out.println("Apellidos: ");
-        String apellido = sc.next();
+        String apellido = sc.nextLine();
         System.out.println("Organización: ");
-        String organizacion = sc.next();
+        String organizacion = sc.nextLine();
         System.out.println("Correo Electrónico: ");
-        String correo = sc.next();
+        String correo = sc.nextLine();
 
         while(existenciaDeCorreoComprador(correo)){
             System.out.println("El correo ya está registrado.");
             String s_n=" ";
             do {
                 System.out.println("Desea regresar al menu de opciones del comprador? (S/N)");
-                s_n= sc.next();
+                s_n= sc.nextLine();
                 s_n=s_n.toUpperCase();
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
@@ -304,15 +304,15 @@ public class Utilitaria{
             }
         }
         System.out.println("Clave: ");
-        String clave = sc.next();
+        String clave = sc.nextLine();
         System.out.println("Confirmar clave: ");
-        String clave_ = sc.next();
+        String clave_ = sc.nextLine();
         while(!(clave.equals(clave_))){
             System.out.println("ERROR AL INGRESAR LA CLAVE");
             System.out.println("Clave:");
-            clave = sc.next();
+            clave = sc.nextLine();
             System.out.println("Confirmar clave:");
-            clave_ = sc.next();
+            clave_ = sc.nextLine();
         }
         String hash = Usuario.generarHash(clave);
 
@@ -331,68 +331,68 @@ public class Utilitaria{
  
     public static void registrarVehiculo(){
         
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Registrar un nuevo vehículo");
         System.out.print("Ingrese correo electrónico:");
-        String correo = sc.next();
+        String correo = sc.nextLine();
         System.out.println("\n");
         System.out.print("ingrese su clave");
-        String clave = sc.next();
+        String clave = sc.nextLine();
         System.out.println("\n");
         while (! verificarClaveVendedor(correo, clave)){
             System.out.println("CREDENCIALES INCORRECTAS");
             System.out.print("Ingrese correo electrónico:");
-            correo = sc.next();
+            correo = sc.nextLine();
             System.out.println("\n");
             System.out.print("ingrese su clave");
-            clave = sc.next();
+            clave = sc.nextLine();
             System.out.println("\n");
         }
         
         System.out.println("Ingrese el tipo de vehículo (auto-camioneta-motocicleta)");
-        String tipo= sc.next();
+        String tipo= sc.nextLine();
         tipo= tipo.toLowerCase();
         while (!(tipo.equals("auto") || tipo.equals("camioneta")||tipo.equals("motocicleta"))){
             System.out.println("Tipo de vehículo no válido!");
             System.out.println("Vuelva a ingresar (auto-camioneta-motocicleta) ");
-            tipo= sc.next();
+            tipo= sc.nextLine();
             tipo= tipo.toLowerCase();
         }
         System.out.println("Placa:");
-        String placa = sc.next();
+        String placa = sc.nextLine();
         while(existenciaDePlacaVehiculo(placa)){
             System.out.println("Ya ha registrado este vehiculo");
             System.out.println("Ingrese uno nuevo");
-            placa=sc.next();
+            placa=sc.nextLine();
         }
         System.out.println("Marca");
-        String marca= sc.next();
+        String marca= sc.nextLine();
         System.out.println("Modelo");
-        String modelo= sc.next();
+        String modelo= sc.nextLine();
         System.out.println("Tipo de motor");
-        String tipomotor= sc.next();
+        String tipomotor= sc.nextLine();
         System.out.println("Año");
         int año= sc.nextInt();
         System.out.println("Recorrido");
         double recorrido= sc.nextDouble();
         System.out.println("Color");
-        String color = sc.next();
+        String color = sc.nextLine();
         System.out.println("Tipo combustible");
-        String tipocombustible= sc.next();
+        String tipocombustible= sc.nextLine();
         
         String traccion= "N/A";
         String transmision= "N/A";
         String vidrios= "N/A";
         if (tipo.equals("auto") || tipo.equals("camioneta") ){
             System.out.println("Vidrios");
-            vidrios= sc.next();
+            vidrios= sc.nextLine();
             System.out.println("Transmisión");
-            transmision= sc.next();
+            transmision= sc.nextLine();
             
         }
         if (tipo.equals("camioneta")){
             System.out.println("Tracción");
-            traccion = sc.next();
+            traccion = sc.nextLine();
             
         }
         System.out.println("Precio");
@@ -517,10 +517,10 @@ public class Utilitaria{
         if (index==0){
             System.out.println("1. Siguiente Vehiculo");
             System.out.println("2. Realizar Oferta");
-            String opcion_v3b= sc.next();
+            String opcion_v3b= sc.nextLine();
             while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
             System.out.println("Número inválido, intente de nuevo");
-            opcion_v3b= sc.next();
+            opcion_v3b= sc.nextLine();
             }
             switch(opcion_v3b){
                 case "1" -> mostrarVehiculo(index++,vehiculosfiltrados);
@@ -531,10 +531,10 @@ public class Utilitaria{
             System.out.println("1. Anterior Vehiculo");
             System.out.println("2. Siguiente Vehiculo");
             System.out.println("3. Realizar Oferta");
-            String opcion_v3b= sc.next();
+            String opcion_v3b= sc.nextLine();
             while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("1")  ) ){ 
             System.out.println("Número inválido, intente de nuevo");
-            opcion_v3b= sc.next();
+            opcion_v3b= sc.nextLine();
             }
             switch(opcion_v3b){
                 case "1" -> mostrarVehiculo(index--,vehiculosfiltrados);
