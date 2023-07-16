@@ -438,10 +438,13 @@ public class Utilitaria{
     
 
 
-    /* public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
-        ArrayList<Vehiculo> vehiculosXtipo= new ArrayList<>() ;
-        for (Vehiculo v: vehiculosRegistrados){
-            if (v instanceof tipoauto){
+    public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
+        ArrayList<Vehiculo> vehiculosXtipo = new ArrayList<>() ;
+        for (Vehiculo v: vehiculosRegistrados)
+        {
+            //System.out.println(String.valueOf(v.getClass()));
+            if (String.valueOf(v.getClass()).equals("java.classes"+tipoauto))
+            {
                 vehiculosXtipo.add(v);
             }
         }
@@ -449,48 +452,49 @@ public class Utilitaria{
         return vehiculosXtipo;
 
     } 
- 
-    public ArrayList<Vehiculo> filtrarVehículoAño(int añoinicio, int añoFinal){
-        
-        ArrayList<Vehiculo> vehiculosXaño= new ArrayList<>();
-        for (Vehiculo v: vehiculosXtipo){
-            if (v instanceof tipoauto){
-                vehiculosXtipo.add(v);
+    
+
+    public ArrayList<Vehiculo> filtrarVehículoAño(int añoInicio, int añoFinal)
+    {
+        ArrayList<Vehiculo> vehiculosXaño = new ArrayList<>();
+        for (Vehiculo v: vehiculosXaño)
+        {
+            if (v.año >= añoInicio)
+            {
+                if(v.año <= añoFinal)
+                    vehiculosXaño.add(v);
             }
         }
-
-        return ;
-
-    }  */
+        return vehiculosXaño;
+    }
 
 
-
-
-
-    /* public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
-        ArrayList<Vehiculo> vehiculosXtipo= new ArrayList<>() ;
-        for (Vehiculo v: vehiculosRegistrados){
-            if (v instanceof tipoauto){
-                vehiculosXtipo.add(v);
+    public ArrayList<Vehiculo> filtrarVehículoRecorrido(double min,double max){
+        ArrayList<Vehiculo> vehiculosXrecorrido= new ArrayList<>() ;
+        for (Vehiculo v: vehiculosRegistrados)
+        {
+            if (v.recorrido >= min)
+            {
+                if(v.recorrido <= max)
+                    vehiculosXrecorrido.add(v);
             }
         }
-
-        return vehiculosXtipo;
+        return vehiculosXrecorrido;
 
     } 
- 
-    public ArrayList<Vehiculo> filtrarVehículoAño(int añoinicio, int añoFinal){
+  
+    public ArrayList<Vehiculo> filtrarVehículoPrecio(double min, double max){
         
-        ArrayList<Vehiculo> vehiculosXaño= new ArrayList<>();
-        for (Vehiculo v: vehiculosXtipo){
-            if (v instanceof tipoauto){
-                vehiculosXtipo.add(v);
+        ArrayList<Vehiculo> vehiculosXprecio= new ArrayList<>();
+        for (Vehiculo v: vehiculosXprecio){
+            if (v.getPrecio()>= min)
+            {
+                if(v.getPrecio() <= max)
+                    vehiculosXprecio.add(v);
             }
         }
-
-        return ;
-
-    }  */
+        return vehiculosXprecio;
+    } 
     public static void OfertarporVehiculo(){
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         String s_n=null;
