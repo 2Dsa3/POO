@@ -401,8 +401,9 @@ public class Utilitaria{
             catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            Vendedor dueño= new Vendedor(null,null,null,correo,null);
+            Vendedor dueño = Vendedor.getVendedor(correo);
             Vehiculo vh= new Vehiculo( placa, marca, modelo, tipomotor, año, recorrido, color, tipocombustible, precio,dueño);
+            Vendedor.getVendedor(correo).setVehiculo(vh);
             vehiculosRegistrados.add(vh);
             System.out.println("Fin del programa");
         }
@@ -435,9 +436,10 @@ public class Utilitaria{
     
 
 
-    public ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto){
+    public static ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto, ArrayList<Vehiculo> vehiculofiltrador){
+        
         ArrayList<Vehiculo> vehiculosXtipo = new ArrayList<>() ;
-        for (Vehiculo v: vehiculosRegistrados)
+        for (Vehiculo v: vehiculofiltrador)
         {
             //System.out.println(String.valueOf(v.getClass()));
             if (String.valueOf(v.getClass()).equals("java.classes"+tipoauto))
@@ -451,10 +453,16 @@ public class Utilitaria{
     } 
     
 
-    public ArrayList<Vehiculo> filtrarVehículoAño(int añoInicio, int añoFinal)
+    public static ArrayList<Vehiculo> filtrarVehículoAño(int añoInicio, int añoFinal,ArrayList<Vehiculo> vehiculofiltrador)
     {
+        Scanner sc=new Scanner(System.in);
+        String s_n= null;
+        do {
+            System.out.println("Filtrar? (S-N)");
+            s_n= sc.nextLine().toLowerCase().trim();
+        } while (!(s_n.equals("s")||s_n.equals("n")));
         ArrayList<Vehiculo> vehiculosXaño = new ArrayList<>();
-        for (Vehiculo v: vehiculosXaño)
+        for (Vehiculo v: vehiculofiltrador)
         {
             if (v.año >= añoInicio)
             {
@@ -462,13 +470,16 @@ public class Utilitaria{
                     vehiculosXaño.add(v);
             }
         }
-        return vehiculosXaño;
+        if (s_n.equals("s"))
+            return vehiculosXaño;
+        
+        return vehiculofiltrador;
     }
 
 
-    public ArrayList<Vehiculo> filtrarVehículoRecorrido(double min,double max){
+    public static ArrayList<Vehiculo> filtrarVehículoRecorrido(double min,double max,ArrayList<Vehiculo> vehiculofiltrador){
         ArrayList<Vehiculo> vehiculosXrecorrido= new ArrayList<>() ;
-        for (Vehiculo v: vehiculosRegistrados)
+        for (Vehiculo v: vehiculofiltrador)
         {
             if (v.recorrido >= min)
             {
@@ -480,7 +491,7 @@ public class Utilitaria{
 
     } 
   
-    public ArrayList<Vehiculo> filtrarVehículoPrecio(double min, double max){
+    public ArrayList<Vehiculo> filtrarVehículoPrecio(double min, double max,ArrayList<Vehiculo> vehiculofiltrador){
         
         ArrayList<Vehiculo> vehiculosXprecio= new ArrayList<>();
         for (Vehiculo v: vehiculosXprecio){
@@ -492,6 +503,7 @@ public class Utilitaria{
         }
         return vehiculosXprecio;
     } 
+    
     public static void OfertarporVehiculo(){
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         String s_n=null;
@@ -503,10 +515,44 @@ public class Utilitaria{
 
         switch (s_n){
             case "s":
-                ArrayList<Vehiculo> vehiculosfiltrados= new ArrayList<>();
-                // AQUI SE VA ACTUALIZANDO DEPENDIENDO EL FILTRADO
-
-                mostrarVehiculo(0,vehiculosfiltrados);
+                ArrayList<Vehiculo> vehiculosfiltrados= vehiculosRegistrados;
+                String s_n2= null;
+                String s_n3=null;
+                String s_n4= null;
+                String s_n5= null;
+                String tipo= null;
+                ArrayList<Vehiculo> vehiculosfiltradosXTIPO= new ArrayList<>() ;
+                ArrayList<Vehiculo> vehiculosfiltradosXAÑO= new ArrayList<>() ;
+                ArrayList<Vehiculo> vehiculosfiltradosXKM= new ArrayList<>() ;
+                ArrayList<Vehiculo> vehiculosfiltradosPRECIO= new ArrayList<>() ;
+                int añoini= 0;
+                int añofin= 0;
+                double recmin=0.0;
+                double recmax=0.0;
+                double precioini=0.0;
+                double preciofin=0.0;
+                do {
+                    System.out.println("Filtrar por tipo? (S-N)");
+                    s_n2= sc.nextLine().toLowerCase().trim();
+                    } while (!(s_n2.equals("s")||s_n2.equals("n")));
+                do {
+                    System.out.println("Filtrar por año? (S-N)");
+                    s_n3= sc.nextLine().toLowerCase().trim();
+                    } while (!(s_n3.equals("s")||s_n3.equals("n")));
+                do {
+                    System.out.println("Filtrar por recorrido? (S-N)");
+                    s_n4= sc.nextLine().toLowerCase().trim();
+                    } while (!(s_n4.equals("s")||s_n4.equals("n")));
+                do {
+                    System.out.println("Filtrar por precio? (S-N)");
+                    s_n5= sc.nextLine().toLowerCase().trim();
+                    } while (!(s_n5.equals("s")||s_n5.equals("n")));
+                boolean a= s_n2.equals("s");
+                boolean b= s_n3.equals("s");
+                boolean c= s_n4.equals("s");
+                boolean d= s_n5.equals("s");
+                
+                    
                 break;
             case "n":
                 mostrarVehiculo(0,vehiculosRegistrados);
