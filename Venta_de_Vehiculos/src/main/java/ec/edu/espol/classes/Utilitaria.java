@@ -726,8 +726,8 @@ public class Utilitaria{
                 }
                 int index = 0;
                 System.out.println("\nSe han realizado "+ofertasplaca.size()+" oferta(s)");
-                String correocomp=null;
-                if (ofertasplaca.size()!=0){
+                String correocomp=" ";
+                if (!ofertasplaca.isEmpty()){
                     correocomp= mostrarOferta(index, ofertasplaca);
                 } 
                 if (!correocomp.isBlank()){
