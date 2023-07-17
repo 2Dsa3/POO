@@ -103,16 +103,6 @@ public class Vehiculo {
         this.precio = precio;
     }
 
-public static boolean verificarPlacaExistente(String placa)
-    {
-       for (Vehiculo vehiculo : Utilitaria.vehiculosRegistrados) {
-           if (vehiculo.getPlaca().equals(placa)) {
-               return true;
-           }
-       }
-       return false;
-   }
-
 
 public static Vehiculo nextVehiculo(Scanner sc) //Los vehículos son motocicletas. Las clases hija son autos y camionetas.
 {
