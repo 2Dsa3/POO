@@ -28,6 +28,13 @@ public class Vendedor extends Usuario{
         System.out.println("Confirme su clave:");
         Scanner sc= new Scanner(System.in);
         String claveconf= sc.nextLine();
+        
+        boolean b=Utilitaria.verificarClaveVendedor(this.getClave(), claveconf);
+        while (!b){
+            System.out.println("Clave incorrecta");
+            System.out.println("Ingrese nuevamente:");
+            claveconf= sc.nextLine();
+        }
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.user", this.getCorreo());
