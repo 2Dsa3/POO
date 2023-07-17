@@ -59,6 +59,14 @@ public class Vendedor extends Usuario{
         return "Vendedor{" + "Correo:" + this.getCorreo() + "| Apellidos: "+ this.getApellidos() + "| Nombres: "+ this.getNombres()+ "}";
     }
 
-
+public static Vendedor getVendedor(String correo)
+{
+    for (Vendedor v: Utilitaria.vendedorRegistrados)
+    {
+        if(correo.equals(v.getCorreo()))
+            return v;
+    }
+    return null;
+}
 
 }
