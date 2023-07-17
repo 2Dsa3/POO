@@ -759,8 +759,8 @@ public class Utilitaria{
             switch(opcion_v3b){
                 
                 case "1" ->{index=index+1; mostrarOferta(index,ofertasfiltradas);}
-                case "2" ->{ eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
-                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "2" ->{ eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
                             return ofertasfiltradas.get(index).getCorreocomprador();}
             }
@@ -775,8 +775,8 @@ public class Utilitaria{
             switch(s_n){
                 
                 case "n" -> Utilitaria.menuOpciones();
-                case "s" ->{ eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
-                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "s" ->{ eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
                             return ofertasfiltradas.get(index).getCorreocomprador();}
             }
@@ -792,8 +792,8 @@ public class Utilitaria{
             switch(opcion_v3b){
                 
                 case "1" ->{index=index-1; mostrarOferta(index,ofertasfiltradas);}
-                case "2" ->{eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
-                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "2" ->{eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
                             return ofertasfiltradas.get(index).getCorreocomprador();}
             }
@@ -810,8 +810,8 @@ public class Utilitaria{
             switch(opcion_v3b){
                 case "1" -> {index=index-1;mostrarOferta(index,ofertasfiltradas);}
                 case "2" -> {index=index+1;mostrarOferta(index,ofertasfiltradas);}
-                case "3" -> {eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
-                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "3" -> {eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
                             return ofertasfiltradas.get(index).getCorreocomprador();}
                     
