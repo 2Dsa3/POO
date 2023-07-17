@@ -54,6 +54,14 @@ public class Vendedor extends Usuario{
         }
     }
 
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
     @Override
     public String toString() {
         return "Vendedor{" + "Correo:" + this.getCorreo() + "| Apellidos: "+ this.getApellidos() + "| Nombres: "+ this.getNombres()+ "}";
