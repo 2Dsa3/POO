@@ -1,3 +1,5 @@
 gsd-000;6;volkswagen;fui@;7800.0
 frt;f;r;icazaalexandre@gmail.com;10.0
 frt;f;r;icazaalexandre@gmail.com;5.0
+frt;f;r;capo@;900.0
+dsa-005;;l;capo@;900000.0
