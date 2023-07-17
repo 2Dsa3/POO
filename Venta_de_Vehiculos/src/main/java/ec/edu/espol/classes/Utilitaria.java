@@ -726,7 +726,10 @@ public class Utilitaria{
                 }
                 int index = 0;
                 System.out.println("\nSe han realizado "+ofertasplaca.size()+" oferta(s)");
-                String correocomp= mostrarOferta(index, ofertasplaca); 
+                String correocomp=" ";
+                if (!ofertasplaca.isEmpty()){
+                    correocomp= mostrarOferta(index, ofertasplaca);
+                } 
                 if (!correocomp.isBlank()){
                     Vendedor remitente= new Vendedor(null, null, null, correo, clave);
                     String asunto= "Se ha aceptado su oferta!";
