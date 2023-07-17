@@ -42,4 +42,10 @@ public class Oferta{
         this.monto = monto;
     }
   
+    
+    @Override
+    public String toString()
+    {
+        return this.getVehiculo().getModelo()+" "+" "+this.getVehiculo().getMarca()+" "+this.getVehiculo().getRecorrido()+"Precio: "+this.getMonto();
+    }
 }

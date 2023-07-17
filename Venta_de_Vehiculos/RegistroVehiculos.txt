@@ -2,3 +2,4 @@ auto;gsd-000;volkswagen;6;bt;98;90000.0;;gg;9000.0;negros;no;N/A;davsum04@hotmai
 camioneta;rto-999;g;g;g;90;99.99;;h;90.0;h;h;h;davsum04@hotmail.com
 motocicleta;frt;f;r;r;2000;56.0;huy;;90.0;N/A;N/A;N/A;davsum04@hotmail.com
 auto;rfrf;gt;h;h;90;78.9;blanco;no;90000.0;no;no;N/A;davsum04@hotmail.com
+auto;gtg-5638;Audi;Spark;Mecanico;2012;27.0;Negro;Diesel;20000.0;Polarizado;Mecanica;N/A;icazaalexandre@gmail.com
