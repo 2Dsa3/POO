@@ -23,7 +23,6 @@ public class Utilitaria{
     public static ArrayList<Vendedor> vendedorRegistrados  = new ArrayList<>(); 
     public static ArrayList<Vehiculo> vehiculosRegistrados = new ArrayList<>();
     public static ArrayList<Oferta> ofertasRegistradas = new ArrayList<>();
-    private ArrayList<Oferta> ofertasVehiculos = new ArrayList<>();
 
     
 
@@ -86,7 +85,6 @@ public class Utilitaria{
             }
         }
     
-
     public static boolean existenciaDeCorreoVendedor(String correo) 
     {
         for (Vendedor vendedor : Utilitaria.vendedorRegistrados) {
@@ -186,8 +184,7 @@ public class Utilitaria{
                 registrarVehiculo();
                 break;
             case "3":
-                System.out.println("xd");
-                //aceptarOferta();    
+                aceptarOferta();
                 break;
             case "4":
                 menuOpciones();
@@ -626,92 +623,131 @@ public class Utilitaria{
     }        
         
     
-    public void aceptarOferta()
+    public static void aceptarOferta()
     {
         System.out.println("Inicie sesión...");
         Scanner sc = new Scanner(System.in);
         System.out.println("Correo: ");
         String correo = sc.nextLine();
+        ArrayList<Oferta> ofertasplaca= new ArrayList<>();
+        String clave= null;
         
         if(existenciaDeCorreoVendedor(correo))
         {
             System.out.println("Contraseña: ");
-            String clave = sc.nextLine();
-            String hash = Usuario.generarHash(clave);
+            clave = sc.nextLine();
             
-            if(verificarClaveVendedor(correo, hash))
+            if(verificarClaveVendedor(correo, clave))
             {
                 System.out.println("Placa del vehículo: ");
                 String pl = sc.nextLine();
                 
                 
-                if(ofertasVehiculos.isEmpty())
+                if(ofertasRegistradas.isEmpty())
                 {
-                    System.out.println("No hay vehículos ofertados con la placa ingresada.");
-                    return;
+                    System.out.println("No tienes ninguna oferta por el momento");
+                    Utilitaria.opcionesVendedor();
+                    
                 }
-                else 
-                    for (Oferta of: ofertasRegistradas)
+                else {
+                    for (Oferta ofs: ofertasRegistradas)
                     {
-                        if(of.getVehiculo().getPlaca().equals(pl))
-                            ofertasVehiculos.add(of);
+                        Vehiculo vh= ofs.getVehiculo();
+                        if(vh.getPlaca().equals(pl))
+                            ofertasplaca.add(ofs);
                     }
-                   
-                
-                int index = 0;
-                boolean validar = true;
-                int num = 1;
-                
-                System.out.println("\nSe han realizado "+ofertasVehiculos.size()+" oferta(s)");
-                
-                while(validar)
-                {
-                    Oferta of = ofertasVehiculos.get(0);
                     
-                    System.out.println("Oferta "+num);
-                    System.out.println("\nCorreo: "+correo);
-                    System.out.println("Precio ofertado: "+of.getMonto());
-                    
-                    System.out.println("1.- Siguiente Oferta");
-                    System.out.println("2.- Anterior Oferta");
-                    System.out.println("3.- Aceptar Oferta");
-                    int opcion = sc.nextInt();
-                    
-                    switch(opcion)
-                    {
-                        case 1:
-                        {
-                            if(index<ofertasVehiculos.size()-1)
-                            {
-                                index++;
-                                num++;
-                            }else
-                                System.out.println("Este es el último vehículo.");
-                        }
-                        case 2:
-                        {
-                            if(index>0)
-                            {
-                                index--;
-                                num--;
-                            }else
-                                System.out.println("Este es el primero vehículo");
-                        }
-                        case 3:
-                        {
-                            eliminarVehiculo("RegistrosOfertas.txt",of.getVehiculo().getPlaca());
-                            eliminarVehiculo("RegistrosVehiculos.txt",of.getVehiculo().getPlaca());
-                            validar = false;
-                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                        }
-                        default:
-                            System.out.println("Opción inválida");
-                    }     
                 }
+                int index = 0;
+                System.out.println("\nSe han realizado "+ofertasplaca.size()+" oferta(s)");
+                String correocomp= mostrarOferta(index, ofertasplaca); 
+                if (!correocomp.isBlank()){
+                    Vendedor remitente= new Vendedor(null, null, null, correo, clave);
+                    String asunto= "Se ha aceptado su oferta!";
+                    System.out.println("\nMensaje a enviar?\n");
+                    String cuerpo= sc.nextLine();
+                    remitente.enviarCorreo(correocomp, asunto, cuerpo);}
             }else
-                System.out.println("Contraseña incorrecta :S "); 
+                {System.out.println("Contraseña incorrecta :");
+                 opcionesVendedor();
+                }
         }else
-            System.out.println("Correo no registrado :0");
+            {System.out.println("Correo no registrado");
+            opcionesVendedor();}
             
+    }
+    public static String mostrarOferta(int index,ArrayList<Oferta> ofertasfiltradas ){
+        System.out.println(ofertasfiltradas.get(index).toString());
+        Scanner sc= new Scanner(System.in).useLocale(Locale.US);
+        if (index==0 && ofertasfiltradas.size()>1 ){
+            System.out.println("1. Siguiente Oferta");
+            System.out.println("2. Aceptar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                
+                case "1" ->{index=index+1; mostrarOferta(index,ofertasfiltradas);}
+                case "2" ->{ eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
+                            return ofertasfiltradas.get(index).getCorreocomprador();}
+            }
+        }
+        else if(index==0 && ofertasfiltradas.size()==1){
+            System.out.println("Por el momento solo existe esta oferta");
+            String s_n=null;
+            do {
+                System.out.println("Aceptar oferta? (S-N)");;
+                s_n= sc.nextLine().toLowerCase().trim();
+            } while (!(s_n.equals("s")||s_n.equals("n")));
+            switch(s_n){
+                
+                case "n" -> Utilitaria.menuOpciones();
+                case "s" ->{ eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
+                            return ofertasfiltradas.get(index).getCorreocomprador();}
+            }
+        }
+        else if(index==ofertasfiltradas.size()-1){
+            System.out.println("1. Anterior Oferta");
+            System.out.println("2. Aceptar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                
+                case "1" ->{index=index-1; mostrarOferta(index,ofertasfiltradas);}
+                case "2" ->{eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
+                            return ofertasfiltradas.get(index).getCorreocomprador();}
+            }
+        }
+        else{
+            System.out.println("1. Anterior Oferta");
+            System.out.println("2. Siguiente Oferta");
+            System.out.println("3. Aceptar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("3")  ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                case "1" -> {index=index-1;mostrarOferta(index,ofertasfiltradas);}
+                case "2" -> {index=index+1;mostrarOferta(index,ofertasfiltradas);}
+                case "3" -> {eliminarVehiculo("RegistrosOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            eliminarVehiculo("RegistrosVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
+                            return ofertasfiltradas.get(index).getCorreocomprador();}
+                    
+            }
+        } 
+        return null;   
     }
 }

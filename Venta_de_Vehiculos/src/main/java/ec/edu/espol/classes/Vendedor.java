@@ -1,6 +1,7 @@
 package ec.edu.espol.classes;
 
 import java.util.Properties;
+import java.util.Scanner;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -24,11 +25,13 @@ public class Vendedor extends Usuario{
     
     @Override
     public void enviarCorreo(String destinatario, String asunto, String cuerpo) {
-        
+        System.out.println("Confirme su clave:");
+        Scanner sc= new Scanner(System.in);
+        String claveconf= sc.nextLine();
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.user", this.getCorreo());
-        props.put("mail.smtp.clave", this.getClave());    //La clave de la cuenta
+        props.put("mail.smtp.clave", claveconf);    //La clave de la cuenta
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
         props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google

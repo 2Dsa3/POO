@@ -17,11 +17,6 @@ public class Venta_de_Vehiculos {
     {
         Utilitaria.LoadData();
         Utilitaria.menuOpciones(); 
-        System.out.println(Utilitaria.vendedorRegistrados);
-        Utilitaria.vendedorRegistrados.get(0).setClave("xnrstsnbtecopiyf");
-        System.out.println(Utilitaria.vendedorRegistrados.get(0).getClave());
-        Utilitaria.vendedorRegistrados.get(0).enviarCorreo("davsum78@hotmail.com", "prueba javamail ", "Buenas noches");
-        Utilitaria.vendedorRegistrados.get(0).enviarCorreo("dsailorgamer@gmail.com", "prueba javamail ", "Buenas noches");
 
     }
 
