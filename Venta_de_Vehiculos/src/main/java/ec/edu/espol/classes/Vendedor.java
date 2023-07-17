@@ -54,6 +54,11 @@ public class Vendedor extends Usuario{
         }
     }
 
+    @Override
+    public String toString() {
+        return "Vendedor{" + "Correo:" + this.getCorreo() + "| Apellidos: "+ this.getApellidos() + "| Nombres: "+ this.getNombres()+ "}";
+    }
+
 
 
 }
