@@ -437,7 +437,12 @@ public class Utilitaria{
 
 
     public static ArrayList<Vehiculo> filtrarVehículoTipo(String tipoauto, ArrayList<Vehiculo> vehiculofiltrador){
-        
+        Scanner sc=new Scanner(System.in);
+        String s_n= null;
+        do {
+            System.out.println("Filtrar por tipo? (S-N)");
+            s_n= sc.nextLine().toLowerCase().trim();
+        } while (!(s_n.equals("s")||s_n.equals("n")));
         ArrayList<Vehiculo> vehiculosXtipo = new ArrayList<>() ;
         for (Vehiculo v: vehiculofiltrador)
         {
@@ -446,6 +451,9 @@ public class Utilitaria{
             {
                 vehiculosXtipo.add(v);
             }
+        }
+        if (s_n.equals("s")) {
+            return vehiculosXtipo;
         }
 
         return vehiculosXtipo;
@@ -458,7 +466,7 @@ public class Utilitaria{
         Scanner sc=new Scanner(System.in);
         String s_n= null;
         do {
-            System.out.println("Filtrar? (S-N)");
+            System.out.println("Filtrar por año? (S-N)");
             s_n= sc.nextLine().toLowerCase().trim();
         } while (!(s_n.equals("s")||s_n.equals("n")));
         ArrayList<Vehiculo> vehiculosXaño = new ArrayList<>();
@@ -478,6 +486,8 @@ public class Utilitaria{
 
 
     public static ArrayList<Vehiculo> filtrarVehículoRecorrido(double min,double max,ArrayList<Vehiculo> vehiculofiltrador){
+        Scanner sc=new Scanner(System.in);
+        String s_n= null;
         ArrayList<Vehiculo> vehiculosXrecorrido= new ArrayList<>() ;
         for (Vehiculo v: vehiculofiltrador)
         {
@@ -487,12 +497,16 @@ public class Utilitaria{
                     vehiculosXrecorrido.add(v);
             }
         }
+        if (s_n.equals("s")) {
+            return vehiculosXrecorrido;
+        }
         return vehiculosXrecorrido;
 
     } 
   
     public ArrayList<Vehiculo> filtrarVehículoPrecio(double min, double max,ArrayList<Vehiculo> vehiculofiltrador){
-        
+        Scanner sc=new Scanner(System.in);
+        String s_n= null;
         ArrayList<Vehiculo> vehiculosXprecio= new ArrayList<>();
         for (Vehiculo v: vehiculosXprecio){
             if (v.getPrecio()>= min)
@@ -500,6 +514,9 @@ public class Utilitaria{
                 if(v.getPrecio() <= max)
                     vehiculosXprecio.add(v);
             }
+        }
+        if (s_n.equals("s")) {
+            return vehiculosXprecio;
         }
         return vehiculosXprecio;
     } 
@@ -535,6 +552,9 @@ public class Utilitaria{
                     System.out.println("Filtrar por tipo? (S-N)");
                     s_n2= sc.nextLine().toLowerCase().trim();
                     } while (!(s_n2.equals("s")||s_n2.equals("n")));
+                
+                
+                
                 do {
                     System.out.println("Filtrar por año? (S-N)");
                     s_n3= sc.nextLine().toLowerCase().trim();
