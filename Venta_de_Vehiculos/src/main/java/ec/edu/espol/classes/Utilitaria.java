@@ -236,14 +236,14 @@ public class Utilitaria{
             System.out.println("El correo ya está registrado.");
             String s_n=" ";
             do {
-                System.out.println("Desea regresar al menu de opciones del vendedor? (S/N)");
+                System.out.println("Desea regresar al menu de opciones principal? (S/N)");
                 s_n= sc.nextLine();
                 s_n=s_n.toUpperCase();
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
                 case "S" -> menuOpciones();
-                case "N" -> registrarVendedor();       
+                case "N" -> opcionesVendedor();       
             }
         }
         System.out.println("Clave: ");
@@ -289,14 +289,14 @@ public class Utilitaria{
             System.out.println("El correo ya está registrado.");
             String s_n="";
             do {
-                System.out.println("Desea regresar al menu de opciones del comprador? (S/N)");
+                System.out.println("Desea regresar al menu de opciones principal? (S/N)");
                 s_n= sc.nextLine();
                 s_n=s_n.toUpperCase();
             } while(!(s_n.equals("S") || s_n.equals("N")));     
 
             switch(s_n){
                 case "S" -> menuOpciones();
-                case "N" -> registrarComprador();       
+                case "N" -> opcionesComprador();       
             }
         }
         System.out.println("Clave: ");
@@ -329,19 +329,19 @@ public class Utilitaria{
         
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Registrar un nuevo vehículo");
-        System.out.print("Ingrese correo electrónico:");
+        System.out.print("Ingrese correo electrónico: ");
         String correo = sc.nextLine();
         System.out.println("\n");
-        System.out.print("ingrese su clave");
+        System.out.print("Ingrese su clave: ");
         String clave = sc.nextLine();
         System.out.println("\n");
         if (existenciaDeCorreoVendedor(correo)){
             while (! verificarClaveVendedor(correo, clave)){
                 System.out.println("CREDENCIALES INCORRECTAS");
-                System.out.print("Ingrese correo electrónico:");
+                System.out.print("Ingrese correo electrónico: ");
                 correo = sc.nextLine();
                 System.out.println("\n");
-                System.out.print("ingrese su clave");
+                System.out.print("Ingrese su clave: ");
                 clave = sc.nextLine();
                 System.out.println("\n");
             }
@@ -585,20 +585,20 @@ public class Utilitaria{
     public static void generarOferta(Vehiculo vh){
         System.out.println("Incie sesión...");
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
-        System.out.print("Ingrese correo electrónico:");
+        System.out.print("Ingrese correo electrónico: ");
         String correo = sc.nextLine();
         if(existenciaDeCorreoComprador(correo))
         {
             System.out.println("\n");
-            System.out.print("ingrese su clave");
+            System.out.print("Ingrese su clave: ");
             String clave = sc.nextLine();
             System.out.println("\n");
             while (! verificarClaveComprador(correo, clave)){
                 System.out.println("CREDENCIALES INCORRECTAS");
-                System.out.print("Ingrese correo electrónico:");
+                System.out.print("Ingrese correo electrónico: ");
                 correo = sc.nextLine();
                 System.out.println("\n");
-                System.out.print("ingrese su clave");
+                System.out.print("Ingrese su clave: ");
                 clave = sc.nextLine();
                 System.out.println("\n");
             }
