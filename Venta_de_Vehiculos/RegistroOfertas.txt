@@ -4,4 +4,8 @@ frt;f;r;icazaalexandre@gmail.com;5.0
 gtg-5638;Spark;Audi;icazaalexandre@gmail.com;15000.0
 frt;f;r;capo@;900.0
 dsa-005;;l;capo@;900000.0
+<<<<<<< HEAD
 gtg-5638;Spark;Audi;icazaalexandre@gmail.com;15000.0
+=======
+
+>>>>>>> bb08655c1150d311dcd3379b294c80911f726edc
