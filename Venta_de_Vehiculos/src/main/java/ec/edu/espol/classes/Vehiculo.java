@@ -110,7 +110,7 @@ String placa;
 do{
 System.out.println("Ingrese placa de la motocicleta:");
 placa = sc.nextLine();
-} while(Vehiculo.verificarPlacaExistente(placa));
+} while(Utilitaria.existenciaDePlacaVehiculo(placa));
 
 System.out.println("Ingrese marca de la motocicleta: ");
 String marca = sc.nextLine();
@@ -139,6 +139,11 @@ double precio = sc.nextDouble();
 System.out.println("Motocicleta de placa" + placa + "exitosamente ingresado.");
     return new Vehiculo(placa,marca,tipoMotor,modelo,año,recorrido,color,tipoCombustible,precio);
 }
+
+    @Override
+    public String toString() {
+        return "Vehiculo / " + "Placa:" + placa + " | Marca:" + marca + " | Año:" + año + " | Precio:" + precio + " | Dueño:" + dueño + "| Tipo: Motocicleta";
+    }
 
     
 }

@@ -15,7 +15,10 @@ public class Auto extends Vehiculo{
         this.transmision = transmision;
 
     }
-
+@Override
+    public String toString() {
+        return "Vehiculo / " + "Placa:" + placa + " | Marca:" + marca + " | Año:" + año + " | Precio:" + precio + " | Dueño:" + dueño + "| Tipo: Auto";
+    }
 //public static Auto nextAuto(Scanner sc)
 //{
 //    String placa;

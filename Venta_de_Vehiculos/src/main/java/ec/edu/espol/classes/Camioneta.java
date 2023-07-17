@@ -58,5 +58,8 @@ public class Camioneta extends Vehiculo{
 //System.out.println("Camioneta de placa" + placa + "exitosamente ingresado.");
 //    return new Camioneta(placa,marca,modelo,año,recorrido,color,tipoCombustible,precio,vidrio,transmision,traccion);
 //}
-    
+    @Override
+    public String toString() {
+        return "Vehiculo / " + "Placa:" + placa + " | Marca:" + marca + " | Año:" + año + " | Precio:" + precio + " | Dueño:" + dueño + "| Tipo: Camioneta";
+    }
 }
