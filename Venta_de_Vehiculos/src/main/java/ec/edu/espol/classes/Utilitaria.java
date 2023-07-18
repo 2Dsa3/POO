@@ -412,7 +412,7 @@ public class Utilitaria{
             System.out.println("Fin del programa");
         }
         else {System.out.println("Correo no registrado");
-            Utilitaria.opcionesComprador();}
+            Utilitaria.opcionesVendedor();}
     }
     
     public static void eliminarVehiculo(String archivo, String eliminado)
