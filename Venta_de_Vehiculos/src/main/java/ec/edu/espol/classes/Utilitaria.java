@@ -196,11 +196,12 @@ public class Utilitaria{
         System.out.println("Opciones del comprador: ");
         System.out.println("1. Registrar un nuevo comprador");
         System.out.println("2. Ofertar por un vehículo");
-        System.out.println("3. Regresar");
-        System.out.println("Escoja un número (1-2-3) de acuerdo a las opciones presentadas");
+        System.out.println("3. Eliminar Oferta");
+        System.out.println("4. Regresar");
+        System.out.println("Escoja un número (1-2-3-4) de acuerdo a las opciones presentadas");
         Scanner sc=  new Scanner(System.in);
         String opcion_v2b= sc.nextLine();
-        while(! (opcion_v2b.equals("1") || opcion_v2b.equals("2") || opcion_v2b.equals("3"))){ 
+        while(! (opcion_v2b.equals("1") || opcion_v2b.equals("2") || opcion_v2b.equals("3") || opcion_v2b.equals("4"))){ 
         System.out.println("Número inválido, intente de nuevo");
         opcion_v2b= sc.nextLine();
         }
@@ -212,10 +213,13 @@ public class Utilitaria{
             case "2":
                 OfertarporVehiculo();
                 break;
-            case "3":
+            case "4":
                 menuOpciones();    
                 break;
-        }   
+            case "3":
+                eliminarOfertaComprador();
+                break;
+        }    
     }
    
 
@@ -424,14 +428,29 @@ public class Utilitaria{
                 if (!linea.contains(eliminado)) {
                     bw.write(linea);
                     bw.newLine();
+                    
                 }
             }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try(BufferedReader br2 = new BufferedReader(new FileReader(borrador));
+             BufferedWriter bw2 = new BufferedWriter(new FileWriter(arch,false))){
+            
+            String linea2;
+            while ((linea2=br2.readLine())!=null){
+                bw2.write(linea2);
+                bw2.newLine();
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
-        arch.delete();
-        borrador.renameTo(arch);
+        borrador.delete();
+        
     }
     
 
@@ -732,11 +751,11 @@ public class Utilitaria{
                 }
                 int index = 0;
                 System.out.println("\nSe han realizado "+ofertasplaca.size()+" oferta(s)");
-                String correocomp=" ";
+                String correocomp=".";
                 if (!ofertasplaca.isEmpty()){
                     correocomp= mostrarOferta(index, ofertasplaca);
                 } 
-                if (!correocomp.isBlank()){
+                if (!correocomp.equals(".")){
                     Vendedor remitente= new Vendedor(null, null, null, correo, clave);
                     String asunto= "Se ha aceptado su oferta!";
                     System.out.println("\nMensaje a enviar?\n");
@@ -765,10 +784,11 @@ public class Utilitaria{
             switch(opcion_v3b){
                 
                 case "1" ->{index=index+1; mostrarOferta(index,ofertasfiltradas);}
-                case "2" ->{ eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "2" ->{String corcom=ofertasfiltradas.get(index).getCorreocomprador();
+                            eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                            return ofertasfiltradas.get(index).getCorreocomprador();}
+                            return corcom;}
             }
         }
         else if(index==0 && ofertasfiltradas.size()==1){
@@ -781,10 +801,11 @@ public class Utilitaria{
             switch(s_n){
                 
                 case "n" -> Utilitaria.menuOpciones();
-                case "s" ->{ eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "s" ->{String corcom=ofertasfiltradas.get(index).getCorreocomprador();
+                            eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                            return ofertasfiltradas.get(index).getCorreocomprador();}
+                            return corcom;}
             }
         }
         else if(index==ofertasfiltradas.size()-1){
@@ -798,10 +819,11 @@ public class Utilitaria{
             switch(opcion_v3b){
                 
                 case "1" ->{index=index-1; mostrarOferta(index,ofertasfiltradas);}
-                case "2" ->{eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "2" ->{String corcom=ofertasfiltradas.get(index).getCorreocomprador();
+                            eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                            return ofertasfiltradas.get(index).getCorreocomprador();}
+                            return corcom;}
             }
         }
         else{
@@ -816,13 +838,168 @@ public class Utilitaria{
             switch(opcion_v3b){
                 case "1" -> {index=index-1;mostrarOferta(index,ofertasfiltradas);}
                 case "2" -> {index=index+1;mostrarOferta(index,ofertasfiltradas);}
-                case "3" -> {eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                case "3" -> {String corcom=ofertasfiltradas.get(index).getCorreocomprador();
+                            eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                            return ofertasfiltradas.get(index).getCorreocomprador();}
+                            return corcom ;}
                     
             }
         } 
-        return null;   
+        return ".";   
+    }
+    
+    
+    public static void eliminarOfertaComprador(){
+        System.out.println("Inicie sesión...");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Correo: ");
+        String correo = sc.nextLine();
+        ArrayList<Oferta> ofertascomp= new ArrayList<>();
+        String clave= null;
+        
+        if(existenciaDeCorreoComprador(correo))
+        {
+            System.out.println("Contraseña: ");
+            clave = sc.nextLine();
+            
+            if(verificarClaveComprador(correo, clave))
+            {
+                if(ofertasRegistradas.isEmpty())
+                {
+                    System.out.println("No has realizado ninguna oferta por el momento");
+                    Utilitaria.opcionesVendedor();
+                    
+                }
+                else {
+                    for (Oferta ofs: ofertasRegistradas)
+                    {
+                        String correocomp= ofs.getCorreocomprador();
+                        if(correocomp.equals(correo))
+                            ofertascomp.add(ofs);
+                    }
+                    
+                }
+                int index = 0;
+                System.out.println("\nHas realizado "+ofertascomp.size()+" oferta(s)");
+                
+                if (!ofertascomp.isEmpty()){
+                    mostrarOfertaComprador(index, ofertascomp);
+                } 
+                
+            }else
+                {System.out.println("Contraseña incorrecta :");
+                 opcionesComprador();
+                }
+        }else
+            {System.out.println("Correo no registrado");
+            opcionesComprador();}
+            
+    }
+    
+    public static void mostrarOfertaComprador(int index,ArrayList<Oferta> ofertasfiltradas ){
+        System.out.println(ofertasfiltradas.get(index).toString());
+        Scanner sc= new Scanner(System.in).useLocale(Locale.US);
+        if (index==0 && ofertasfiltradas.size()>1 ){
+            System.out.println("1. Siguiente Oferta");
+            System.out.println("2. Eliminar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                
+                case "1" ->{index=index+1; mostrarOfertaComprador(index,ofertasfiltradas);}
+                case "2" ->{ eliminarCorreocompYplaca("RegistroOfertas.txt",ofertasfiltradas.get(index).getCorreocomprador(),ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha eliminado la oferta.");
+                            }
+            }
+        }
+        else if(index==0 && ofertasfiltradas.size()==1){
+            System.out.println("Por el momento solo has realizado esta oferta");
+            String s_n=null;
+            do {
+                System.out.println("Eliminar oferta? (S-N)");;
+                s_n= sc.nextLine().toLowerCase().trim();
+            } while (!(s_n.equals("s")||s_n.equals("n")));
+            switch(s_n){
+                
+                case "n" -> Utilitaria.menuOpciones();
+                case "s" ->{ eliminarCorreocompYplaca("RegistroOfertas.txt",ofertasfiltradas.get(index).getCorreocomprador(),ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha eliminado la oferta.");
+                            }
+            }
+        }
+        else if(index==ofertasfiltradas.size()-1){
+            System.out.println("1. Anterior Oferta");
+            System.out.println("2. Eliminar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2") ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                
+                case "1" ->{index=index-1; mostrarOfertaComprador(index,ofertasfiltradas);}
+                case "2" ->{eliminarCorreocompYplaca("RegistroOfertas.txt",ofertasfiltradas.get(index).getCorreocomprador(),ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha eliminado la oferta");
+                            }
+            }
+        }
+        else{
+            System.out.println("1. Anterior Oferta");
+            System.out.println("2. Siguiente Oferta");
+            System.out.println("3. Eliminar Oferta");
+            String opcion_v3b= sc.nextLine();
+            while(!(opcion_v3b.equals("1") || opcion_v3b.equals("2")|| opcion_v3b.equals("3")  ) ){ 
+            System.out.println("Número inválido, intente de nuevo");
+            opcion_v3b= sc.nextLine();
+            }
+            switch(opcion_v3b){
+                case "1" -> {index=index-1;mostrarOfertaComprador(index,ofertasfiltradas);}
+                case "2" -> {index=index+1;mostrarOfertaComprador(index,ofertasfiltradas);}
+                case "3" -> {eliminarCorreocompYplaca("RegistroOfertas.txt",ofertasfiltradas.get(index).getCorreocomprador(),ofertasfiltradas.get(index).getVehiculo().getPlaca());
+                            System.out.println("\nSe ha eliminado la oferta.");
+                            }
+                    
+            }
+        }} 
+
+    public static void eliminarCorreocompYplaca(String archivo, String correocomp, String plcaof)
+    {
+        File arch = new File(archivo);
+        File borrador = new File("borrador.txt");
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(arch));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(borrador))) {
+
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (!(linea.contains(correocomp)&&linea.contains(plcaof))) {
+                    bw.write(linea);
+                    bw.newLine();
+                    
+                }
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try(BufferedReader br2 = new BufferedReader(new FileReader(borrador));
+             BufferedWriter bw2 = new BufferedWriter(new FileWriter(arch,false))){
+            
+            String linea2;
+            while ((linea2=br2.readLine())!=null){
+                bw2.write(linea2);
+                bw2.newLine();
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        borrador.delete();
+        
     }
 }

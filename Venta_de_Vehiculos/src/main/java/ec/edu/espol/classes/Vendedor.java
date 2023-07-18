@@ -29,7 +29,7 @@ public class Vendedor extends Usuario{
         Scanner sc= new Scanner(System.in);
         String claveconf= sc.nextLine();
         
-        boolean b=Utilitaria.verificarClaveVendedor(this.getClave(), claveconf);
+        boolean b=Utilitaria.verificarClaveVendedor(this.getCorreo(), claveconf);
         while (!b){
             System.out.println("Clave incorrecta");
             System.out.println("Ingrese nuevamente:");

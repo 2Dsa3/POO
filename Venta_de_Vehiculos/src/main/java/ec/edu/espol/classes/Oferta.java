@@ -46,6 +46,6 @@ public class Oferta{
     @Override
     public String toString()
     {
-        return this.getVehiculo().getModelo()+" "+" "+this.getVehiculo().getMarca()+" "+this.getVehiculo().getRecorrido()+" "+"Precio: "+this.getMonto();
+        return this.getCorreocomprador()+"  "+" "+this.getVehiculo().getMarca()+" "+this.getVehiculo().getRecorrido()+" "+"Precio: "+this.getMonto();
     }
 }

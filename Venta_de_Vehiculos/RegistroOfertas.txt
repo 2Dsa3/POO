@@ -2,7 +2,7 @@ gsd-000;6;volkswagen;fui@;7800.0
 frt;f;r;icazaalexandre@gmail.com;10.0
 frt;f;r;icazaalexandre@gmail.com;5.0
 gtg-5638;Spark;Audi;icazaalexandre@gmail.com;15000.0
-frt;f;r;capo@;900.0
-dsa-005;;l;capo@;900000.0
 gtg-5638;Spark;Audi;icazaalexandre@gmail.com;15000.0
-
+dsa-005;;l;davsum78@hotmail.com;87000.0
+gsd-000;6;volkswagen;davsum78@hotmail.com;0.0
+dsa-999;f;f;davsum78@hotmail.com;9090.0
