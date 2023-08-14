@@ -751,16 +751,16 @@ public class Utilitaria{
                 }
                 int index = 0;
                 System.out.println("\nSe han realizado "+ofertasplaca.size()+" oferta(s)");
-                String correocomp=".";
+                
                 if (!ofertasplaca.isEmpty()){
-                    correocomp= mostrarOferta(index, ofertasplaca);
-                } 
-                if (!correocomp.equals(".")){
+                    
+                
+                if (!mostrarOferta(index, ofertasplaca).equals(".")){
                     Vendedor remitente= new Vendedor(null, null, null, correo, clave);
                     String asunto= "Se ha aceptado su oferta!";
                     System.out.println("\nMensaje a enviar?\n");
                     String cuerpo= sc.nextLine();
-                    remitente.enviarCorreo(correocomp, asunto, cuerpo);}
+                    remitente.enviarCorreo(mostrarOferta(index, ofertasplaca), asunto, cuerpo);}}
             }else
                 {System.out.println("Contraseña incorrecta :");
                  opcionesVendedor();
@@ -788,7 +788,8 @@ public class Utilitaria{
                             eliminarVehiculo("RegistroOfertas.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             eliminarVehiculo("RegistroVehiculos.txt",ofertasfiltradas.get(index).getVehiculo().getPlaca());
                             System.out.println("\nSe ha aceptado la oferta. ¡Felicidades!");
-                            return corcom;}
+                            return corcom;
+                            }
             }
         }
         else if(index==0 && ofertasfiltradas.size()==1){
