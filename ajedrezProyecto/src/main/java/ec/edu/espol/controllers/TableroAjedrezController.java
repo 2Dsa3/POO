@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package ec.edu.espol.ajedrezproyecto;
+package ec.edu.espol.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -147,13 +147,75 @@ public class TableroAjedrezController implements Initializable {
     private Button e1;
     @FXML
     private Button f1;
+    @FXML
+    private Button bpawna;
+    @FXML
+    private Button bpawnb;
+    @FXML
+    private Button bpawnc;
+    @FXML
+    private Button bpawnd;
+    @FXML
+    private Button bpawne;
+    @FXML
+    private Button bpawnf;
+    @FXML
+    private Button bpawnh;
+    @FXML
+    private Button wpawna;
+    @FXML
+    private Button wpawnb;
+    @FXML
+    private Button wpawnc;
+    @FXML
+    private Button wpawnd;
+    @FXML
+    private Button wpawne;
+    @FXML
+    private Button wpawnf;
+    @FXML
+    private Button wpawng;
+    @FXML
+    private Button wpawnh;
+    @FXML
+    private Button brook1;
+    @FXML
+    private Button brook2;
+    @FXML
+    private Button bknight1;
+    @FXML
+    private Button bknight2;
+    @FXML
+    private Button bbishop1;
+    @FXML
+    private Button bbishop2;
+    @FXML
+    private Button bqueen;
+    @FXML
+    private Button wrook1;
+    @FXML
+    private Button wrook2;
+    @FXML
+    private Button wknight1;
+    @FXML
+    private Button wknight2;
+    @FXML
+    private Button wbishop1;
+    @FXML
+    private Button wbishop2;
+    @FXML
+    private Button bking;
+    @FXML
+    private Button wqueen;
+    @FXML
+    private Button wknight;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TOD
     }    
     
 }
