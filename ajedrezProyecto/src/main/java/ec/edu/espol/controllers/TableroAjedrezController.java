@@ -209,6 +209,8 @@ public class TableroAjedrezController implements Initializable {
     private Button wqueen;
     @FXML
     private Button wknight;
+    @FXML
+    private Button bpawng;
 
     /**
      * Initializes the controller class.
