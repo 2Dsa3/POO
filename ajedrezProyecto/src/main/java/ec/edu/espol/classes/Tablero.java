@@ -12,20 +12,20 @@ import java.util.ArrayList;
  */
 public class Tablero {
 <<<<<<< Updated upstream
-//    private Ficha[][] fichas;
-//
-//    public Tablero() {
-//        this.fichas = new Ficha[8][8];
-//    }
-//    public void llenarTablero(){
-//        for (int i = 0; i < 8; i++) {
-//            fichas[1][i]= new Pawn(0,casi,"black",1,i);
-//        }
-//        for (int i = 0; i < 8; i++) {
-//            fichas[6][i]= new Pawn(0,casi,"white",6,i);
-//        }
-//    }
-//         
+    private Ficha[][] fichas;
+
+    public Tablero() {
+        this.fichas = new Ficha[8][8];
+    }
+    public void llenarTablero(){
+        for (int i = 0; i < 8; i++) {
+            fichas[1][i]= new Pawn(0,casi,"black",1,i);
+        }
+        for (int i = 0; i < 8; i++) {
+            fichas[6][i]= new Pawn(0,casi,"white",6,i);
+        }
+    }
+         
 =======
     private Ficha[][] fichas;
     private ArrayList<Ficha> eliminadas;
