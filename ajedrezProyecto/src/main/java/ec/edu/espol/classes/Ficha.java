@@ -10,12 +10,13 @@ package ec.edu.espol.classes;
  */
 public abstract class Ficha {
     protected int puntaje;
-    protected String color;
+    protected Equipo color;
     protected int x;
     protected int y;
     protected Tablero t;
+    
 
-    public Ficha(int puntaje, String color, int x, int y, Tablero t) {
+    public Ficha(int puntaje, Equipo color, int x, int y, Tablero t) {
         this.puntaje = puntaje;
         this.color = color;
         this.x = x;
@@ -30,7 +31,7 @@ public abstract class Ficha {
     }
 
 
-    public String getColor() {
+    public Equipo getColor() {
         return color;
     }
 
@@ -52,7 +53,7 @@ public abstract class Ficha {
     }
 
 
-    public void setColor(String color) {
+    public void setColor(Equipo color) {
         this.color = color;
     }
 
