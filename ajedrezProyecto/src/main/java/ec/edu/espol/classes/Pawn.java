@@ -14,17 +14,17 @@ public class Pawn extends Ficha {
 
     public Pawn(int puntaje, Equipo color, int x, int y, Tablero t) {
         super(puntaje, color, x, y, t);
-        if (x==2) {
-            this.rango= new int[2][1];
-            for (int i = 0; i < 2; i++) {
-                rango[i][y]=x-i;
-            }
-        }
-        else {
-            this.rango= new int[1];
-            rango[0]=x+1;
-            
-        }
+//        if (x==2) {
+//            this.rango= new int[2][1];
+//            for (int i = 0; i < 2; i++) {
+//                rango[i][y]=x-i;
+//            }
+//        }
+//        else {
+//            this.rango= new int[1];
+//            rango[0]=x+1;
+//            
+//        }
     }
 
     public boolean movimientoPosible(int destinoX, int destinoY, Tablero t){
