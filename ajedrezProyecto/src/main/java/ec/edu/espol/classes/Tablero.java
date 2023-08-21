@@ -41,12 +41,7 @@ public class Tablero {
         }
         return t_i;
     }
-    public void Mover(Ficha f,int x, int y){
-        
-            fichas[x][y]=f;
-            fichas[f.getX()][f.getY()]= null;
-        
-    }
+    
     public void Eliminar(Ficha f, int x, int y){
         fichas[f.getX()][f.getY()]= null;
         eliminadas.add(f);

@@ -24,7 +24,14 @@ public abstract class Ficha {
         this.t= t;
     }
 
-   
+   public void mover(int x, int y){
+        
+            this.t.getFichas()[x][y]=this;
+            this.t.getFichas()[this.getX()][this.getY()]= null;
+            this.setX(x);
+            this.setY(y);
+        
+    }
     
     public int getPuntaje() {
         return puntaje;

@@ -64,6 +64,7 @@ public class App extends Application {
 
                 Text text = new Text();
                 text.setText(filas[j] + String.valueOf(8 - i));
+                text.setOpacity(0.5);
 
                 StackPane stack = new StackPane();
                 stack.getChildren().addAll(r, text);
@@ -88,17 +89,14 @@ public class App extends Application {
                         boton = crearBoton("ec/edu/espol/chessPieces/vacio.png");
                         break;
                 }
-
-
-                boton.setOnAction(event -> handleButtonAction(boton));
+                
+                //Ficha ficha = new 
+                boton.setOnAction(event -> moverBoton(boton));
                 pane.add(boton, j, i);
-                if ((i + j) % 2 == 0) {
-                    boton.setStyle("-fx-background-color: transparent; -fx-border-color: #000000 ");
-                }else{
-                    boton.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
+                boton.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
                }
             }
-        }
+        
 
         // Set up the chessboard with pieces
         //tableroPiezas(pane);
@@ -168,7 +166,7 @@ public class App extends Application {
         return boton;
     }
     
-    private void handleButtonAction(Button boton) {
+    private void moverBoton(Button boton) {
         if (seleccionado != null) {
             ImageView imageView = (ImageView) boton.getGraphic();
             Image image = imageView.getImage();
