@@ -29,20 +29,12 @@ import javafx.scene.text.Text;
 public class App extends Application {
 
     private static Scene scene;
-    private final Button botonAnterior = null;
     private Button seleccionado = null;
     private final int tamañoBoton = 60;
     private final int tamañoImagen = 40;
     private String estiloBoton = "";
     
-    private String[] fichasNegras = {"chessPieces/blackrook.png","chessPieces/blackknight.png",
-        "chessPieces/blackbishop.png","chessPieces/blackqueen.png","chessPieces/blackking.png",
-        "chessPieces/blackbishop.png","chessPieces/blackknight.png","chessPieces/blackrook.png"};
 
-    
-    private String[] fichasBlancas = {"chessPieces/whiterook.png","chessPieces/whiteknight.png",
-    "chessPieces/whitebishop.png","chessPieces/whitequeen.png","chessPieces/whiteking.png",
-    "chessPieces/whitebishop.png","chessPieces/whiteknight.png","chessPieces/whiterook.png"};
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -79,12 +71,9 @@ public class App extends Application {
                 count++;
            
 
-
-                
-
                 switch (i) {
                     case 0:
-                        boton = crearBoton("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[i]+".png");
+                        boton = crearBoton("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[j]+".png");
                         break;
                     case 1:
                         boton = crearBoton("ec/edu/espol/chessPieces/blackpawn.png");
@@ -93,7 +82,7 @@ public class App extends Application {
                         boton = crearBoton("ec/edu/espol/chessPieces/whitepawn.png");
                         break;
                     case 7:
-                        boton = crearBoton("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[i]+".png");
+                        boton = crearBoton("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[j]+".png");
                         break;
                     default:
                         boton = crearBoton("ec/edu/espol/chessPieces/vacio.png");
@@ -102,7 +91,7 @@ public class App extends Application {
 
 
                 boton.setOnAction(event -> handleButtonAction(boton));
-                pane.add(boton, i, j);
+                pane.add(boton, j, i);
                 if ((i + j) % 2 == 0) {
                     boton.setStyle("-fx-background-color: transparent; -fx-border-color: #000000 ");
                 }else{
