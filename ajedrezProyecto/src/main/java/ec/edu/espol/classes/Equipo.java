@@ -10,4 +10,13 @@ package ec.edu.espol.classes;
  */
 public enum Equipo {
     BLANCAS,NEGRAS;
+
+    @Override
+    public String toString() {
+        if (this.equals(Equipo.BLANCAS))
+                return ", blancas";
+        else
+            return ", negras";
+    }
+    
 }

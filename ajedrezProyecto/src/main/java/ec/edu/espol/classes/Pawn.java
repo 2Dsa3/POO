@@ -11,9 +11,10 @@ package ec.edu.espol.classes;
  */
 public class Pawn extends Ficha {
     protected int[][] rango;
+    final int puntaje = 1;
 
-    public Pawn(int puntaje, Equipo color, int x, int y, Tablero t) {
-        super(puntaje, color, x, y, t);
+    public Pawn(Equipo color, int x, int y, Tablero t) {
+        super(color, x, y, t);
 //        if (x==2) {
 //            this.rango= new int[2][1];
 //            for (int i = 0; i < 2; i++) {
@@ -70,7 +71,11 @@ public class Pawn extends Ficha {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Peón"+super.toString();
+    }
     
    
-    
 }
