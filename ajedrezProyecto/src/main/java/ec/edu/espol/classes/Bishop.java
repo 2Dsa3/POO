@@ -19,4 +19,9 @@ public class Bishop extends Ficha {
     public String toString() {
         return "Alfil"+super.toString();
     }
+    
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove {    
+        throw new NonValidMove("");
+                }
 }

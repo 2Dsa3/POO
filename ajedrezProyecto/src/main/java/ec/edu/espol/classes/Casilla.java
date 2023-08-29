@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.classes;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 /**
@@ -26,6 +27,22 @@ public class Casilla extends Ficha {
     public String toString() {
         return "Casilla " + this.getPosicion();
     }
+    
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove {    
+        throw new NonValidMove("");
+                }
+
+    @Override
+    public void mover(Ficha f) {
+        try {
+            super.mover(f); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        } catch (NonValidMove ex) {
+            Alert a = new Alert(Alert.AlertType.WARNING,"Do something!");
+            a.show();
+        }
+    }
+    
     
     
 }

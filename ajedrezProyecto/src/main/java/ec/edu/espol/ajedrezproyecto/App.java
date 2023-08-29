@@ -36,7 +36,7 @@ import javafx.scene.text.Text;
 public class App extends Application {
 
     private static Scene scene;
-    private Button seleccionado = null;
+    private Ficha seleccionado = null;
     private final int tamañoBoton = 60;
     private final int tamañoImagen = 40;
     private String estiloBoton = "";
@@ -83,141 +83,91 @@ public class App extends Application {
                 
                 
 //                
-                ficha.addEventHandler(MouseEvent.MOUSE_CLICKED,(Event e)->
-                {   try{
-                    if (seleccionado instanceof Casilla)
-                    {
-                        seleccionado.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
-                        seleccionado = ficha;
-                        estiloBoton = "-fx-background-color: transparent; -fx-border-color: #000000"; // Almacena el estilo original del botón
-                        seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
-
-                    }
-                    else if (seleccionado != null)
-                    {
-                    int row1 = GridPane.getRowIndex(seleccionado);
-                    int column1 = GridPane.getColumnIndex(seleccionado);
-                    int row2 = GridPane.getRowIndex(ficha);
-                    int column2 = GridPane.getColumnIndex(ficha);
-
-                    pane.getChildren().remove(seleccionado);
-                    pane.getChildren().remove(ficha);
-
-                    pane.add(ficha, column1, row1);
-                    pane.add(seleccionado, column2, row2);
-                    ficha.mover(column2,row2);
-                    seleccionado.setStyle(estiloBoton);
-                    seleccionado = null;
-                    ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
-                    }
-//                    else 
-//                    {
-//                        seleccionado = ficha;
-//                        estiloBoton = seleccionado.getStyle(); // Almacena el estilo original del botón
-//                        seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
-//                    }
-//                    if (seleccionado != null)
-////                    {
-////                        ImageView imgVSelect = (ImageView) ficha.getGraphic();
-////                        Image imgSelect = (Image) imgVSelect.getImage();
-//                        //if (imgSelect.equals(new Image("ec/edu/espol/chessPieces/vacio.png")))
-//                        {
-//                            ImageView imageView = (ImageView) ficha.getGraphic();
-//                            Image image = imageView.getImage();
-//
-//                            ImageView selectedImageView = (ImageView) seleccionado.getGraphic();
-//                            Image selectedImage = selectedImageView.getImage();
-//
-//                            imageView.setImage(selectedImage);
-//                            selectedImageView.setImage(image);hh
-//
-//                            seleccionado.setStyle(estiloBoton); // Restaurar el estilo original del botón
-//                            seleccionado = null;
-//                        }
-                        else 
+                ficha.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event e) -> {
+                    try{
+                        if (seleccionado instanceof Casilla)
+                        {
+                            seleccionado.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
+                            seleccionado = ficha;
+                            estiloBoton = "-fx-background-color: transparent; -fx-border-color: #000000"; // Almacena el estilo original del botón
+                            seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
+                            
+                        }
+                        else if (seleccionado != null)
+                        {
+                            if (seleccionado == ficha)
+                                throw new IllegalArgumentException();
+                            int row1 = GridPane.getRowIndex(seleccionado);
+                            int column1 = GridPane.getColumnIndex(seleccionado);
+                            int row2 = GridPane.getRowIndex(ficha);
+                            int column2 = GridPane.getColumnIndex(ficha);
+                            if(ficha.getColor()==null)
+                            {
+                                seleccionado.mover(ficha);
+                                pane.getChildren().remove(seleccionado);
+                                pane.getChildren().remove(ficha);
+                                //seleccionado.mover(column1,row1);
+                                //Ficha casilla = crearCasilla(column1,row2,t);
+                                pane.add(new Casilla(column1,row1,t), column1, row1);
+                                pane.add(seleccionado, column2, row2);
+                            }
+                            else if (ficha.getColor()==seleccionado.getColor())
+                                throw new NonValidMove("No puedes moverte donde hay casillas de tu color.");
+                            else
+                            {
+                                seleccionado.capturar(ficha);
+                                pane.getChildren().remove(seleccionado);
+                                pane.getChildren().remove(ficha);
+                                pane.add(ficha, column1, row1);
+                                pane.add(seleccionado, column2, row2);
+                            }
+                            seleccionado.setStyle(estiloBoton);
+                            seleccionado = null;
+                            ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
+                        }
+//                    
+                        else
                         {
                             seleccionado = ficha;
                             estiloBoton = seleccionado.getStyle(); // Almacena el estilo original del botón
                             seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
-                        }//                    } 
-//                    else 
-//                    {
-//                        seleccionado = ficha;
-//                        estiloBoton = seleccionado.getStyle(); // Almacena el estilo original del botón
-//                        seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
-//                    }
-                        
+                        }
+//                    
                     }
-                catch(IllegalArgumentException iae)
-                {
-                    Alert a = new Alert(Alert.AlertType.WARNING,"Mueva la pieza al lugar que le corresponda. \nPieza tocada, pieza movida.");
+                    catch(IllegalArgumentException iae)
+                    {
+                        seleccionado.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
+                        seleccionado = null;
+                    }
+                    catch (NonValidMove ex) 
+                    {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION,"Movimiento no válido.");
                     a.show();
-                }
+                    }
+                    catch (Exception ex) 
+                    {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION,"Error inesperado. Notificar al desarrollador");
+                    a.show();
+                    }
                 });
                 
                 Tooltip tooltip = new Tooltip(ficha.toString());
                 tooltip.setFont(Font.font(14));
                 Tooltip.install(ficha, tooltip);
                 pane.add(ficha, j, i);
+                System.out.println(ficha.toString());
                 ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
             }
         }
         
 
-        // Set up the chessboard with pieces
-        //tableroPiezas(pane);
-        
-
+       
         bp.setCenter(pane);
         stage.setScene(scene);
         stage.setTitle("Ajedrez pro (POO Grupo8)");
         stage.show();
     }
-    
-//    private void tableroPiezas(GridPane pane){
-//        Background dark = new Background(new BackgroundFill(Color.CHOCOLATE, CornerRadii.EMPTY, Insets.EMPTY));
-//        Background light = new Background(new BackgroundFill(Color.ANTIQUEWHITE, CornerRadii.EMPTY, Insets.EMPTY));
-//
-//        String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
-//        int size = 8;
-//
-//        for (int row = 0; row < size; row++) {
-//            for (int col = 0; col < size; col++) {
-//                Background bg = (row + col) % 2 == 0 ? dark : light;
-//
-//                StackPane square = (StackPane) pane.getChildren().get(row * size + col);
-//                square.setBackground(bg);
-//                square.setMinSize(0, 0);
-//
-//                ImageView piece = null;
-//                Button boton = null;
-//
-//                switch (row) {
-//                    case 0:
-//                        boton = crearBoton("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[col]+".png");
-//                        break;
-//                    case 1:
-//                        boton = crearBoton("ec/edu/espol/chessPieces/blackpawn.png");
-//                        break;
-//                    case 6:
-//                        boton = crearBoton("ec/edu/espol/chessPieces/whitepawn.png");
-//                        break;
-//                    case 7:
-//                        boton = crearBoton("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[col]+".png");
-//                        break;
-//                    default:
-//                        break;
-//                }
-//
-//                if (piece != null) {
-//                    square.getChildren().add(boton);
-//
-//                    piece.fitWidthProperty().bind(square.widthProperty().subtract(10));
-//                    piece.fitHeightProperty().bind(square.heightProperty().subtract(10));
-//                }
-//            }
-//        }
-//    }
+   
     
     
     
@@ -233,12 +183,12 @@ public class App extends Application {
                         
                     case 1:
                         img = new Image("ec/edu/espol/chessPieces/blackpawn.png");
-                        ficha = new Pawn(Equipo.NEGRAS,i,j,t);
+                        ficha = new Pawn(Equipo.NEGRAS,j,i,t);
                         break;
                         
                     case 6:
                         img = new Image("ec/edu/espol/chessPieces/whitepawn.png");
-                        ficha = new Pawn(Equipo.BLANCAS,i,j,t);
+                        ficha = new Pawn(Equipo.BLANCAS,j,i,t);
                         break;
                         
                     case 7:
@@ -248,7 +198,7 @@ public class App extends Application {
                         
                     default:
                         img = new Image("ec/edu/espol/chessPieces/vacio.png");
-                        ficha = new Casilla(i,j,t);
+                        ficha = new Casilla(j,i,t);
                         break;
                 }
         ficha.setPrefSize(tamañoBoton, tamañoBoton);
@@ -271,25 +221,40 @@ public class App extends Application {
             {
                     case 0:
                         case 7:
-                            ficha = new Rook(e,i,j,t);
+                            ficha = new Rook(e,j,i,t);
                             break;
                     case 1:
                         case 6:
-                            ficha = new Knight(e,i,j,t);
+                            ficha = new Knight(e,j,i,t);
                             break;
                     case 2:
                         case 5:
-                            ficha = new Bishop(e,i,j,t);
+                            ficha = new Bishop(e,j,i,t);
                             break;
                     case 3:
-                        ficha = new Queen(e,i,j,t);
+                        ficha = new Queen(e,j,i,t);
                         break;
                     case 4:
-                        ficha = new King(e,i,j,t);
+                        ficha = new King(e,j,i,t);
                         break;
             }
     return ficha;
     }
+    
+//    public Ficha crearCasilla(int x, int y, Tablero T)
+//    {
+//        Image img = new Image("ec/edu/espol/chessPieces/vacio.png");
+//        Ficha ficha = new Casilla(x,y,t);
+//        ficha.setPrefSize(tamañoBoton, tamañoBoton);
+//        ImageView imageView = new ImageView(img); // Cambia por la imagen por defecto
+//        imageView.setFitWidth(tamañoImagen);
+//        imageView.setFitHeight(tamañoImagen);
+//        ficha.setGraphic(imageView);
+//        ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
+//        ficha.addEventHandler(MouseEvent.MOUSE_CLICKED,Event e);
+//        return ficha;
+//    }
+    
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

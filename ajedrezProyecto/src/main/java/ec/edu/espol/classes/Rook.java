@@ -19,4 +19,11 @@ public class Rook extends Ficha {
     public String toString() {
         return "Torre"+super.toString();
     }
+
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove {
+        
+        throw new NonValidMove(""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }

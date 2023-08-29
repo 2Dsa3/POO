@@ -4,11 +4,15 @@
  */
 package ec.edu.espol.controllers;
 
+import ec.edu.espol.classes.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -219,7 +223,9 @@ public class TableroAjedrezController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TOD
     }    
-//    public static void moverFicha(Mouse event){
 //    
-//}
+//    
+//
+//    
+//    
 }

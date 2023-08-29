@@ -18,4 +18,14 @@ public class Knight extends Ficha {
     public String toString() {
         return "Caballo"+super.toString();
     }
-}
+    
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove
+    {
+        if(this.getX()-x == 0||this.getY()-y==0||(Math.abs(this.getX()-x)+ Math.abs(this.getY()-y))!=3)
+        throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+        
+        }
+                    
+    }
+

@@ -19,4 +19,9 @@ public class King extends Ficha{
     public String toString() {
         return "Rey"+super.toString();
     }
+    
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove {    
+        throw new NonValidMove("");
+                }
 }

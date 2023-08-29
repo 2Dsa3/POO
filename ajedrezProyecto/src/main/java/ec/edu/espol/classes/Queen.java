@@ -19,4 +19,9 @@ public class Queen extends Ficha {
     public String toString() {
         return "Dama"+super.toString();
     }
+    
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove {    
+        throw new NonValidMove("");
+                }
 }

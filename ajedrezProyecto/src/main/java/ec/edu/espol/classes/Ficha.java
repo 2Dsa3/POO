@@ -4,7 +4,12 @@
  */
 package ec.edu.espol.classes;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 
 /**
  *
@@ -25,12 +30,20 @@ public abstract class Ficha extends Button {
         this.t= t;
     }
 
-   public void mover(int x, int y){
-            this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
-            this.t.getFichas()[x][y]=this;
-            this.setX(x);
-            this.setY(y);
+   public void mover(Ficha f) throws NonValidMove{
         
+        this.validarMovimiento(f.getX(),f.getY());
+        //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
+        //this.t.getFichas()[f.getX()][f.getY()]=this;
+        int newX = this.getX();
+        int newY = this.getY();
+        this.setX(f.getX());
+        this.setY(f.getY());
+        f.setX(newX);
+        f.setY(newY);
+         
+        
+        //this.actualizarTooltip();
     }
     
     public int getPuntaje() {
@@ -56,7 +69,7 @@ public abstract class Ficha extends Button {
     
     public String getPosicion(){
     String[] filas = {"a","b","c","d","e","f","g","h"};
-    return filas[this.getY()] + String.valueOf(8 - this.getX());
+    return filas[this.getX()] + String.valueOf(8-this.getY());
     }
 
     public void setColor(Equipo color) {
@@ -80,4 +93,96 @@ public abstract class Ficha extends Button {
     
     }
     
+    public abstract void validarMovimiento(int x, int y) throws NonValidMove;
+    
+    public static Ficha elegirFicha(int i, int j,Tablero t)
+    {
+        Ficha ficha = null;
+        Equipo e;
+        if (i == 7)
+            e = Equipo.BLANCAS;
+        else
+            e = Equipo.NEGRAS;
+        switch (j) 
+            {
+                    case 0:
+                        case 7:
+                            ficha = new Rook(e,i,j,t);
+                            break;
+                    case 1:
+                        case 6:
+                            ficha = new Knight(e,i,j,t);
+                            break;
+                    case 2:
+                        case 5:
+                            ficha = new Bishop(e,i,j,t);
+                            break;
+                    case 3:
+                        ficha = new Queen(e,i,j,t);
+                        break;
+                    case 4:
+                        ficha = new King(e,i,j,t);
+                        break;
+            }
+    return ficha;
+    }
+    
+    public static Ficha crearBoton(int i,int j,Tablero t,int tB, int tI) {
+        Ficha ficha;
+        Image img;
+        String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
+        switch (i) 
+                {
+                    case 0:
+                        img = new Image("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[j]+".png");
+                        ficha = elegirFicha(i,j,t);
+                        break;
+                        
+                    case 1:
+                        img = new Image("ec/edu/espol/chessPieces/blackpawn.png");
+                        ficha = new Pawn(Equipo.NEGRAS,i,j,t);
+                        break;
+                        
+                    case 6:
+                        img = new Image("ec/edu/espol/chessPieces/whitepawn.png");
+                        ficha = new Pawn(Equipo.BLANCAS,i,j,t);
+                        break;
+                        
+                    case 7:
+                        img = new Image("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[j]+".png");
+                        ficha = elegirFicha(i,j,t);
+                        break;
+                        
+                    default:
+                        img = new Image("ec/edu/espol/chessPieces/vacio.png");
+                        ficha = new Casilla(i,j,t);
+                        break;
+                }
+        ficha.setPrefSize(tB, tB);
+        ImageView imageView = new ImageView(img); // Cambia por la imagen por defecto
+        imageView.setFitWidth(tI);
+        imageView.setFitHeight(tI);
+        ficha.setGraphic(imageView);
+        return ficha;
+    }
+    
+    public void actualizarTooltip()
+    {
+        Tooltip tooltip = new Tooltip(this.toString());
+                tooltip.setFont(Font.font(14));
+                Tooltip.install(this, tooltip);
+    }
+    
+    public void capturar (Ficha f) throws NonValidMove{
+        this.validarMovimiento(f.getX(),f.getY());
+        //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
+        //this.t.getFichas()[f.getX()][f.getY()]=this;
+        int newX = this.getX();
+        int newY = this.getY();
+        this.setX(f.getX());
+        this.setY(f.getY());
+        f.setX(newX);
+        f.setY(newY);
+        //this.actualizarTooltip();
+    }
 }

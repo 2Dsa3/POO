@@ -12,6 +12,7 @@ package ec.edu.espol.classes;
 public class Pawn extends Ficha {
     protected int[][] rango;
     final int puntaje = 1;
+    public boolean primerMovimiento = true;
 
     public Pawn(Equipo color, int x, int y, Tablero t) {
         super(color, x, y, t);
@@ -76,6 +77,17 @@ public class Pawn extends Ficha {
     public String toString() {
         return "Peón"+super.toString();
     }
-    
+
+    @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove 
+    {    
+        int difY = 1;
+        if (primerMovimiento)
+            difY = 1 + difY;
+        if(y-this.getY()> difY || x-this.getX()!= 0)
+            throw new NonValidMove("");
+        difY=1;
+        primerMovimiento = false;
+    }
    
 }
