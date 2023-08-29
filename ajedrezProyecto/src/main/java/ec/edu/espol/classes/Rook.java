@@ -20,10 +20,11 @@ public class Rook extends Ficha {
         return "Torre"+super.toString();
     }
 
-    @Override
-    public void validarMovimiento(int x, int y) throws NonValidMove {
-        
-        throw new NonValidMove(""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   @Override
+    public void validarMovimiento(int x, int y) throws NonValidMove 
+    {
+        if(this.getX()!=x && this.getY()!=y)
+            throw new NonValidMove("Movimiento fuera de rango de la pieza.");
     }
     
 }

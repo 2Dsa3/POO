@@ -21,7 +21,8 @@ public class Queen extends Ficha {
     }
     
     @Override
-    public void validarMovimiento(int x, int y) throws NonValidMove {    
-        throw new NonValidMove("");
-                }
+    public void validarMovimiento(int x, int y) throws NonValidMove
+    {   if(this.getX()!=x && this.getY()!=y && Math.abs(this.getX()-x)!= Math.abs(this.getY()-y))
+        throw new NonValidMove("Movimiento fuera de rango de la pieza.");
+    }
 }

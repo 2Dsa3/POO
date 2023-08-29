@@ -82,12 +82,17 @@ public class Pawn extends Ficha {
     public void validarMovimiento(int x, int y) throws NonValidMove 
     {    
         int difY = 1;
-        if (primerMovimiento)
+        if (this.primerMovimiento)
             difY = 1 + difY;
-        if(y-this.getY()> difY || x-this.getX()!= 0)
-            throw new NonValidMove("");
-        difY=1;
-        primerMovimiento = false;
+        if(this.getColor().equals(Equipo.BLANCAS))
+        {
+        if(this.getY()-y> difY ||this.getY()-y<0|| x-this.getX()!= 0)
+            throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+        }
+        else
+            if(y-this.getY()> difY ||y-this.getY()<0|| x-this.getX()!= 0)
+            throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+        this.primerMovimiento = false;
     }
    
 }

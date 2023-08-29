@@ -38,7 +38,7 @@ public class Casilla extends Ficha {
         try {
             super.mover(f); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         } catch (NonValidMove ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING,"Do something!");
+            Alert a = new Alert(Alert.AlertType.WARNING,"Mensaje secreto!");
             a.show();
         }
     }

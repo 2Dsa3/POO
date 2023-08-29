@@ -10,6 +10,7 @@ package ec.edu.espol.classes;
  */
 public class King extends Ficha{
     final int puntaje = -1;
+    static int count;
 
     public King(Equipo color, int x, int y, Tablero t) {
         super(color, x, y, t);
@@ -21,7 +22,26 @@ public class King extends Ficha{
     }
     
     @Override
-    public void validarMovimiento(int x, int y) throws NonValidMove {    
-        throw new NonValidMove("");
-                }
+    public void validarMovimiento(int x, int y) throws NonValidMove
+    {
+        int dX = Math.abs(x-this.getX());
+        int dY = Math.abs(y-this.getY());
+        double d = (double) Math.sqrt(dX^2+dY^2);
+        if(d > Math.sqrt(2)||dX==2)
+            throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+        
+    }
+
+    @Override
+    public void mover(Ficha f) throws NonValidMove {
+        super.mover(f);
+        if (reySolo())
+            King.count = King.count + 1;
+    }
+    
+    public boolean reySolo()
+    {
+        //Esto es para trabajar en las finales
+        return false;
+    }
 }
