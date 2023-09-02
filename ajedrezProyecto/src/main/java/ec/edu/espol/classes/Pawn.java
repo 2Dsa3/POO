@@ -94,5 +94,28 @@ public class Pawn extends Ficha {
             throw new NonValidMove("Movimiento fuera del rango de la pieza.");
         this.primerMovimiento = false;
     }
+
+    @Override
+    public void capturar(Ficha f) throws NonValidMove {
+        this.validarCaptura(f.getX(),f.getY());
+        //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
+        //this.t.getFichas()[f.getX()][f.getY()]=this;
+        int newX = this.getX();
+        int newY = this.getY();
+        this.setX(f.getX());
+        this.setY(f.getY());
+        f.setX(newX);
+        f.setY(newY); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    private void validarCaptura(int x, int y) throws NonValidMove {
+        int disX = Math.abs(this.getX()-x);
+        int disY = this.getY()-y;
+        if(this.getColor().equals(Equipo.NEGRAS))
+            disY = -disY;
+        if(!(disX == 1 && disY==1))
+            throw new NonValidMove("Así no captura un peón, es muy obvio.");
+    }
    
+    
 }
