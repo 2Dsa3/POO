@@ -86,7 +86,7 @@ public abstract class Ficha extends Button {
 
     @Override
     public String toString() {
-        return this.color.toString() + "\n" + this.getPosicion();
+        return "\n"+this.color.toString() + "\n" + this.getPosicion();
           
     }
     public void moverFicha(){
@@ -95,76 +95,76 @@ public abstract class Ficha extends Button {
     
     public abstract void validarMovimiento(int x, int y) throws NonValidMove;
     
-    public static Ficha elegirFicha(int i, int j,Tablero t)
-    {
-        Ficha ficha = null;
-        Equipo e;
-        if (i == 7)
-            e = Equipo.BLANCAS;
-        else
-            e = Equipo.NEGRAS;
-        switch (j) 
-            {
-                    case 0:
-                        case 7:
-                            ficha = new Rook(e,i,j,t);
-                            break;
-                    case 1:
-                        case 6:
-                            ficha = new Knight(e,i,j,t);
-                            break;
-                    case 2:
-                        case 5:
-                            ficha = new Bishop(e,i,j,t);
-                            break;
-                    case 3:
-                        ficha = new Queen(e,i,j,t);
-                        break;
-                    case 4:
-                        ficha = new King(e,i,j,t);
-                        break;
-            }
-    return ficha;
-    }
-    
-    public static Ficha crearBoton(int i,int j,Tablero t,int tB, int tI) {
-        Ficha ficha;
-        Image img;
-        String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
-        switch (i) 
-                {
-                    case 0:
-                        img = new Image("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[j]+".png");
-                        ficha = elegirFicha(i,j,t);
-                        break;
-                        
-                    case 1:
-                        img = new Image("ec/edu/espol/chessPieces/blackpawn.png");
-                        ficha = new Pawn(Equipo.NEGRAS,i,j,t);
-                        break;
-                        
-                    case 6:
-                        img = new Image("ec/edu/espol/chessPieces/whitepawn.png");
-                        ficha = new Pawn(Equipo.BLANCAS,i,j,t);
-                        break;
-                        
-                    case 7:
-                        img = new Image("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[j]+".png");
-                        ficha = elegirFicha(i,j,t);
-                        break;
-                        
-                    default:
-                        img = new Image("ec/edu/espol/chessPieces/vacio.png");
-                        ficha = new Casilla(i,j,t);
-                        break;
-                }
-        ficha.setPrefSize(tB, tB);
-        ImageView imageView = new ImageView(img); // Cambia por la imagen por defecto
-        imageView.setFitWidth(tI);
-        imageView.setFitHeight(tI);
-        ficha.setGraphic(imageView);
-        return ficha;
-    }
+//    public static Ficha elegirFicha(int i, int j,Tablero t)
+//    {
+//        Ficha ficha = null;
+//        Equipo e;
+//        if (i == 7)
+//            e = Equipo.BLANCAS;
+//        else
+//            e = Equipo.NEGRAS;
+//        switch (j) 
+//            {
+//                    case 0:
+//                        case 7:
+//                            ficha = new Rook(e,i,j,t);
+//                            break;
+//                    case 1:
+//                        case 6:
+//                            ficha = new Knight(e,i,j,t);
+//                            break;
+//                    case 2:
+//                        case 5:
+//                            ficha = new Bishop(e,i,j,t);
+//                            break;
+//                    case 3:
+//                        ficha = new Queen(e,i,j,t);
+//                        break;
+//                    case 4:
+//                        ficha = new King(e,i,j,t);
+//                        break;
+//            }
+//    return ficha;
+//    }
+//    
+//    public static Ficha crearBoton(int i,int j,Tablero t,int tB, int tI) {
+//        Ficha ficha;
+//        Image img;
+//        String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
+//        switch (i) 
+//                {
+//                    case 0:
+//                        img = new Image("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[j]+".png");
+//                        ficha = elegirFicha(i,j,t);
+//                        break;
+//                        
+//                    case 1:
+//                        img = new Image("ec/edu/espol/chessPieces/blackpawn.png");
+//                        ficha = new Pawn(Equipo.NEGRAS,i,j,t);
+//                        break;
+//                        
+//                    case 6:
+//                        img = new Image("ec/edu/espol/chessPieces/whitepawn.png");
+//                        ficha = new Pawn(Equipo.BLANCAS,i,j,t);
+//                        break;
+//                        
+//                    case 7:
+//                        img = new Image("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[j]+".png");
+//                        ficha = elegirFicha(i,j,t);
+//                        break;
+//                        
+//                    default:
+//                        img = new Image("ec/edu/espol/chessPieces/vacio.png");
+//                        ficha = new Casilla(i,j,t);
+//                        break;
+//                }
+//        ficha.setPrefSize(tB, tB);
+//        ImageView imageView = new ImageView(img); // Cambia por la imagen por defecto
+//        imageView.setFitWidth(tI);
+//        imageView.setFitHeight(tI);
+//        ficha.setGraphic(imageView);
+//        return ficha;
+//    }
     
     public void actualizarTooltip()
     {

@@ -14,9 +14,9 @@ public enum Equipo {
     @Override
     public String toString() {
         if (this.equals(Equipo.BLANCAS))
-                return ", blancas";
+                return "Blancas";
         else
-            return ", negras";
+            return "Negras";
     }
     
 }
