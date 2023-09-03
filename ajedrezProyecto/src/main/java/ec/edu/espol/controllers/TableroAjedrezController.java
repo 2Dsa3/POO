@@ -182,14 +182,10 @@ public class TableroAjedrezController implements Initializable {
     private Button f1;
     
     
-
+    
     private ArrayList<Ficha> piezasBlancas = new ArrayList<>();
     private ArrayList<Ficha> piezasNegras = new ArrayList<>();
-    @FXML
-    private GridPane blacktable;
-    @FXML
-    private GridPane whitetable;
-
+    
 
     /**
      * Initializes the controller class.
@@ -470,5 +466,5 @@ public class TableroAjedrezController implements Initializable {
         turno = Equipo.NEGRAS;
     else
         turno = Equipo.BLANCAS;
+    } 
     }
-}
