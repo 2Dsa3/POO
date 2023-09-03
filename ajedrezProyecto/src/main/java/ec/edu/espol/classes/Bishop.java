@@ -36,7 +36,7 @@ public class Bishop extends Ficha {
         
         }}
         else if( this.getX()<x && this.getY()>y ){
-            for ( int i = this.getX() +1; i < x; i++) {
+            for ( int i = this.getX()+1; i < x; i++) {
                 for ( int j = y; j < this.getY(); j++) {
                     if ( Math.abs(this.getX()-x)==Math.abs(this.getY()-y) && (Math.abs(i-x)==Math.abs(j-y)) && !(t.fichas[i][j] instanceof Casilla))
                         throw new NonValidMove("No puedes moverte adelante de otra pieza.");                
@@ -52,8 +52,8 @@ public class Bishop extends Ficha {
                 }
             }}
         else if( this.getX()>x && this.getY()>y ){
-            for ( int i = x; i < this.getX(); i++) {
-                for ( int j = y; j < this.getY() ; j++) {
+            for ( int i = x+1; i < this.getX(); i++) {
+                for ( int j = y+1; j < this.getY() ; j++) {
                     if ( Math.abs(this.getX()-x)==Math.abs(this.getY()-y) &&(Math.abs(i-x)==Math.abs(j-y)) && !(t.fichas[i][j] instanceof Casilla))
                         throw new NonValidMove("No puedes moverte adelante de otra pieza.");                
 
