@@ -6,6 +6,7 @@ package ec.edu.espol.controllers;
 
 import ec.edu.espol.classes.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -50,8 +51,9 @@ public class TableroAjedrezController implements Initializable {
     final String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
     static Tablero t = new Tablero();
     private Equipo turno = Equipo.BLANCAS;
+    private ArrayList<Ficha> piezasBlancas = new ArrayList<>();
+    private ArrayList<Ficha> piezasNegras = new ArrayList<>();
 
-    
 
     /**
      * Initializes the controller class.
@@ -93,6 +95,15 @@ public class TableroAjedrezController implements Initializable {
                 tooltip.setFont(Font.font(14));
                 Tooltip.install(ficha, tooltip);
                 pane.add(ficha, j, i);
+                if (ficha instanceof Casilla == false)
+                    {
+                        if(ficha.getColor().equals(Equipo.BLANCAS))
+                            piezasBlancas.add(ficha);
+                        else
+                        {
+                            piezasNegras.add(ficha);
+                        }
+                    }
                 ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
                 
             }
@@ -222,7 +233,7 @@ public class TableroAjedrezController implements Initializable {
                             int row2 = GridPane.getRowIndex(ficha);
                             int column2 = GridPane.getColumnIndex(ficha);
                             
-                            if(ficha.getColor()==null)
+                            if(ficha instanceof Casilla)
                             {
                                 seleccionado.mover(ficha);
                                 t.fichas[x][y]=ficha;
@@ -256,6 +267,10 @@ public class TableroAjedrezController implements Initializable {
                                 else 
                                     {t.fichas[column2][row2]=seleccionado;
                                    }
+                                if (ficha.getColor().equals(Equipo.BLANCAS))
+                                    piezasBlancas.remove(ficha);
+                                else
+                                    piezasNegras.remove(ficha);
                                 //mostrarMensaje("¡Tu turno!",ficha);
                             }
                             seleccionado.setStyle(estiloBoton);
