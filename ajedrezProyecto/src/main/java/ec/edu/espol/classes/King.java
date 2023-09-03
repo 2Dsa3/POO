@@ -45,13 +45,14 @@ public class King extends Ficha{
         return false;
     }
     //color es el del rey
-    public void estaEnJaque(String color) throws PossibleCheckmate{
-        
+    public boolean estaEnJaque(String color) throws PossibleCheckmate{
+        boolean b=false;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (! (t.fichas[i][j].getColor().equals(Equipo.valueOf(color)))){
                     try{
                         t.fichas[i][j].capturar(this);
+                        b= true;
                         throw new PossibleCheckmate("Estas en Jaque");
                     }
                     catch(NonValidMove e){
@@ -62,6 +63,6 @@ public class King extends Ficha{
                     
             }
         }
-        
+        return b;
     }
 }
