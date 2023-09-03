@@ -91,6 +91,7 @@ public class Pawn extends Ficha {
             else if(Math.abs(this.getY()-y)==2){
                 if(!(t.fichas[x][y+1] instanceof Casilla))
                     throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                System.out.println("lol");
                 
             }
             
