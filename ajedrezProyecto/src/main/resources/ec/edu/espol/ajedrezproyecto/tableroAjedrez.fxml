@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainpane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controllers.TableroAjedrezController">
+<BorderPane fx:id="mainpane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controllers.TableroAjedrezController">
    <center>
       <GridPane maxWidth="400.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -34,74 +34,74 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="a8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.halignment="CENTER">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="a7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="1" />
-            <Button fx:id="a6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="2" />
-            <Button fx:id="a5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="3" />
-            <Button fx:id="a4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="4" />
-            <Button fx:id="a3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="5" />
-            <Button fx:id="a2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="6" />
-            <Button fx:id="a1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="7" />
-            <Button fx:id="b8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.columnIndex="1" />
-            <Button fx:id="b7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="b6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="b5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="b4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="b3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="b2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button fx:id="b1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Button fx:id="c8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="2" />
-            <Button fx:id="c7" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Button fx:id="c6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx-effect: drop-shadow;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="c5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="c4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" styleClass="white button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="d8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" />
-            <Button fx:id="e8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" />
-            <Button fx:id="f8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" />
-            <Button fx:id="g8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" />
-            <Button fx:id="h8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" />
-            <Button fx:id="h7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-            <Button fx:id="h6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <Button fx:id="h5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <Button fx:id="h4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <Button fx:id="h3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <Button fx:id="d7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button fx:id="d6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button fx:id="e7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Button fx:id="g7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <Button fx:id="f7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Button fx:id="e6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Button fx:id="f6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Button fx:id="g6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Button fx:id="g5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <Button fx:id="d5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button fx:id="e5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Button fx:id="f5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Button fx:id="d4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="e4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Button fx:id="f4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Button fx:id="g4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <Button fx:id="c3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button fx:id="c2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Button fx:id="h1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-            <Button fx:id="h2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Button fx:id="g1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-            <Button fx:id="g2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <Button fx:id="g3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Button fx:id="f3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Button fx:id="e3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Button fx:id="d3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" styleClass="white button" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Button fx:id="d2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Button fx:id="c1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Button fx:id="d1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Button fx:id="e2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Button fx:id="f2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Button fx:id="e1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <Button fx:id="f1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.columnIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49; -fx-effect: drop-shadow;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="2" />
+            <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx-effect: drop-shadow;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" styleClass="white button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" styleClass="white button" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #537c49;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #ffe9af; -fx- linear-gradient: black;" GridPane.columnIndex="5" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </center>
@@ -139,11 +139,11 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <Label text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="wQcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="wPcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="wRcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="wKcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="wBcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="24.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                         <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
@@ -201,11 +201,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="bQcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="bRcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="bKcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="bBcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="bPcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
