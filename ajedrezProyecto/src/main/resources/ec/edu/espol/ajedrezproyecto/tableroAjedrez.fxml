@@ -117,7 +117,7 @@
             <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane fx:id="blackpane" gridLinesVisible="true" style="-fx-background-color: #6A3125;">
+            <GridPane fx:id="blackpane" gridLinesVisible="true" style="-fx-background-color: #eab676;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -126,7 +126,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <GridPane fx:id="blacktable" style="-fx-background-color: #124E78;" GridPane.columnIndex="1">
+                  <GridPane fx:id="blacktable" style="-fx-background-color: #E1E1E1;" GridPane.columnIndex="1">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -139,11 +139,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="wQcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label fx:id="wPcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <Label fx:id="wRcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label fx:id="wKcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label fx:id="wBcounter" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="wQcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Italic" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="wPcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="wRcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="wKcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="wBcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="24.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                         <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
@@ -151,12 +154,12 @@
                         <ImageView fitHeight="27.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
-                  <Label fx:id="blackmessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="102.0" text="¡Hora de jugar!" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label fx:id="blackmessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="102.0" text="¡Hora de jugar!" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
-                        <Font size="11.0" />
+                        <Font name="System Bold Italic" size="11.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: black;" text="Negras" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                  <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: #323232;" text="NEGRAS" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="16.0" />
                      </font>
@@ -166,7 +169,7 @@
                   </Label>
                </children>
             </GridPane>
-            <GridPane fx:id="whitepane" gridLinesVisible="true" style="-fx-background-color: #6A3125;" GridPane.rowIndex="3">
+            <GridPane fx:id="whitepane" gridLinesVisible="true" style="-fx-background-color: #eab676;" GridPane.rowIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -175,7 +178,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="TOP_CENTER" prefHeight="19.0" prefWidth="100.0" style="-fx-background-color: white;" text="Blancas" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                  <Label alignment="TOP_CENTER" prefHeight="19.0" prefWidth="100.0" style="-fx-background-color: white;" text="BLANCAS" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="16.0" />
                      </font>
@@ -183,12 +186,12 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="whitemessage" alignment="CENTER" prefHeight="85.0" prefWidth="102.0" text="¡Hora de jugar!" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label fx:id="whitemessage" alignment="CENTER" prefHeight="85.0" prefWidth="102.0" text="¡Hora de jugar!" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="11.0" />
+                        <Font name="System Bold Italic" size="11.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="whitetable" style="-fx-background-color: #124E78;" GridPane.columnIndex="1">
+                  <GridPane fx:id="whitetable" style="-fx-background-color: #E1E1E1;" GridPane.columnIndex="1">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -201,16 +204,16 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="bQcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label fx:id="bRcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label fx:id="bKcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label fx:id="bBcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Label fx:id="bPcounter" alignment="CENTER" text="x0" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="bQcounter" alignment="CENTER" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="bRcounter" alignment="CENTER" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="bKcounter" alignment="CENTER" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="bBcounter" alignment="CENTER" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="bPcounter" alignment="CENTER" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
             </GridPane>
-            <GridPane style="-fx-background-color: #6A3125;" GridPane.rowIndex="1">
+            <GridPane style="-fx-background-color: #eab676;" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -220,7 +223,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <GridPane style="-fx-background-color: #6A3125;" GridPane.rowIndex="2">
+            <GridPane style="-fx-background-color: #eab676;" GridPane.rowIndex="2">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
