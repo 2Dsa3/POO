@@ -314,26 +314,6 @@ public class TableroAjedrezController implements Initializable {
                             estiloBoton = seleccionado.getStyle(); // Almacena el estilo original del botón
                             seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
                         }
-                        
-                        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 8; j++) {
-                                String color;
-                                if (t.fichas[i][j] instanceof King && !(String.valueOf(ficha.getColor()).equals(String.valueOf(t.fichas[i][j].getColor()))) ) {
-                                    color= String.valueOf(t.fichas[i][j].getColor());
-                                    King k= (King)t.fichas[i][j];
-                                    System.out.println("CUMPLE");
-                                    if (k.estaEnJaque(color)){ 
-                                        Equipo c= k.getColor();
-                                        mostrarMensaje("Estas en Jaque",c);
-                                        System.out.println("cumple");
-                                    }
-                                    
-                                }
-                                
-                            }
-                            
-                        }
-
                     }
                     catch(IllegalArgumentException ex)
                     {
