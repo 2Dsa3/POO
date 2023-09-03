@@ -25,6 +25,28 @@ public class Rook extends Ficha {
     {
         if(this.getX()!=x && this.getY()!=y)
             throw new NonValidMove("Movimiento fuera de rango de la pieza.");
+         
+        else if (this.getX()<x )
+        {for (int i = this.getX()+1; i < x; i++) {
+                if ( !(t.fichas[i][y] instanceof Casilla) )
+                        throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                    }}
+        else if (this.getX()>x){
+           {for (int i = x+1; i < this.getX(); i++) {
+                if ( !(t.fichas[i][y] instanceof Casilla) )
+                        throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                    }} 
+        }
+        else if (this.getY()<y )
+        {for (int j = this.getY()+1; j < y; j++) {
+                if (!(t.fichas[x][j] instanceof Casilla) )
+                        throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                    }}
+        else if (this.getY()>y )
+        {for (int j = y+1; j < this.getY(); j++) {
+                if (!(t.fichas[x][j] instanceof Casilla) )
+                        throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                    }}
     }
     
 }

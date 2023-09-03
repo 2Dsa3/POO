@@ -215,12 +215,13 @@ public class TableroAjedrezController implements Initializable {
            
                 ficha = crearFicha(i,j,t);
                 addEvent(ficha,i,j,t,pane);
-                
+                t.fichas[j][i]=ficha;
                 Tooltip tooltip = new Tooltip(ficha.toString());
                 tooltip.setFont(Font.font(14));
                 Tooltip.install(ficha, tooltip);
                 pane.add(ficha, j, i);
                 ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
+                
             }
         }
         
@@ -296,6 +297,7 @@ public class TableroAjedrezController implements Initializable {
                         ficha = new King(e,j,i,t);
                         break;
             }
+       
     return ficha;
     }
     
@@ -313,6 +315,7 @@ public class TableroAjedrezController implements Initializable {
         Tooltip.install(ficha, tooltip);
         ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
         addEvent(ficha,x,y,t,pane);
+        
         return ficha;
     }
     
@@ -321,9 +324,9 @@ public class TableroAjedrezController implements Initializable {
     ficha.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event e) -> {
                     try{
                         if (seleccionado == null){
-                        if (!ficha.getColor().equals(turno))
-                                throw new WrongTurnException("Es el turno de las "+ turno.toString());
-                        }
+                            if (!ficha.getColor().equals(turno))
+                                    throw new WrongTurnException("Es el turno de las "+ turno.toString());
+                            }
                         else{
                         if (!seleccionado.getColor().equals(turno))
                                 throw new WrongTurnException("Es el turno de las "+ turno.toString());
@@ -332,6 +335,7 @@ public class TableroAjedrezController implements Initializable {
                         {
                             seleccionado.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
                             seleccionado = ficha;
+                           
                             estiloBoton = "-fx-background-color: transparent; -fx-border-color: #000000"; // Almacena el estilo original del botón
                             seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
                             
@@ -344,13 +348,24 @@ public class TableroAjedrezController implements Initializable {
                             int column1 = GridPane.getColumnIndex(seleccionado);
                             int row2 = GridPane.getRowIndex(ficha);
                             int column2 = GridPane.getColumnIndex(ficha);
+                            
                             if(ficha.getColor()==null)
                             {
                                 seleccionado.mover(ficha);
+                                t.fichas[x][y]=ficha;
+                                
                                 pane.getChildren().remove(seleccionado);
                                 pane.getChildren().remove(ficha);
-                                pane.add(crearCasilla(column1,row1,t,pane), column1, row1);
+                                Ficha cas= crearCasilla(column1,row1,t,pane);
+                                pane.add(cas, column1, row1);
+                                t.fichas[column1][row1]=cas;
                                 pane.add(seleccionado, column2, row2);
+                                if (seleccionado==null)
+                                    {t.fichas[column2][row2]= new Casilla(column2,row2,t);
+                                    }
+                                else 
+                                    {t.fichas[column2][row2]=seleccionado;
+                                    }
                             }
                             else if (ficha.getColor()==seleccionado.getColor())
                                 throw new NonValidMove("No puedes moverte donde hay una pieza de tu color.");
@@ -360,7 +375,14 @@ public class TableroAjedrezController implements Initializable {
                                 pane.getChildren().remove(seleccionado);
                                 pane.getChildren().remove(ficha);
                                 pane.add(crearCasilla(column1,row1,t,pane), column1, row1);
+                                t.fichas[column1][row1]=crearCasilla(column1,row1,t,pane);
                                 pane.add(seleccionado, column2, row2);
+                                if (seleccionado==null)
+                                    {t.fichas[column2][row2]= new Casilla(column2,row2,t);
+                                    }
+                                else 
+                                    {t.fichas[column2][row2]=seleccionado;
+                                   }
                                 //mostrarMensaje("¡Tu turno!",ficha);
                             }
                             seleccionado.setStyle(estiloBoton);
@@ -406,7 +428,7 @@ public class TableroAjedrezController implements Initializable {
                     }
                     catch (Exception ex) 
                     {
-                     System.out.println(ex);
+                    System.out.println(ex);
                     Alert a = new Alert(Alert.AlertType.ERROR,"Error inesperado. Notificar al desarrollador");
                     a.show();
                     }

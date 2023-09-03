@@ -23,7 +23,44 @@ public class Bishop extends Ficha {
     @Override
     public void validarMovimiento(int x, int y) throws NonValidMove 
     {
-        if(Math.abs(this.getX()-x)!=Math.abs(this.getY()-y))
+        if(Math.abs(this.getX()-x)!=Math.abs(this.getY()-y)){
         throw new NonValidMove("Movimiento fuera de rango de la pieza.");
+        }
+        
+        else if( this.getX()<x && this.getY()<y )
+        {for (int i = this.getX()+1; i < x; i++) {
+                for (int j = this.getY()+1; j < y; j++) {
+                    if (Math.abs(this.getX()-x)==Math.abs(this.getY()-y) && (Math.abs(i-x)==Math.abs(j-y)) &&!(t.fichas[i][j] instanceof Casilla) )
+                        throw new NonValidMove("No puedes moverte adelante de otra pieza.");
+                    }
+        
+        }}
+        else if( this.getX()<x && this.getY()>y ){
+            for ( int i = this.getX() +1; i < x; i++) {
+                for ( int j = y; j < this.getY(); j++) {
+                    if ( Math.abs(this.getX()-x)==Math.abs(this.getY()-y) && (Math.abs(i-x)==Math.abs(j-y)) && !(t.fichas[i][j] instanceof Casilla))
+                        throw new NonValidMove("No puedes moverte adelante de otra pieza.");                
+
+                }
+            }}
+        else if( this.getX()>x && this.getY()<y ){
+            for ( int i = x; i < this.getX(); i++) {
+                for ( int j = this.getY(); j < y ; j++) {
+                    if (Math.abs(this.getX()-x)==Math.abs(this.getY()-y) && (Math.abs(i-x)==Math.abs(j-y)) && !(t.fichas[i][j] instanceof Casilla))
+                        throw new NonValidMove("No puedes moverte adelante de otra pieza.");                
+
+                }
+            }}
+        else if( this.getX()>x && this.getY()>y ){
+            for ( int i = x; i < this.getX(); i++) {
+                for ( int j = y; j < this.getY() ; j++) {
+                    if ( Math.abs(this.getX()-x)==Math.abs(this.getY()-y) &&(Math.abs(i-x)==Math.abs(j-y)) && !(t.fichas[i][j] instanceof Casilla))
+                        throw new NonValidMove("No puedes moverte adelante de otra pieza.");                
+
+                }
+            }}
     }
 }
+            
+     
+

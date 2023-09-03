@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Tablero {
          
-    private Ficha[][] fichas;
+    public Ficha[][] fichas;
     private ArrayList<Ficha> eliminadas;
 
     public Tablero() {
