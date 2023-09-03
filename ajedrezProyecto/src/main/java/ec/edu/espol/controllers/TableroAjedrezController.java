@@ -61,6 +61,26 @@ public class TableroAjedrezController implements Initializable {
     private GridPane blacktable;
     @FXML
     private GridPane whitetable;
+    @FXML
+    private Label wQcounter;
+    @FXML
+    private Label wPcounter;
+    @FXML
+    private Label wRcounter;
+    @FXML
+    private Label wKcounter;
+    @FXML
+    private Label wBcounter;
+    @FXML
+    private Label bQcounter;
+    @FXML
+    private Label bRcounter;
+    @FXML
+    private Label bKcounter;
+    @FXML
+    private Label bBcounter;
+    @FXML
+    private Label bPcounter;
     
 
     /**
