@@ -387,10 +387,7 @@ public class TableroAjedrezController implements Initializable {
                             }
                             seleccionado.setStyle(estiloBoton);
                             seleccionado = null;
-                            if (turno.equals(Equipo.BLANCAS))
-                                turno = Equipo.NEGRAS;
-                            else
-                                turno = Equipo.BLANCAS;
+                            cambiarTurno();
                             ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");
                         }
 //                    
@@ -409,11 +406,7 @@ public class TableroAjedrezController implements Initializable {
                     }
                     catch(NullPointerException ex)
                     {
-                    seleccionado = ficha;
-                    estiloBoton = seleccionado.getStyle(); // Almacena el estilo original del botón
-                    seleccionado.setStyle("-fx-background-color: #FFD700;"); // Cambiar el fondo del botón cuando se selecciona
-                    if (ficha instanceof Casilla)
-                        ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000");  
+//                     
                     }
                     catch (NonValidMove ex) 
                     {
@@ -424,7 +417,12 @@ public class TableroAjedrezController implements Initializable {
                     //También debe haber algún catch que atrape una excepción de jaque mate, debe estar antes que la del jaque
                     catch (WrongTurnException ex)
                     {
-                    mostrarMensaje(ex.getMessage(),turno);
+                    Equipo team;
+                    if (turno.equals(Equipo.BLANCAS))
+                        team = Equipo.NEGRAS;
+                    else
+                        team = Equipo.BLANCAS;
+                    mostrarMensaje(ex.getMessage(),team);
                     }
                     catch (Exception ex) 
                     {
@@ -442,4 +440,11 @@ public class TableroAjedrezController implements Initializable {
             blackmessage.setText(mensaje);
     }
  
+    public void cambiarTurno()
+    {
+    if (turno.equals(Equipo.BLANCAS))
+        turno = Equipo.NEGRAS;
+    else
+        turno = Equipo.BLANCAS;
+    }
 }

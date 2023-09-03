@@ -36,7 +36,7 @@ public class Casilla extends Ficha {
     @Override
     public void mover(Ficha f) {
         try {
-            super.mover(f); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            super.mover(f);
         } catch (NonValidMove ex) {
             Alert a = new Alert(Alert.AlertType.WARNING,"Mensaje secreto!");
             a.show();
