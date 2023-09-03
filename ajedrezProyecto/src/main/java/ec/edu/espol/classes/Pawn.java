@@ -86,12 +86,24 @@ public class Pawn extends Ficha {
             difY = 1 + difY;
         if(this.getColor().equals(Equipo.BLANCAS))
         {
-        if(this.getY()-y> difY ||this.getY()-y<0|| x-this.getX()!= 0)
-            throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+            if(this.getY()-y> difY ||this.getY()-y<0|| x-this.getX()!= 0)
+                throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+            else if(Math.abs(this.getY()-y)==2){
+                if(!(t.fichas[x][y+1] instanceof Casilla))
+                    throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                
+            }
+            
         }
         else
             if(y-this.getY()> difY ||y-this.getY()<0|| x-this.getX()!= 0)
-            throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+                throw new NonValidMove("Movimiento fuera del rango de la pieza.");
+            else if(Math.abs(this.getY()-y)==2){
+                if(!(t.fichas[x][y-1] instanceof Casilla))
+                    throw new NonValidMove("No puedes moverte encima de otra pieza.");
+                
+            }
+                
         this.primerMovimiento = false;
     }
 
