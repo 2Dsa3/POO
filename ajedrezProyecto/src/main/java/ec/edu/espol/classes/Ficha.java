@@ -192,7 +192,8 @@ public abstract class Ficha extends Button {
     public void piezaClavada(Ficha f) throws PossibleCheckmate{
       Ficha[][] nt = TableroAjedrezController.t.getFichas().clone();
         //try {
-            nt[this.getX()][this.getY()] = f;
+            
+            nt[this.getX()][this.getY()] = new Casilla(this.getX(),this.getY(),t);
             nt[f.getX()][f.getY()] = this;
         //} catch (CloneNotSupportedException ex) {
             //ex.printStackTrace();
@@ -200,21 +201,24 @@ public abstract class Ficha extends Button {
 //                    a.show();
        // }
       for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Equipo color;
-                if (nt[i][j] instanceof King && !(((this.getColor()).equals(nt[i][j].getColor()))) ) {
-                    color = nt[i][j].getColor();
-                    King k= (King)nt[i][j];
-                    System.out.println("CUMPLE");
-                    k.estaEnJaque(color,nt); 
 
-                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
+                            for (int j = 0; j < 8; j++) {
+                                Equipo color;
+                                if (nt[i][j] instanceof King && (((this.getColor()).equals(nt[i][j].getColor()))) ) {
+                                    color = nt[i][j].getColor();
+                                    System.out.println("Castea al rey");
+                                    King k= (King)nt[i][j];
+                                    System.out.println("CUMPLE");
+                                    k.estaEnJaque(color,nt); 
+                                    
+                                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
 
-                    }
-
-                }
-
-            }
     }
 
     @Override
