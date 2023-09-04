@@ -132,6 +132,7 @@ public abstract class Ficha extends Button {
 //                    a.show();
        // }
       for (int i = 0; i < 8; i++) {
+
                             for (int j = 0; j < 8; j++) {
                                 //Equipo color;
                                 if (nt[i][j] instanceof King && (((this.getColor()).equals(nt[i][j].getColor()))) ) {
@@ -147,6 +148,7 @@ public abstract class Ficha extends Button {
                                 }
                                 
                             }
+
     }
 
     @Override
