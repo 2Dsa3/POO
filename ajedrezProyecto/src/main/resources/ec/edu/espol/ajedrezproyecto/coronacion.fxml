@@ -28,13 +28,13 @@
             <Font name="System Bold Italic" size="35.0" />
          </font>
          <VBox.margin>
-            <Insets left="137.0" top="11.0" />
+            <Insets left="203.0" top="11.0" />
          </VBox.margin>
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <GridPane prefHeight="469.0" prefWidth="524.0">
+      <GridPane fx:id="Gp" prefHeight="469.0" prefWidth="524.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
