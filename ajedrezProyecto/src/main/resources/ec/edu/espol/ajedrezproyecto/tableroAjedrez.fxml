@@ -147,7 +147,7 @@
                         <Label fx:id="wBcounter" text="x0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../Desktop/Alexandre%20Icaza/Random/Aspectos/763c0e300249815cfeaa5912176fac47.jpg" />
+                              <Image url="@../../../../../../../../chessPieces/whitequeen.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
