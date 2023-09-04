@@ -345,7 +345,7 @@ public class TableroAjedrezController implements Initializable {
                     }
                     catch(PossibleCheckmate ex)
                     {
-                        Equipo team;
+                    Equipo team;
                     if (turno.equals(Equipo.BLANCAS))
                         team = Equipo.NEGRAS;
                     else

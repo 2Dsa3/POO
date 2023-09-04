@@ -94,7 +94,7 @@ public abstract class Ficha extends Button {
     
     }
     
-    public abstract void validarMovimiento(int x, int y) throws NonValidMove, PossibleCheckmate;
+    public abstract void validarMovimiento(int x, int y) throws NonValidMove;
     
 //    public static Ficha elegirFicha(int i, int j,Tablero t)
 //    {
@@ -174,7 +174,7 @@ public abstract class Ficha extends Button {
                 Tooltip.install(this, tooltip);
     }
     
-    public void capturar (Ficha f) throws NonValidMove, PossibleCheckmate{
+    public void capturar (Ficha f) throws NonValidMove{
         this.validarMovimiento(f.getX(),f.getY());
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;

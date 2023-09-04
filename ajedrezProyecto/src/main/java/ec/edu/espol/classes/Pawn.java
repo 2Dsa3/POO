@@ -79,7 +79,7 @@ public class Pawn extends Ficha {
     }
 
     @Override
-    public void validarMovimiento(int x, int y) throws NonValidMove 
+    public void validarMovimiento(int x, int y) throws NonValidMove
     {    
         int difY = 1;
         if (this.primerMovimiento)
@@ -110,7 +110,7 @@ public class Pawn extends Ficha {
     }
 
     @Override
-    public void capturar(Ficha f) throws NonValidMove,PossibleCheckmate {
+    public void capturar(Ficha f) throws NonValidMove{
         this.validarCaptura(f.getX(),f.getY());
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
@@ -122,33 +122,30 @@ public class Pawn extends Ficha {
         f.setY(newY); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    public void validarCaptura(int x, int y) throws NonValidMove, PossibleCheckmate {
+    public void validarCaptura(int x, int y) throws NonValidMove {
         int disX = Math.abs(this.getX()-x);
+        System.out.println("validar Captura se ejecuta");
         int disY = this.getY()-y;
         if(this.getColor().equals(Equipo.NEGRAS))
             disY = -disY;
         if(!(disX == 1 && disY==1))
             throw new NonValidMove("Así no captura un peón, es muy obvio.");
-        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 8; j++) {
-                                Equipo color;
-                                if (t.fichas[i][j] instanceof King && !(((this.getColor()).equals(t.fichas[i][j].getColor()))) ) {
-                                    color = t.fichas[i][j].getColor();
-                                    King k= (King)t.fichas[i][j];
-                                    System.out.println("CUMPLE");
-                                    if (k.estaEnJaque(color)){ 
-                                        Equipo c = k.getColor();
-                                        throw new PossibleCheckmate("Estás en jaque");
-                                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
-                                        
-                                    }
-                                    
-                                }
-                                
-                            }
-                            
-                        }
+//        for (int i = 0; i < 8; i++) {
+//                            for (int j = 0; j < 8; j++) {
+//                                Equipo color;
+//                                if (t.fichas[i][j] instanceof King && !(((this.getColor()).equals(t.fichas[i][j].getColor()))) ) {
+//                                    color = t.fichas[i][j].getColor();
+//                                    King k= (King)t.fichas[i][j];
+//                                    System.out.println("CUMPLE");
+//                                    k.estaEnJaque(color); 
+//                                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
+//                                        
+//                                    }
+//                                    
+//                            }}
     }
-   
+    }
+                                
+                    
     
-}
+
