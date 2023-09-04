@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -39,6 +40,8 @@ public class CoronacionController implements Initializable {
     private Button Preina;
     @FXML
     private ImageView ImgReina;
+    @FXML
+    private GridPane Gp;
 
     /**
      * Initializes the controller class.
