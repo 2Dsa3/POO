@@ -291,6 +291,7 @@ public class TableroAjedrezController implements Initializable {
                                 pane.add(crearCasilla(column1,row1,t,pane), column1, row1);
                                 t.fichas[column1][row1]=crearCasilla(column1,row1,t,pane);
                                 pane.add(seleccionado, column2, row2);
+                                actualizarTabla(ficha);
                                 if (seleccionado==null)
                                     {t.fichas[column2][row2]= new Casilla(column2,row2,t);
                                     }
@@ -376,4 +377,65 @@ public class TableroAjedrezController implements Initializable {
     else
         turno = Equipo.BLANCAS;
     } 
+    
+    public void actualizarTabla(Ficha f)
+    {
+    if(f.getColor().equals(Equipo.BLANCAS)){
+        if (f instanceof Queen)
+        {
+            int nAmount = Integer.parseInt(wQcounter.getText());
+            wQcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Rook)
+        {
+            int nAmount = Integer.parseInt(wRcounter.getText());
+            wRcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Bishop)
+        {
+            int nAmount = Integer.parseInt(wBcounter.getText());
+            wBcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Knight)
+        {
+            int nAmount = Integer.parseInt(wKcounter.getText());
+            wKcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Pawn)
+        {
+            int nAmount = Integer.parseInt(wPcounter.getText());
+            wPcounter.setText(String.valueOf(nAmount+1));
+        }
     }
+    else
+    {
+        if (f instanceof Queen)
+        {
+            int nAmount = Integer.parseInt(bQcounter.getText());
+            bQcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Rook)
+        {
+            int nAmount = Integer.parseInt(bRcounter.getText());
+            bRcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Bishop)
+        {
+            int nAmount = Integer.parseInt(bBcounter.getText());
+            bBcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Knight)
+        {
+            int nAmount = Integer.parseInt(bKcounter.getText());
+            bKcounter.setText(String.valueOf(nAmount+1));
+        }
+        if (f instanceof Pawn)
+        {
+            int nAmount = Integer.parseInt(bPcounter.getText());
+            bPcounter.setText(String.valueOf(nAmount+1));
+        }
+    }
+           
+        }
+    }
+    
