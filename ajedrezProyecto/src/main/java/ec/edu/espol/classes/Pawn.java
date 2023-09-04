@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.classes;
 
+import javafx.scene.control.Alert;
+
 
 /**
  *
@@ -107,6 +109,7 @@ public class Pawn extends Ficha {
         //Buscar al rey de this.color()    
         //verificas si está en jaque, si está en jaque tira la excepción.
         this.primerMovimiento = false;
+        this.llegoAlFinal(x,y);
     }
 
     @Override
@@ -143,6 +146,23 @@ public class Pawn extends Ficha {
 //                                    }
 //                                    
 //                            }}
+        this.llegoAlFinal(x,y);
+    }
+    public void llegoAlFinal(int x, int y ){
+        if (this.getColor().equals(Equipo.BLANCAS)) {
+            if (y==0) {
+                Alert a = new Alert(Alert.AlertType.ERROR,"A coronar");                   
+                a.show();
+            }
+            
+        }
+        else {
+            if (y==7) {
+                Alert a = new Alert(Alert.AlertType.ERROR,"A coronar");                   
+                a.show();
+            }
+        }
+        
     }
     }
                                 
