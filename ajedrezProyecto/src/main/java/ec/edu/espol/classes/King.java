@@ -32,24 +32,16 @@ public class King extends Ficha{
         if(d > Math.sqrt(2)||dX==2)
             throw new NonValidMove("Movimiento fuera del rango de la pieza.");
         
-//        for (int i = 0; i < 8; i++) {
-//                            for (int j = 0; j < 8; j++) {
-//                                Equipo color;
-//                                if (t.fichas[i][j] instanceof King && !(((this.getColor()).equals(t.fichas[i][j].getColor()))) ) {
-//                                    color = t.fichas[i][j].getColor();
-//                                    King k= (King)t.fichas[i][j];
-//                                    System.out.println("CUMPLE");
-//                                    k.estaEnJaque(color); 
-//                                    
-//                                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
-//                                        
-//                                    }
-//                                    
-//                                }
-//                                
-//                            }
+    }
+        
+//     
+
+    @Override
+    public void piezaClavada(Ficha f) throws PossibleCheckmate{
+        this.estaEnJaque(this.getColor()); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
                             
-                        }
+                        
     
 
     @Override
@@ -65,30 +57,38 @@ public class King extends Ficha{
         return false;
     }
     //color es el del rey
-//    public void estaEnJaque(Equipo color) throws NonValidMove{
-//        for (int i = 0; i < 8; i++) {
-//            for (int j = 0; j < 8; j++) {
-//                if (! (t.fichas[i][j].getColor().equals(color))){
-//                    try{
-//                        if (t.fichas[i][j] instanceof Pawn){
-//                            Pawn p = (Pawn) t.fichas[i][j];
-//                            p.validarCaptura(this.getX(),this.getY());
-//                        }
-//                        
-//                        else
-//                            t.fichas[i][j].validarMovimiento(this.getX(),this.getY());
-//                        System.out.println("Se ejecuta el bool");
-//                        throw new P("Estás en Jaque.");
-//                    }
-//                    catch(NonValidMove e){
-//                        
-//                    }
-//                    
-//                }
-//                    
-//            }
-//        }
-//    }
+    public void estaEnJaque(Equipo color) throws PossibleCheckmate
+    {
+        for (int i = 0; i < 8; i++) 
+        {
+            for (int j = 0; j < 8; j++) 
+            {
+                if(t.fichas[i][j] instanceof Casilla == false)
+                {
+                    if (! (t.fichas[i][j].getColor().equals(color)))
+                    {
+                        try
+                        {
+                            if (t.fichas[i][j] instanceof Pawn)
+                            {
+                                Pawn p = (Pawn) t.fichas[i][j];
+                                p.validarCaptura(this.getX(),this.getY());
+                            }
+                            else
+                                t.fichas[i][j].validarMovimiento(this.getX(),this.getY());
+                            System.out.println("Se ejecuta el bool");
+                            throw new PossibleCheckmate("Estás en Jaque.");
+                        }
+                        catch(NonValidMove e){
+                            System.out.println("Se lanza el no valid move");
+                        }
+
+                    }
+                }
+                    
+            }
+        }
+    }
     
 //    for (int i = 0; i < 8; i++) {
 //                            for (int j = 0; j < 8; j++) {

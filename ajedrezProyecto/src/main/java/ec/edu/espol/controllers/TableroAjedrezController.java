@@ -50,7 +50,7 @@ public class TableroAjedrezController implements Initializable {
     private final int tamañoImagen = 40;
     private String estiloBoton = "";
     final String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
-    static Tablero t = new Tablero();
+    public static Tablero t = new Tablero();
     private Equipo turno = Equipo.BLANCAS;
 
     
@@ -325,6 +325,7 @@ public class TableroAjedrezController implements Initializable {
                     
                     catch(NullPointerException ex)
                     {
+                        ex.printStackTrace();
 //                     
                     }
                     catch (NonValidMove ex) 
