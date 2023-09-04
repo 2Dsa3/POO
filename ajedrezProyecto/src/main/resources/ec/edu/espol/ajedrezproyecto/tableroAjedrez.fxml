@@ -147,7 +147,7 @@
                         <Label fx:id="wBcounter" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../target/classes/ec/edu/espol/chessPieces/whitequeen.png" />
+                              <Image url="@../../../../../../chessPieces/whitequeen.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -157,25 +157,25 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/whiterook.png" />
+                              <Image url="@../../../../../../chessPieces/whiterook.png" />
                            </image></ImageView>
                         <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/whiteknight.png" />
+                              <Image url="@../../../../../../chessPieces/whiteknight.png" />
                            </image></ImageView>
                         <ImageView fitHeight="26.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/whitebishop.png" />
+                              <Image url="@../../../../../../chessPieces/whitebishop.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></ImageView>
                         <ImageView fitHeight="27.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/whitepawn.png" />
+                              <Image url="@../../../../../../chessPieces/whitepawn.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -239,7 +239,7 @@
                         <Label fx:id="bPcounter" alignment="CENTER" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/blackbishop.png" />
+                              <Image url="@../../../../../../chessPieces/blackbishop.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -247,7 +247,7 @@
                         </ImageView>
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/blackrook.png" />
+                              <Image url="@../../../../../../chessPieces/blackrook.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -255,7 +255,7 @@
                         </ImageView>
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/blackknight.png" />
+                              <Image url="@../../../../../../chessPieces/blackknight.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -263,7 +263,7 @@
                         </ImageView>
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/blackqueen.png" />
+                              <Image url="@../../../../../../chessPieces/blackqueen.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -271,7 +271,7 @@
                         </ImageView>
                         <ImageView fitHeight="24.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../../../../../../../../chessPieces/blackpawn.png" />
+                              <Image url="@../../../../../../chessPieces/blackpawn.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="10.0" />
