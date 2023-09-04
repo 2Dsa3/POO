@@ -57,7 +57,7 @@ public class King extends Ficha{
         return false;
     }
     //color es el del rey
-    public void estaEnJaque(Equipo color,Ficha[][] nt) throws PossibleCheckmate
+    public void estaEnJaque(Ficha[][] nt) throws PossibleCheckmate
     {
         for (int i = 0; i < 8; i++) 
         {
@@ -65,7 +65,7 @@ public class King extends Ficha{
             {
                 if(nt[i][j] instanceof Casilla == false)
                 {
-                    if (! (nt[i][j].getColor().equals(color)))
+                    if (! (nt[i][j].getColor().equals(this.getColor())))
                     {
                         try
                         {
@@ -76,7 +76,7 @@ public class King extends Ficha{
                             }
                             else
                                 nt[i][j].validarMovimiento(this.getX(),this.getY());
-                            System.out.println("Se ejecuta el bool");
+                            System.out.println("Se lanza PossibleCheckmate");
                             throw new PossibleCheckmate("Estás en Jaque.");
                         }
                         catch(NonValidMove e){

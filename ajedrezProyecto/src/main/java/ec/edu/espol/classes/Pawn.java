@@ -110,8 +110,9 @@ public class Pawn extends Ficha {
     }
 
     @Override
-    public void capturar(Ficha f) throws NonValidMove{
+    public void capturar(Ficha f) throws NonValidMove, PossibleCheckmate{
         this.validarCaptura(f.getX(),f.getY());
+        this.piezaClavada(f);
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
         int newX = this.getX();

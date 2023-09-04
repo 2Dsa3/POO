@@ -91,82 +91,9 @@ public abstract class Ficha extends Button {
         return "\n"+this.color.toString() + "\n" + this.getPosicion();
           
     }
-    public void moverFicha(){
-    
-    }
     
     public abstract void validarMovimiento(int x, int y) throws NonValidMove;
     
-//    public static Ficha elegirFicha(int i, int j,Tablero t)
-//    {
-//        Ficha ficha = null;
-//        Equipo e;
-//        if (i == 7)
-//            e = Equipo.BLANCAS;
-//        else
-//            e = Equipo.NEGRAS;
-//        switch (j) 
-//            {
-//                    case 0:
-//                        case 7:
-//                            ficha = new Rook(e,i,j,t);
-//                            break;
-//                    case 1:
-//                        case 6:
-//                            ficha = new Knight(e,i,j,t);
-//                            break;
-//                    case 2:
-//                        case 5:
-//                            ficha = new Bishop(e,i,j,t);
-//                            break;
-//                    case 3:
-//                        ficha = new Queen(e,i,j,t);
-//                        break;
-//                    case 4:
-//                        ficha = new King(e,i,j,t);
-//                        break;
-//            }
-//    return ficha;
-//    }
-//    
-//    public static Ficha crearBoton(int i,int j,Tablero t,int tB, int tI) {
-//        Ficha ficha;
-//        Image img;
-//        String[] pieceOrder = {"rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"};
-//        switch (i) 
-//                {
-//                    case 0:
-//                        img = new Image("ec/edu/espol/chessPieces/" +"black"+ pieceOrder[j]+".png");
-//                        ficha = elegirFicha(i,j,t);
-//                        break;
-//                        
-//                    case 1:
-//                        img = new Image("ec/edu/espol/chessPieces/blackpawn.png");
-//                        ficha = new Pawn(Equipo.NEGRAS,i,j,t);
-//                        break;
-//                        
-//                    case 6:
-//                        img = new Image("ec/edu/espol/chessPieces/whitepawn.png");
-//                        ficha = new Pawn(Equipo.BLANCAS,i,j,t);
-//                        break;
-//                        
-//                    case 7:
-//                        img = new Image("ec/edu/espol/chessPieces/" +"white"+ pieceOrder[j]+".png");
-//                        ficha = elegirFicha(i,j,t);
-//                        break;
-//                        
-//                    default:
-//                        img = new Image("ec/edu/espol/chessPieces/vacio.png");
-//                        ficha = new Casilla(i,j,t);
-//                        break;
-//                }
-//        ficha.setPrefSize(tB, tB);
-//        ImageView imageView = new ImageView(img); // Cambia por la imagen por defecto
-//        imageView.setFitWidth(tI);
-//        imageView.setFitHeight(tI);
-//        ficha.setGraphic(imageView);
-//        return ficha;
-//    }
     
     public void actualizarTooltip()
     {
@@ -194,7 +121,11 @@ public abstract class Ficha extends Button {
         //try {
             
             nt[this.getX()][this.getY()] = new Casilla(this.getX(),this.getY(),t);
-            nt[f.getX()][f.getY()] = this;
+            Ficha cloned = this.clone();
+            nt[f.getX()][f.getY()] = cloned;
+            cloned.setX(f.getX());
+            cloned.setY(f.getY());
+            
         //} catch (CloneNotSupportedException ex) {
             //ex.printStackTrace();
 //        Alert a = new Alert(Alert.AlertType.ERROR,"MO se clonó");
@@ -202,13 +133,12 @@ public abstract class Ficha extends Button {
        // }
       for (int i = 0; i < 8; i++) {
                             for (int j = 0; j < 8; j++) {
-                                Equipo color;
+                                //Equipo color;
                                 if (nt[i][j] instanceof King && (((this.getColor()).equals(nt[i][j].getColor()))) ) {
-                                    color = nt[i][j].getColor();
                                     System.out.println("Castea al rey");
                                     King k= (King)nt[i][j];
                                     System.out.println("CUMPLE");
-                                    k.estaEnJaque(color,nt); 
+                                    k.estaEnJaque(nt); 
                                     
                                         //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
                                         
@@ -220,8 +150,31 @@ public abstract class Ficha extends Button {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    protected Ficha clone(){
+    Ficha f = null;
+        if (this instanceof Queen)
+        {
+            f = new Queen(this.getColor(),this.getX(),this.getY(),t);
+        }
+        if (this instanceof Rook)
+        {
+            f = new Rook(this.getColor(),this.getX(),this.getY(),t);
+        }
+        if (this instanceof Bishop)
+        {
+            f = new Rook(this.getColor(),this.getX(),this.getY(),t);
+        }
+        if (this instanceof Knight)
+        {
+            f = new Rook(this.getColor(),this.getX(),this.getY(),t);
+        }
+        if (this instanceof Pawn)
+        {
+            f = new Rook(this.getColor(),this.getX(),this.getY(),t);
+        }
+    
+        return f; 
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
     
