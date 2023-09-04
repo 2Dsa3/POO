@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controllers.CoronacionController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controllers.CoronacionController">
    <children>
       <ImageView fx:id="estrellasB" fitHeight="40.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>
@@ -23,12 +24,12 @@
             <Insets top="-44.0" />
          </VBox.margin>
       </ImageView>
-      <Label text="PROMOCIÓN" textFill="#387ea1">
+      <Label text="PROMOCIÓN" textFill="#55a138" underline="true">
          <font>
             <Font name="System Bold Italic" size="35.0" />
          </font>
          <VBox.margin>
-            <Insets left="203.0" top="11.0" />
+            <Insets left="150.0" top="11.0" />
          </VBox.margin>
          <padding>
             <Insets right="10.0" />
@@ -46,43 +47,73 @@
          <children>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                <Button fx:id="Pcaballo" mnemonicParsing="false" prefHeight="25.0" text="PROMOVER A">
+                <Button fx:id="Pcaballo" mnemonicParsing="false" prefHeight="37.0" text="PROMOVER A">
                      <font>
-                        <Font size="9.0" />
+                        <Font name="System Bold Italic" size="9.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="ImgCaballo" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ImgCaballo" fitHeight="114.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../chessPieces/knight.png" />
+                     </image></ImageView>
               </buttons>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
             </ButtonBar>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1">
               <buttons>
-                <Button fx:id="Ptorre" mnemonicParsing="false" text="PROMOVER A">
+                <Button fx:id="Ptorre" minWidth="74.0" mnemonicParsing="false" prefHeight="38.0" text="PROMOVER A">
                      <font>
-                        <Font size="9.0" />
+                        <Font name="Arial Bold Italic" size="9.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="ImgTorre" fitHeight="150.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ImgTorre" fitHeight="115.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../chessPieces/rook.png" />
+                     </image></ImageView>
               </buttons>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
             </ButtonBar>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="1">
               <buttons>
-                <Button fx:id="Palfil" mnemonicParsing="false" text="PROMOVER A">
+                <Button fx:id="Palfil" mnemonicParsing="false" prefHeight="35.0" text="PROMOVER A">
                      <font>
-                        <Font size="9.0" />
+                        <Font name="Arial Bold Italic" size="9.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="ImgAlfil" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ImgAlfil" fitHeight="114.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../chessPieces/bishop.png" />
+                     </image></ImageView>
               </buttons>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
             </ButtonBar>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <buttons>
-                <Button fx:id="Preina" mnemonicParsing="false" text="PROMOVER A">
+                <Button fx:id="Preina" mnemonicParsing="false" prefHeight="36.0" text="PROMOVER A">
                      <font>
-                        <Font size="9.0" />
+                        <Font name="Arial Bold Italic" size="9.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="ImgReina" fitHeight="150.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ImgReina" fitHeight="114.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../chessPieces/queen.png" />
+                     </image></ImageView>
               </buttons>
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="60.0" />
+               </GridPane.margin>
             </ButtonBar>
          </children>
       </GridPane>
