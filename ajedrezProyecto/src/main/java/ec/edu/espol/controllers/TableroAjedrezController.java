@@ -357,7 +357,7 @@ public class TableroAjedrezController implements Initializable {
                     catch (Exception ex) 
                     {
                     System.out.println(ex);
-                    Alert a = new Alert(Alert.AlertType.ERROR,"Error inesperado. Notificar al desarrollador");
+                    Alert a = new Alert(Alert.AlertType.ERROR,ex.getMessage());
                     a.show();
                     }
                 });
