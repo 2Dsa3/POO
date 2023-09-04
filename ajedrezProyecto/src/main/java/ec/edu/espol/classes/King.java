@@ -36,11 +36,11 @@ public class King extends Ficha{
         
 //     
 
-    @Override
-    public void piezaClavada(Ficha f) throws PossibleCheckmate{
-        this.estaEnJaque(this.getColor()); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-                            
+//    @Override
+//    public void piezaClavada(Ficha f) throws PossibleCheckmate{
+//        this.estaEnJaque(this.getColor(),nt); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+//    }
+//                            
                         
     
 
@@ -57,25 +57,25 @@ public class King extends Ficha{
         return false;
     }
     //color es el del rey
-    public void estaEnJaque(Equipo color) throws PossibleCheckmate
+    public void estaEnJaque(Equipo color,Ficha[][] nt) throws PossibleCheckmate
     {
         for (int i = 0; i < 8; i++) 
         {
             for (int j = 0; j < 8; j++) 
             {
-                if(t.fichas[i][j] instanceof Casilla == false)
+                if(nt[i][j] instanceof Casilla == false)
                 {
-                    if (! (t.fichas[i][j].getColor().equals(color)))
+                    if (! (nt[i][j].getColor().equals(color)))
                     {
                         try
                         {
-                            if (t.fichas[i][j] instanceof Pawn)
+                            if (nt[i][j] instanceof Pawn)
                             {
-                                Pawn p = (Pawn) t.fichas[i][j];
+                                Pawn p = (Pawn) nt[i][j];
                                 p.validarCaptura(this.getX(),this.getY());
                             }
                             else
-                                t.fichas[i][j].validarMovimiento(this.getX(),this.getY());
+                                nt[i][j].validarMovimiento(this.getX(),this.getY());
                             System.out.println("Se ejecuta el bool");
                             throw new PossibleCheckmate("Estás en Jaque.");
                         }
