@@ -40,6 +40,8 @@ public class Casilla extends Ficha {
         } catch (NonValidMove ex) {
             Alert a = new Alert(Alert.AlertType.WARNING,"Mensaje secreto!");
             a.show();
+        } catch (PossibleCheckmate ex) {
+            ex.printStackTrace();
         }
     }
     

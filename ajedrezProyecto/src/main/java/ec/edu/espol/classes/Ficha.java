@@ -30,9 +30,10 @@ public abstract class Ficha extends Button {
         this.t= t;
     }
 
-   public void mover(Ficha f) throws NonValidMove{
+   public void mover(Ficha f) throws NonValidMove, PossibleCheckmate{
         
         this.validarMovimiento(f.getX(),f.getY());
+        
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
         int newX = this.getX();
@@ -93,7 +94,7 @@ public abstract class Ficha extends Button {
     
     }
     
-    public abstract void validarMovimiento(int x, int y) throws NonValidMove;
+    public abstract void validarMovimiento(int x, int y) throws NonValidMove, PossibleCheckmate;
     
 //    public static Ficha elegirFicha(int i, int j,Tablero t)
 //    {
@@ -173,7 +174,7 @@ public abstract class Ficha extends Button {
                 Tooltip.install(this, tooltip);
     }
     
-    public void capturar (Ficha f) throws NonValidMove{
+    public void capturar (Ficha f) throws NonValidMove, PossibleCheckmate{
         this.validarMovimiento(f.getX(),f.getY());
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;

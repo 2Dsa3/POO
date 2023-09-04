@@ -264,6 +264,7 @@ public class TableroAjedrezController implements Initializable {
                             
                             if(ficha instanceof Casilla)
                             {
+                                
                                 seleccionado.mover(ficha);
                                 t.fichas[x][y]=ficha;
                                 
@@ -340,6 +341,16 @@ public class TableroAjedrezController implements Initializable {
                     else
                         team = Equipo.BLANCAS;
                     mostrarMensaje(ex.getMessage(),team);
+                    }
+                    catch(PossibleCheckmate ex)
+                    {
+                        Equipo team;
+                    if (turno.equals(Equipo.BLANCAS))
+                        team = Equipo.NEGRAS;
+                    else
+                        team = Equipo.BLANCAS;
+                    mostrarMensaje(ex.getMessage(),team);
+                    
                     }
                     catch (Exception ex) 
                     {

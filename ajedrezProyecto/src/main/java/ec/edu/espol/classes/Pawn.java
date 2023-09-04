@@ -91,7 +91,7 @@ public class Pawn extends Ficha {
             else if(Math.abs(this.getY()-y)==2){
                 if(!(t.fichas[x][y+1] instanceof Casilla))
                     throw new NonValidMove("No puedes moverte encima de otra pieza.");
-                System.out.println("lol");
+                System.out.println("lol mensaje secreto de Sumba");
                 
             }
             
@@ -104,12 +104,13 @@ public class Pawn extends Ficha {
                     throw new NonValidMove("No puedes moverte encima de otra pieza.");
                 
             }
-                
+        //Buscar al rey de this.color()    
+        //verificas si está en jaque, si está en jaque tira la excepción.
         this.primerMovimiento = false;
     }
 
     @Override
-    public void capturar(Ficha f) throws NonValidMove {
+    public void capturar(Ficha f) throws NonValidMove,PossibleCheckmate {
         this.validarCaptura(f.getX(),f.getY());
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
@@ -121,13 +122,32 @@ public class Pawn extends Ficha {
         f.setY(newY); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    private void validarCaptura(int x, int y) throws NonValidMove {
+    public void validarCaptura(int x, int y) throws NonValidMove, PossibleCheckmate {
         int disX = Math.abs(this.getX()-x);
         int disY = this.getY()-y;
         if(this.getColor().equals(Equipo.NEGRAS))
             disY = -disY;
         if(!(disX == 1 && disY==1))
             throw new NonValidMove("Así no captura un peón, es muy obvio.");
+        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                Equipo color;
+                                if (t.fichas[i][j] instanceof King && !(((this.getColor()).equals(t.fichas[i][j].getColor()))) ) {
+                                    color = t.fichas[i][j].getColor();
+                                    King k= (King)t.fichas[i][j];
+                                    System.out.println("CUMPLE");
+                                    if (k.estaEnJaque(color)){ 
+                                        Equipo c = k.getColor();
+                                        throw new PossibleCheckmate("Estás en jaque");
+                                        //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
+                        }
     }
    
     
