@@ -47,6 +47,7 @@ public class King extends Ficha{
     @Override
     public void mover(Ficha f) throws NonValidMove, PossibleCheckmate{
         super.mover(f);
+        
         if (reySolo())
             King.count = King.count + 1;
     }
@@ -88,6 +89,28 @@ public class King extends Ficha{
 
                     }
                 }
-                    
+    
+    public void estaEnJaque() throws PossibleCheckmate{
+        ArrayList<Ficha> piezasColor = null;
+        if (this.getColor().equals(Equipo.BLANCAS))
+            piezasColor = t.piezasNegras;
+        else
+            piezasColor = t.piezasBlancas;
+        for (Ficha pieza: piezasColor){
+            try{
+            if (pieza instanceof Pawn)
+                {
+                    Pawn p = (Pawn) pieza;
+                    p.validarCaptura(this.getX(),this.getY());
+                }
+            else
+                pieza.validarMovimiento(this.getX(),this.getY());
+            throw new PossibleCheckmate("Estás en Jaque. \n" + pieza.toString() + "te ataca en" + this.toString());
             }
+            catch(NonValidMove e){
+                System.out.println("Se lanza el no valid move de "  + pieza.toString());
+            }               
+            }
+    }
+}
      

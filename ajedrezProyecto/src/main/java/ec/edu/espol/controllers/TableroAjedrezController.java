@@ -351,7 +351,24 @@ public class TableroAjedrezController implements Initializable {
                     else
                         team = Equipo.BLANCAS;
                     mostrarMensaje(ex.getMessage(),turno);
-                    
+//                        ArrayList<Ficha> piezasColor = null;
+//                        if (seleccionado.getColor().equals(Equipo.BLANCAS))
+//                            piezasColor = t.piezasBlancas;
+//                        else
+//                            piezasColor = t.piezasNegras;
+//                      for (Ficha pieza: piezasColor){
+//                            //Equipo color;
+//                            if (pieza instanceof King) {
+//                                King k = (King) pieza;
+//                                try {
+//                                    k.estaEnJaque();
+//                                } catch (PossibleCheckmate ex1) {
+//                                    Alert a = new Alert(Alert.AlertType.INFORMATION,"Ganan las " + pieza.getColor().toString());
+//                                    a.show();
+//                                }                              
+//                            }
+                            
+//                        }
                     }
                     catch (Exception ex) 
                     {

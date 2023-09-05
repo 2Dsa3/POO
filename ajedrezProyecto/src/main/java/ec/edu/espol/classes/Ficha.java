@@ -140,17 +140,7 @@ public abstract class Ficha extends Button {
     }
     
     public void piezaClavada(Ficha f) throws PossibleCheckmate{
-//      Ficha[][] nt = TableroAjedrezController.t.getFichas().clone();
-//        //try {
-//            Ficha cloned;
-//            nt[this.getX()][this.getY()] = new Casilla(this.getX(),this.getY(),t);
-//            if (f instanceof Casilla)
-//                cloned = new Casilla(this.getX(),this.getY(),t);
-//            else
-//                cloned = f.clone();
-//            nt[f.getX()][f.getY()] = cloned;
-//            cloned.setX(f.getX());
-//            cloned.setY(f.getY());
+//    
         int newX = this.getX();
         int newY = this.getY();
         this.setX(f.getX());
