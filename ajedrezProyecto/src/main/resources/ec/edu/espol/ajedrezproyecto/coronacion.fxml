@@ -54,7 +54,7 @@
                   </Button>
                   <ImageView fx:id="ImgCaballo" fitHeight="114.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../piezasPromocion/knight.png" />
+                        <Image url="@../../../../../../chessPieces/whiteknight.png" />
                      </image></ImageView>
               </buttons>
                <GridPane.margin>
