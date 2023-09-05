@@ -15,7 +15,9 @@ public class Tablero {
          
     public Ficha[][] fichas;
     private ArrayList<Ficha> eliminadas;
-
+    public ArrayList<Ficha> piezasBlancas = new ArrayList<>();
+    public ArrayList<Ficha> piezasNegras = new ArrayList<>();
+    
     public Tablero() {
         this.fichas = new Ficha[8][8];
     }

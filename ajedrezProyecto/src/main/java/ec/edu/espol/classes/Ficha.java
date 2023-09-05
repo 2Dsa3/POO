@@ -5,6 +5,7 @@
 package ec.edu.espol.classes;
 
 import ec.edu.espol.controllers.TableroAjedrezController;
+import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -34,15 +35,25 @@ public abstract class Ficha extends Button {
    public void mover(Ficha f) throws NonValidMove, PossibleCheckmate{
         
         this.validarMovimiento(f.getX(),f.getY());
-        this.piezaClavada(f);
+        try{this.piezaClavada(f);}
+        catch(PossibleCheckmate ex)
+        {
+            int newX = this.getX();
+            int newY = this.getY();
+            this.setX(f.getX());
+            this.setY(f.getY());
+            f.setX(newX);
+            f.setY(newY);
+            throw new PossibleCheckmate(ex.getMessage());
+        }
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
-        int newX = this.getX();
-        int newY = this.getY();
-        this.setX(f.getX());
-        this.setY(f.getY());
-        f.setX(newX);
-        f.setY(newY);
+//        int newX = this.getX();
+//        int newY = this.getY();
+//        this.setX(f.getX());
+//        this.setY(f.getY());
+//        f.setX(newX);
+//        f.setY(newY);
          
         
         //this.actualizarTooltip();
@@ -104,42 +115,63 @@ public abstract class Ficha extends Button {
     
     public void capturar (Ficha f) throws NonValidMove,PossibleCheckmate{
         this.validarMovimiento(f.getX(),f.getY());
-        this.piezaClavada(f);
+        
+        try{this.piezaClavada(f);}
+        catch(PossibleCheckmate ex)
+        {
+            int newX = this.getX();
+            int newY = this.getY();
+            this.setX(f.getX());
+            this.setY(f.getY());
+            f.setX(newX);
+            f.setY(newY);
+            throw new PossibleCheckmate(ex.getMessage());
+        }
         //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
         //this.t.getFichas()[f.getX()][f.getY()]=this;
+        
+//        int newX = this.getX();
+//        int newY = this.getY();
+//        this.setX(f.getX());
+//        this.setY(f.getY());
+//        f.setX(newX);
+//        f.setY(newY);
+        //this.actualizarTooltip();
+    }
+    
+    public void piezaClavada(Ficha f) throws PossibleCheckmate{
+//      Ficha[][] nt = TableroAjedrezController.t.getFichas().clone();
+//        //try {
+//            Ficha cloned;
+//            nt[this.getX()][this.getY()] = new Casilla(this.getX(),this.getY(),t);
+//            if (f instanceof Casilla)
+//                cloned = new Casilla(this.getX(),this.getY(),t);
+//            else
+//                cloned = f.clone();
+//            nt[f.getX()][f.getY()] = cloned;
+//            cloned.setX(f.getX());
+//            cloned.setY(f.getY());
         int newX = this.getX();
         int newY = this.getY();
         this.setX(f.getX());
         this.setY(f.getY());
         f.setX(newX);
         f.setY(newY);
-        //this.actualizarTooltip();
-    }
-    
-    public void piezaClavada(Ficha f) throws PossibleCheckmate{
-      Ficha[][] nt = TableroAjedrezController.t.getFichas().clone();
-        //try {
-            
-            nt[this.getX()][this.getY()] = new Casilla(this.getX(),this.getY(),t);
-            Ficha cloned = this.clone();
-            nt[f.getX()][f.getY()] = cloned;
-            cloned.setX(f.getX());
-            cloned.setY(f.getY());
-            
         //} catch (CloneNotSupportedException ex) {
             //ex.printStackTrace();
 //        Alert a = new Alert(Alert.AlertType.ERROR,"MO se clonó");
 //                    a.show();
        // }
-      for (int i = 0; i < 8; i++) {
-
-                            for (int j = 0; j < 8; j++) {
-                                //Equipo color;
-                                if (nt[i][j] instanceof King && (((this.getColor()).equals(nt[i][j].getColor()))) ) {
-                                    System.out.println("Castea al rey");
-                                    King k= (King)nt[i][j];
-                                    System.out.println("CUMPLE");
-                                    k.estaEnJaque(nt); 
+      ArrayList<Ficha> piezasColor = null;
+        if (this.getColor().equals(Equipo.BLANCAS))
+            piezasColor = t.piezasBlancas;
+        else
+            piezasColor = t.piezasNegras;
+      for (Ficha pieza: piezasColor){
+            //Equipo color;
+            if (pieza instanceof King) {
+                King k = (King) pieza;
+                k.estaEnJaque(this,f); //This se mueva a F
                                     
                                         //TableroAjedrezController.mostrarMensaje("Estas en Jaque",c);
                                         
@@ -149,7 +181,7 @@ public abstract class Ficha extends Button {
                                 
                             }
 
-    }
+    
 
     @Override
     protected Ficha clone(){
@@ -178,6 +210,5 @@ public abstract class Ficha extends Button {
         return f; 
         // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
     
 }

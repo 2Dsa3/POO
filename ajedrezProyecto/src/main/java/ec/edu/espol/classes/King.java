@@ -5,6 +5,7 @@
 package ec.edu.espol.classes;
 
 import ec.edu.espol.controllers.TableroAjedrezController;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,7 +32,6 @@ public class King extends Ficha{
         double d = (double) Math.sqrt(dX^2+dY^2);
         if(d > Math.sqrt(2)||dX==2)
             throw new NonValidMove("Movimiento fuera del rango de la pieza.");
-        
     }
         
 //     
@@ -57,55 +57,37 @@ public class King extends Ficha{
         return false;
     }
     //color es el del rey
-    public void estaEnJaque(Ficha[][] nt) throws PossibleCheckmate
+    public void estaEnJaque(Ficha ths, Ficha f) throws PossibleCheckmate
     {
-        for (int i = 0; i < 8; i++) 
-        {
-            for (int j = 0; j < 8; j++) 
-            {
-                if(nt[i][j] instanceof Casilla == false)
+        ArrayList<Ficha> piezasColor = null;
+        if (this.getColor().equals(Equipo.BLANCAS))
+            piezasColor = t.piezasNegras;
+        else
+            piezasColor = t.piezasBlancas;
+        for (Ficha pieza: piezasColor){
+            try{
+            if (pieza instanceof Pawn)
                 {
-                    if (! (nt[i][j].getColor().equals(this.getColor())))
-                    {
-                        try
-                        {
-                            if (nt[i][j] instanceof Pawn)
-                            {
-                                Pawn p = (Pawn) nt[i][j];
-                                p.validarCaptura(this.getX(),this.getY());
-                            }
-                            else
-                                nt[i][j].validarMovimiento(this.getX(),this.getY());
-                            System.out.println("Se lanza PossibleCheckmate");
-                            throw new PossibleCheckmate("Estás en Jaque.");
-                        }
-                        catch(NonValidMove e){
-                            System.out.println("Se lanza el no valid move");
-                        }
+                    Pawn p = (Pawn) pieza;
+                    p.validarCaptura(this.getX(),this.getY());
+                }
+            else
+                pieza.validarMovimiento(this.getX(),this.getY());
+                //pieza.
+            throw new PossibleCheckmate("Estás en Jaque. \n" + pieza.toString() + "te ataca en" + this.toString());
+            }
+            catch(NonValidMove e){
+//                int newX = ths.getX();
+//                int newY = ths.getY();
+//                ths.setX(f.getX());
+//                ths.setY(f.getY());
+//                f.setX(newX);
+//                f.setY(newY);
+                System.out.println("Se lanza el no valid move de "  + pieza.toString());
+            }
 
                     }
                 }
                     
             }
-        }
-    }
-    
-//    for (int i = 0; i < 8; i++) {
-//                            for (int j = 0; j < 8; j++) {
-//                                String color;
-//                                if (t.fichas[i][j] instanceof King && !(String.valueOf(ficha.getColor()).equals(String.valueOf(t.fichas[i][j].getColor()))) ) {
-//                                    color= String.valueOf(t.fichas[i][j].getColor());
-//                                    King k= (King)t.fichas[i][j];
-//                                    System.out.println("CUMPLE");
-//                                    if (k.estaEnJaque(color)){ 
-//                                        Equipo c= k.getColor();
-//                                        mostrarMensaje("Estas en Jaque",c);
-//                                        
-//                                    }
-//                                    
-//                                }
-//                                
-//                            }
-//                            
-//                        }
-}
+     

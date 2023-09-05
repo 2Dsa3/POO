@@ -56,8 +56,7 @@ public class TableroAjedrezController implements Initializable {
     
     
     
-    private ArrayList<Ficha> piezasBlancas = new ArrayList<>();
-    private ArrayList<Ficha> piezasNegras = new ArrayList<>();
+    
     @FXML
     private GridPane blacktable;
     @FXML
@@ -127,10 +126,10 @@ public class TableroAjedrezController implements Initializable {
                 if (ficha instanceof Casilla == false)
                     {
                         if(ficha.getColor().equals(Equipo.BLANCAS))
-                            piezasBlancas.add(ficha);
+                            t.piezasBlancas.add(ficha);
                         else
                         {
-                            piezasNegras.add(ficha);
+                            t.piezasNegras.add(ficha);
                         }
                     }
                 ficha.setStyle("-fx-background-color: transparent; -fx-border-color: #000000"); 
@@ -299,9 +298,9 @@ public class TableroAjedrezController implements Initializable {
                                     {t.fichas[column2][row2]=seleccionado;
                                    }
                                 if (ficha.getColor().equals(Equipo.BLANCAS))
-                                    piezasBlancas.remove(ficha);
+                                    t.piezasBlancas.remove(ficha);
                                 else
-                                    piezasNegras.remove(ficha);
+                                    t.piezasNegras.remove(ficha);
                                 //mostrarMensaje("¡Tu turno!",ficha);
                             }
                             seleccionado.setStyle(estiloBoton);
@@ -351,7 +350,7 @@ public class TableroAjedrezController implements Initializable {
                         team = Equipo.NEGRAS;
                     else
                         team = Equipo.BLANCAS;
-                    mostrarMensaje(ex.getMessage(),team);
+                    mostrarMensaje(ex.getMessage(),turno);
                     
                     }
                     catch (Exception ex) 

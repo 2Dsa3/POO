@@ -115,15 +115,17 @@ public class Pawn extends Ficha {
     @Override
     public void capturar(Ficha f) throws NonValidMove, PossibleCheckmate{
         this.validarCaptura(f.getX(),f.getY());
-        this.piezaClavada(f);
-        //this.t.getFichas()[this.getX()][this.getY()]= new Casilla(this.getX(),this.getY(),t);
-        //this.t.getFichas()[f.getX()][f.getY()]=this;
-        int newX = this.getX();
-        int newY = this.getY();
-        this.setX(f.getX());
-        this.setY(f.getY());
-        f.setX(newX);
-        f.setY(newY); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        try{this.piezaClavada(f);}
+        catch(PossibleCheckmate ex)
+        {
+            int newX = this.getX();
+            int newY = this.getY();
+            this.setX(f.getX());
+            this.setY(f.getY());
+            f.setX(newX);
+            f.setY(newY);
+            throw new PossibleCheckmate(ex.getMessage());
+        }// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     public void validarCaptura(int x, int y) throws NonValidMove {
