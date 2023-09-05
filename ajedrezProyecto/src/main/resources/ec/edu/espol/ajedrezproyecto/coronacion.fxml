@@ -54,7 +54,7 @@
                   </Button>
                   <ImageView fx:id="ImgCaballo" fitHeight="114.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../chessPieces/knight.png" />
+                        <Image url="@../../../../../../piezasPromocion/knight.png" />
                      </image></ImageView>
               </buttons>
                <GridPane.margin>
@@ -70,7 +70,7 @@
                   </Button>
                   <ImageView fx:id="ImgTorre" fitHeight="115.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../chessPieces/rook.png" />
+                        <Image url="@../../../../../../chessPieces/whiterook.png" />
                      </image></ImageView>
               </buttons>
                <GridPane.margin>
@@ -86,7 +86,7 @@
                   </Button>
                   <ImageView fx:id="ImgAlfil" fitHeight="114.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../chessPieces/bishop.png" />
+                        <Image url="@../../../../../../chessPieces/whitebishop.png" />
                      </image></ImageView>
               </buttons>
                <GridPane.margin>
@@ -108,7 +108,7 @@
                   </Button>
                   <ImageView fx:id="ImgReina" fitHeight="114.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../chessPieces/queen.png" />
+                        <Image url="@../../../../../../chessPieces/whitequeen.png" />
                      </image></ImageView>
               </buttons>
                <GridPane.margin>

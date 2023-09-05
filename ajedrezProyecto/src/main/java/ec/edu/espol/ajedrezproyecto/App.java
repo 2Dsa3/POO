@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("tableroAjedrez"), 680, 480);
+        scene = new Scene(loadFXML("coronacion"), 680, 480);
         stage.setScene(scene);
         stage.setTitle("Ajedrez pro (POO Grupo8)");
         stage.show();
